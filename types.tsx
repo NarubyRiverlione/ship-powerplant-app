@@ -15,5 +15,7 @@ export type TabOneParamList = {
 }
 
 export type TabTwoParamList = {
-  FuelScreen: undefined;
+  FuelOverviewScreen: undefined;
+  FuelStorageScreen: undefined;
+  FuelServiceScreen: undefined;
 }

@@ -1,32 +1,7 @@
 import * as React from 'react'
-import { StyleSheet, Button } from 'react-native'
-import { Text, View } from '../../components/Themed'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  subTitle: {
-    fontSize: 18,
-    textDecorationLine: 'underline',
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 16,
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-})
+import { Button, Text, View } from 'react-native'
+import PropTypes from 'prop-types'
+import styles from '../../styles'
 
 export default function PowerOverviewScreen({ navigation }) {
   return (
@@ -41,4 +16,8 @@ export default function PowerOverviewScreen({ navigation }) {
 
     </View>
   )
+}
+
+PowerOverviewScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
 }

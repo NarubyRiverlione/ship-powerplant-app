@@ -12,7 +12,7 @@ const Tank = ({
   const Width = Size
   const Height = Size / 3
   return (
-    <Svg x={X} y={Y} width={Width} height={Height}>
+    <Svg viewBox={`${X} ${Y} ${Width + Math.abs(X)} ${Height + Math.abs(Y)}`} width={Width} height={Height}>
       <Circle cx={Height / 2} cy={Height / 2} r={Height / 2} fill="gray" />
       <Rect x={Height / 2} y="0" width={Width - Height} height={Height} fill="gray" />
       <Circle cx={Width - Height + Height / 2} cy={Height / 2} r={Height / 2} fill="gray" />
