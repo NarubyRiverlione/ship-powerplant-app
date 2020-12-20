@@ -25,9 +25,10 @@ const localStyle = StyleSheet.create({
 })
 
 export default function FuelStorageScreen() {
-  const tankVolume = 500
+  const tankVolume = 2500
   const tankStep = 100
   const [Content, setContent] = useState(0)
+  let filling = null
 
   const addContent = () => {
     const newContent = limitZeroMax(Content + tankStep, tankVolume)
@@ -36,6 +37,18 @@ export default function FuelStorageScreen() {
   const removeContent = () => {
     const newContent = limitZeroMax(Content - tankStep, tankVolume)
     setContent(newContent)
+  }
+
+  const DSshoreIntakeCb = (isOpen) => {
+    // stop filling
+    if (isOpen && filling) {
+      clearInterval(filling)
+      filling = null
+    }
+    // start filling
+    if (!isOpen) {
+      filling = setInterval(() => { addContent() }, 1000)
+    }
   }
 
   return (
@@ -48,8 +61,7 @@ export default function FuelStorageScreen() {
 
         <View style={styles.contentView}>
           <DieselStorage
-            addContent={addContent}
-            removeContent={removeContent}
+            DSshoreIntakeCb={DSshoreIntakeCb}
             ContentPct={Content / (tankVolume / 100)}
           />
 

@@ -3,39 +3,30 @@ import PropTypes from 'prop-types'
 
 import Svg, { Circle, Rect } from 'react-native-svg'
 import LookingGlass from './LookingGlass'
-import ContentLabel from './ContentLabel'
 
 const Tank = ({
-  X, Y, Size,
-  ContentPct, ContentColor, ShowContent,
+  X, Y,
+  Size,
+  ContentPct, ContentColor,
 }) => {
   const Width = Size
   const Height = Size / 3
   return (
-    <Svg viewBox={`${X} ${Y} ${Width + Math.abs(X)} ${Height + Math.abs(Y)}`} width={Width} height={Height}>
-      <Circle cx={Height / 2} cy={Height / 2} r={Height / 2} fill="gray" />
-      <Rect x={Height / 2} y="0" width={Width - Height} height={Height} fill="gray" />
-      <Circle cx={Width - Height + Height / 2} cy={Height / 2} r={Height / 2} fill="gray" />
+    <Svg width={Width} height={Height}>
+      <Circle cx={X + Height / 2} cy={Y + Height / 2} r={Height / 2} fill="gray" />
+      <Rect x={X + Height / 2} y={Y} width={Width - Height} height={Height} fill="gray" />
+      <Circle cx={X + Width - Height + Height / 2} cy={Y + Height / 2} r={Height / 2} fill="gray" />
       {ContentPct !== null
         && (
           <LookingGlass
-            X={Width / 3 * 2}
-            Y={10}
+            X={X + Width / 3 * 2}
+            Y={Y + 10}
             Size={Height - 20}
             ContentPct={ContentPct}
             Color={ContentColor}
           />
         )}
-      {ShowContent !== null
-        && (
-          <ContentLabel
-            X={Width / 3}
-            Y={Height / 2}
-            Content={ShowContent}
-          />
-        )}
     </Svg>
-
   )
 }
 
@@ -47,10 +38,8 @@ Tank.propTypes = {
   Size: PropTypes.number.isRequired,
   ContentPct: PropTypes.number,
   ContentColor: PropTypes.string,
-  ShowContent: PropTypes.number,
 }
 Tank.defaultProps = {
   ContentPct: null,
-  ContentColor: null,
-  ShowContent: null,
+  ContentColor: 'white',
 }
