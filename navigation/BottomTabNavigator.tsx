@@ -44,7 +44,7 @@ function PowerTabNavigator() {
 const PowerStack = createStackNavigator<TabTwoParamList>()
 function FuelTabNavigator() {
   return (
-    <PowerStack.Navigator initialRouteName="FuelStorageScreen">
+    <PowerStack.Navigator initialRouteName="FuelOverviewScreen">
       <PowerStack.Screen
         name="FuelOverviewScreen"
         component={FuelOverviewScreen}
