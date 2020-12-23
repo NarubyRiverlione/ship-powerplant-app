@@ -4,10 +4,10 @@ import { View, Text, Button } from 'react-native'
 import { observer } from 'mobx-react-lite'
 import styles from '../styles'
 import CstTxt, { BtnStartStopTxt } from '../CstTxt'
-import { useSim } from '../SimulatorContext'
+import SimContext from '../SimulatorContext'
 
 const SimulatorScreen = observer(({ children }) => {
-  const Sim = useSim()
+  const Sim = SimContext()
 
   const Running = () => (Sim.Running !== null ? CstTxt.Running : CstTxt.Stopped)
 

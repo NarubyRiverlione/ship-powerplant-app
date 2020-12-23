@@ -1,88 +1,70 @@
-import React, { useState } from 'react'
-import {
-  StyleSheet, View, Text,
-} from 'react-native'
+import * as React from 'react'
+import { View, Text, Button } from 'react-native'
+import { observer } from 'mobx-react-lite'
+
 import styles from '../../styles'
+import SimulatorScreen from '../SimulatorScreen'
+import SimContext from '../../SimulatorContext'
+import { BtnOpenCloseTxt, TxtOpenClose } from '../../CstTxt'
 
-import DieselStorage from './DieselStorage'
-
-const limitZeroMax = (validate, max) => (validate < 0 ? 0 : validate > max ? max : validate) // eslint-disable-line
-
-const localStyle = StyleSheet.create({
-  DSview: {
-    flex: 1,
-    flexDirection: 'column',
-    borderWidth: 1,
-    borderColor: 'green',
-  },
-  HFview: {
-    flex: 2,
-    flexDirection: 'column',
-    borderWidth: 1,
-    borderColor: 'purple',
-  },
-
-})
-
-const DSshoreIntake = (isOpen) => {
-  let fillingTimer = null
-  // stop filling
-  if (isOpen && filling) {
-    clearInterval(filling)
-    fillingTimer = null
-  }
-  // start filling
-  if (!isOpen) {
-    fillingTimer = setInterval(() => {
-      const newContent = limitZeroMax(DSstorage + tankStep, tankVolume)
-      setDSstorage(newContent)
-      debugger
-    }, 2000)
-  }
-}
-
-export default function FuelStorageScreen() {
-  const tankVolume = 2500
-  const tankStep = 100
-  const [DSstorage, setDSstorage] = useState(0)
-  const filling = null
-
-  const addContent = () => {
-    const newContent = limitZeroMax(DSstorage + tankStep, tankVolume)
-    setDSstorage(newContent)
-  }
-  const removeContent = () => {
-    debugger
-    const newContent = limitZeroMax(DSstorage - tankStep, tankVolume)
-    setDSstorage(newContent)
-  }
+const FuelStorageScreen = observer(() => {
+  const Sim = SimContext()
+  const {
+    FuelSys: {
+      DieselTank, DieselShoreFillValve, DsStorageOutletValve, DsServiceIntakeValve, DsServiceTank,
+    },
+  } = Sim
 
   return (
     <SimulatorScreen>
       <View style={styles.container}>
-        <View style={localStyle.DSview}>
+        <View style={{ flex: 1, flexDirection: 'column', padding: 20 }}>
 
-          <View style={styles.titleView}>
-            <Text style={styles.title}>Diesel fuel</Text>
+          <Text style={styles.title}>Diesel</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.subTitle}>Storage tank</Text>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <Text style={styles.text}>{`Shore intake valve ${TxtOpenClose(DieselShoreFillValve.isOpen)}`}</Text>
+              <Button
+                title={BtnOpenCloseTxt(DieselShoreFillValve.isOpen)}
+                onPress={() => DieselShoreFillValve.Toggle()}
+              />
+            </View>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <Text style={styles.text}>{`Content ${DieselTank.Content()} liter`}</Text>
+            </View>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <Text style={styles.text}>{`Outlet valve ${TxtOpenClose(DsStorageOutletValve.isOpen)}`}</Text>
+              <Button
+                title={BtnOpenCloseTxt(DsStorageOutletValve.isOpen)}
+                onPress={() => DsStorageOutletValve.Toggle()}
+              />
+
+            </View>
           </View>
 
-          <View style={styles.contentView}>
-            <DieselStorage
-              DSshoreIntakeCb={DSshoreIntakeCb}
-            //   ContentPct={DSstorage / (tankVolume / 100)}
-            />
-
+          <View style={{ flex: 1 }}>
+            <Text style={styles.subTitle}>Service tank</Text>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <Text style={styles.text}>{`Service intake valve ${TxtOpenClose(DsServiceIntakeValve.isOpen)}`}</Text>
+              <Button
+                title={BtnOpenCloseTxt(DsServiceIntakeValve.isOpen)}
+                onPress={() => DsServiceIntakeValve.Toggle()}
+              />
+            </View>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <Text style={styles.text}>{`Content ${DsServiceTank.Content()} liter`}</Text>
+            </View>
           </View>
-
         </View>
 
-        <View style={localStyle.HFview}>
-          <View style={styles.titleView}>
-            <Text style={styles.title}>Heavy Fuel</Text>
-          </View>
-          <View style={styles.contentView} />
+        <View style={{ flex: 2, flexDirection: 'column', padding: 20 }}>
+          <Text style={styles.title}>Heavy fuel</Text>
         </View>
+
       </View>
     </SimulatorScreen>
   )
-}
+})
+
+export default FuelStorageScreen

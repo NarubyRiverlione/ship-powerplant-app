@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import FuelOverviewScreen from '../screens/Fuel/FuelOverviewScreen'
 import FuelStorageScreen from '../screens/Fuel/FuelStorageScreen'
-import FuelServiceScreen from '../screens/Fuel/FuelServiceScreen'
+import FuelStorageSVGScreen from '../screens/Fuel/FuelStorageSVGScreen'
 
 const FuelStack = createStackNavigator()
 const FuelTabNavigator = () => (
@@ -19,9 +19,9 @@ const FuelTabNavigator = () => (
       options={{ headerTitle: 'FUEL - Storage' }}
     />
     <FuelStack.Screen
-      name="FuelServiceScreen"
-      component={FuelServiceScreen}
-      options={{ headerTitle: 'FUEL - Service' }}
+      name="FuelStorageSVGScreen"
+      component={FuelStorageSVGScreen}
+      options={{ headerTitle: 'FUEL - Storage SVG' }}
     />
   </FuelStack.Navigator>
 )

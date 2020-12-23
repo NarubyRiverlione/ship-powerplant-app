@@ -16,4 +16,5 @@ SimulatorProvider.propTypes = {
   children: PropTypes.array.isRequired,
 }
 
-export const useSim = () => React.useContext(SimulatorContext)
+const SimContext = () => React.useContext(SimulatorContext)
+export default SimContext

@@ -2,10 +2,10 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { observer } from 'mobx-react-lite'
 import styles from '../styles'
-import { useSim } from '../SimulatorContext'
+import SimContext from '../SimulatorContext'
 
 const ShowBusses = observer(() => {
-  const Sim = useSim()
+  const Sim = SimContext()
   const { PowerSys: { MainBus1, EmergencyBus } } = Sim
 
   return (

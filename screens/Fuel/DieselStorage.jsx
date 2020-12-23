@@ -9,6 +9,7 @@ import Valve from '../../components/Valve'
 
 export default function DieselStorage({ DSshoreIntakeCb, ContentPct }) {
   return (
+
     <View style={{ flex: 1 }}>
       <Text style={{ flex: 1, textAlign: 'right' }}>Storage tank</Text>
 
