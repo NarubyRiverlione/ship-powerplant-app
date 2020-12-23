@@ -2,10 +2,12 @@ import * as React from 'react'
 import { Button, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 import styles from '../../styles'
-import ShowBusses from './ShowBusses'
 
-export default function PowerOverviewScreen({ navigation }) {
-  return (
+import ShowBusses from '../../components/ShowBusses'
+import SimulatorScreen from '../SimulatorScreen'
+
+const PowerOverviewScreen = ({ navigation }) => (
+  <SimulatorScreen>
     <View style={{ flex: 1, flexDirection: 'column' }}>
       <View style={{ flex: 1 }}>
         <Text style={styles.subTitle}>Switchboard</Text>
@@ -24,9 +26,11 @@ export default function PowerOverviewScreen({ navigation }) {
       </View>
 
     </View>
-  )
-}
+  </SimulatorScreen>
+)
 
 PowerOverviewScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
 }
+
+export default PowerOverviewScreen

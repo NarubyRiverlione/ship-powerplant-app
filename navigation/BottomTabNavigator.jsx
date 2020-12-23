@@ -1,6 +1,7 @@
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import PropTypes from 'prop-types'
 
 import FuelTabNavigator from './FuelStack'
 import PowerTabNavigator from './PowerStack'
@@ -35,12 +36,19 @@ const BottomTabNavigator = () => {
     </BottomTab.Navigator>
   )
 }
+// BottomTabNavigator.propTypes = {
+//   color: PropTypes.string.isRequired,
+// }
+
 export default BottomTabNavigator
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />
+function TabBarIcon({ name, color }) {
+  return <Ionicons size={30} style={{ marginBottom: -3 }} name={name} color={color} />
 }
-
+TabBarIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+}
 // #endregion

@@ -25,7 +25,7 @@ const localStyle = StyleSheet.create({
 })
 
 const DSshoreIntake = (isOpen) => {
-  let fillingTimer= null
+  let fillingTimer = null
   // stop filling
   if (isOpen && filling) {
     clearInterval(filling)
@@ -45,7 +45,7 @@ export default function FuelStorageScreen() {
   const tankVolume = 2500
   const tankStep = 100
   const [DSstorage, setDSstorage] = useState(0)
-  let filling = null
+  const filling = null
 
   const addContent = () => {
     const newContent = limitZeroMax(DSstorage + tankStep, tankVolume)
@@ -57,31 +57,32 @@ export default function FuelStorageScreen() {
     setDSstorage(newContent)
   }
 
-
   return (
-    <View style={styles.container}>
-      <View style={localStyle.DSview}>
+    <SimulatorScreen>
+      <View style={styles.container}>
+        <View style={localStyle.DSview}>
 
-        <View style={styles.titleView}>
-          <Text style={styles.title}>Diesel fuel</Text>
+          <View style={styles.titleView}>
+            <Text style={styles.title}>Diesel fuel</Text>
+          </View>
+
+          <View style={styles.contentView}>
+            <DieselStorage
+              DSshoreIntakeCb={DSshoreIntakeCb}
+            //   ContentPct={DSstorage / (tankVolume / 100)}
+            />
+
+          </View>
+
         </View>
 
-        <View style={styles.contentView}>
-          <DieselStorage
-            DSshoreIntakeCb={DSshoreIntakeCb}
-          //   ContentPct={DSstorage / (tankVolume / 100)}
-          />
-
+        <View style={localStyle.HFview}>
+          <View style={styles.titleView}>
+            <Text style={styles.title}>Heavy Fuel</Text>
+          </View>
+          <View style={styles.contentView} />
         </View>
-
       </View>
-
-      <View style={localStyle.HFview}>
-        <View style={styles.titleView}>
-          <Text style={styles.title}>Heavy Fuel</Text>
-        </View>
-        <View style={styles.contentView} />
-      </View>
-    </View>
+    </SimulatorScreen>
   )
 }

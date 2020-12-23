@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import { observer } from 'mobx-react-lite'
-import styles from '../../styles'
-import { useSim } from '../../SimulatorContext'
+import styles from '../styles'
+import { useSim } from '../SimulatorContext'
 
 const ShowBusses = observer(() => {
   const Sim = useSim()
