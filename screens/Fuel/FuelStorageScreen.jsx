@@ -11,7 +11,7 @@ const FuelStorageScreen = observer(() => {
   const Sim = SimContext()
   const {
     FuelSys: {
-      DieselTank, DieselShoreFillValve, DsStorageOutletValve, DsServiceIntakeValve, DsServiceTank,
+      DieselTank, DieselShoreFillValve, DsStorageOutletValve, DsServiceIntakeValve, DsServiceTank, DsServiceOutletValve,
     },
   } = Sim
 
@@ -55,6 +55,13 @@ const FuelStorageScreen = observer(() => {
             <View style={{ flex: 1, flexDirection: 'row' }}>
               <Text style={styles.text}>{`Content ${DsServiceTank.Content()} liter`}</Text>
             </View>
+          </View>
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <Text style={styles.text}>{`Service outlet valve ${TxtOpenClose(DsServiceOutletValve.isOpen)}`}</Text>
+            <Button
+              title={BtnOpenCloseTxt(DsServiceOutletValve.isOpen)}
+              onPress={() => DsServiceOutletValve.Toggle()}
+            />
           </View>
         </View>
 
