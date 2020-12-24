@@ -13,7 +13,7 @@ import {
 
 const PowerSwitchboardScreen = observer(() => {
   const Sim = SimContext()
-  const { PowerSys: { ShoreBreaker, EmergencyGen } } = Sim
+  const { PowerSys: { ShoreBreaker, EmergencyGen, MainBreaker1 } } = Sim
 
   return (
     <SimulatorScreen>
@@ -31,6 +31,13 @@ const PowerSwitchboardScreen = observer(() => {
           <Button
             title={BtnStartStopTxt(EmergencyGen.isRunning)}
             onPress={() => EmergencyGen.Toggle()}
+          />
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Text style={styles.subTitle}>{`Main bus breaker is ${TxtOpenClose(MainBreaker1.isOpen)}`}</Text>
+          <Button
+            title={BtnOpenCloseTxt(MainBreaker1.isOpen)}
+            onPress={() => MainBreaker1.Toggle()}
           />
         </View>
       </View>

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
   // TEXT
   title: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     // paddingTop: 10,
     // marginBottom: 20,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 18,
-    textDecorationLine: 'underline',
+    fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
   },
