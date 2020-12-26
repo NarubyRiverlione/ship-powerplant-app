@@ -28,19 +28,20 @@ const styles = StyleSheet.create({
 
   // TEXT
   title: {
+    // flex: 1,
     fontSize: 22,
     fontWeight: 'bold',
-    // paddingTop: 10,
-    // marginBottom: 20,
     textAlign: 'center',
   },
   subTitle: {
+    // flex: 1,
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
   },
   text: {
+    // flex: 1,
     fontSize: 16,
   },
   link: {

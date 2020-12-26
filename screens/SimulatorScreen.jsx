@@ -16,14 +16,23 @@ const SimulatorScreen = observer(({ children }) => {
     else Sim.Start()
   }
   return (
-    <View style={{ flex: 1, flexDirection: 'column' }}>
+    <View style={{
+      flex: 1, flexDirection: 'column', margin: 5, justifyContent: 'flex-start',
+    }}
+    >
 
-      <View style={{ flex: 9, flexDirection: 'column' }}>
+      <View style={{
+        flex: 9, flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: 'whitesmoke',
+      }}
+      >
         {children}
       </View>
 
-      <View style={{ flex: 1, flexDirection: 'row', justifyContents: 'flex-end' }}>
-        <Text style={{ flex: 2 }}>{`Simulator is ${Running()}`}</Text>
+      <View style={{
+        flex: 1, flexDirection: 'row', justifyContents: 'flex-end', alignItems: 'center', backgroundColor: 'snow',
+      }}
+      >
+        <Text style={{ ...styles.subTitle, flex: 2 }}>{`Simulator is ${Running()}`}</Text>
         <Button style={{ flex: 1 }} title={BtnStartStopTxt(Sim.Running !== null)} onPress={() => ToggleSim()} />
         <Button style={{ flex: 1 }} title="Thick" onPress={() => Sim.Thick()} />
         <Button style={{ flex: 1 }} title="RESET" onPress={() => Sim.Reset()} />

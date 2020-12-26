@@ -7,13 +7,9 @@ import TankSys from '../../components/TankSys'
 import ValveSys from '../../components/ValveSys'
 import SimContext from '../../SimulatorContext'
 
-const FuelStorageScreen = () => {
+const LubStorageScreen = () => {
   const Sim = SimContext()
-  const {
-    FuelSys: {
-      DsStorage, DsService, DsShoreValve,
-    },
-  } = Sim
+  const { LubSys: { Storage, ShoreValve } } = Sim
 
   return (
     <SimulatorScreen>
@@ -22,28 +18,15 @@ const FuelStorageScreen = () => {
           flex: 1, flexDirection: 'column', margin: 20, justifyContent: 'flex-start',
         }}
         >
-          <View style={{ flex: 1 }}>
-            <Text style={styles.title}>Diesel</Text>
-          </View>
-
           <View style={{ flex: 4, justifyContent: 'flex-start', flexDirection: 'column' }}>
-            <ValveSys Sys={DsShoreValve} Name="Shore fill valve" />
-            <TankSys Sys={DsStorage} Name="Storage" />
-          </View>
-
-          <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }}>
-            <TankSys Sys={DsService} Name="Service" />
+            <ValveSys Sys={ShoreValve} Name="Shore fill valve" />
+            <TankSys Sys={Storage} Name="Storage" />
           </View>
 
         </View>
-
-        <View style={{ flex: 2, flexDirection: 'column', padding: 20 }}>
-          <Text style={styles.title}>Heavy fuel</Text>
-        </View>
-
       </View>
     </SimulatorScreen>
   )
 }
 
-export default FuelStorageScreen
+export default LubStorageScreen
