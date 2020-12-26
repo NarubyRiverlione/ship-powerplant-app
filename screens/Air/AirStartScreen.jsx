@@ -9,7 +9,7 @@ import SimContext from '../../SimulatorContext'
 
 const AirStartScreen = () => {
   const Sim = SimContext()
-  const { AirSys: { Start } } = Sim
+  const { AirSys: { Receiver1, EmergencyReceiver } } = Sim
 
   return (
     <SimulatorScreen>
@@ -19,7 +19,13 @@ const AirStartScreen = () => {
         }}
         >
           <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }}>
-            <TankSys Sys={Start} Name="Start up air" />
+            <Text style={styles.Text}>Todo: air compressor 1</Text>
+            <TankSys Sys={Receiver1} Name="Start up air receiver 1" />
+          </View>
+
+          <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }}>
+            <Text style={styles.Text}>Todo: emergency compressor 1</Text>
+            <TankSys Sys={EmergencyReceiver} Name="Emergency air receiver" />
           </View>
 
         </View>

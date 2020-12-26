@@ -42,9 +42,7 @@ const PowerGenerator1Screen = observer(() => {
               onPress={() => DsGen1.FuelIntakeValve.Toggle()}
             />
           </View>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <Text style={styles.text}>{`${DsGen1.HasCooling ? 'Has cooling' : 'Doesn\'t have cooling'}`}</Text>
-          </View>
+
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <Text style={styles.text}>{`${DsGen1.HasLubrication ? 'Has lubrication' : 'Doesn\'t have lubrication'}`}</Text>
             <Text style={styles.text}>{`, intake valve is ${TxtOpenClose(DsGen1.LubIntakeValve.isOpen)}`}</Text>
@@ -52,6 +50,19 @@ const PowerGenerator1Screen = observer(() => {
               title={BtnOpenCloseTxt(DsGen1.HasLubrication)}
               onPress={() => DsGen1.LubIntakeValve.Toggle()}
             />
+          </View>
+
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <Text style={styles.text}>{`${DsGen1.CheckAir() ? 'Has enough start air' : 'Doesn\'t have enough start'}`}</Text>
+            <Text style={styles.text}>{`, intake valve is ${TxtOpenClose(DsGen1.AirIntakeValve.isOpen)}`}</Text>
+            <Button
+              title={BtnOpenCloseTxt(DsGen1.AirIntakeValve)}
+              onPress={() => DsGen1.AirIntakeValve.Toggle()}
+            />
+          </View>
+
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <Text style={styles.text}>{`${DsGen1.HasCooling ? 'Has cooling' : 'Doesn\'t have cooling'}`}</Text>
           </View>
         </View>
 
