@@ -2,7 +2,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import AirOverviewScreen from '../screens/Air/AirOverviewScreen'
-import AirStorageScreen from '../screens/Air/AirStorageScreen'
+import AirStartScreen from '../screens/Air/AirStartScreen'
+import AirControlScreen from '../screens/Air/AirControlScreen'
 
 const AirStack = createStackNavigator()
 const AirTabNavigator = () => (
@@ -14,8 +15,13 @@ const AirTabNavigator = () => (
     />
     <AirStack.Screen
       name="AirStorageScreen"
-      component={AirStorageScreen}
-      options={{ headerTitle: 'COMPRESSED AIR - Storage' }}
+      component={AirStartScreen}
+      options={{ headerTitle: 'COMPRESSED AIR - Start up' }}
+    />
+    <AirStack.Screen
+      name="AirControlScreen"
+      component={AirControlScreen}
+      options={{ headerTitle: 'COMPRESSED AIR - Control' }}
     />
   </AirStack.Navigator>
 

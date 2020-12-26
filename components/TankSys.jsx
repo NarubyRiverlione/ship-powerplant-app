@@ -31,6 +31,14 @@ const TankSys = observer(({ Sys, Name }) => (
         onPress={() => Sys.OutletValve.Toggle()}
       />
     </View>
+
+    <View style={{ flex: 1, flexDirection: 'row' }}>
+      <Text style={styles.text}>{`${Name} drain valve ${TxtOpenClose(Sys.DrainValve.isOpen)}`}</Text>
+      <Button
+        title={BtnOpenCloseTxt(Sys.DrainValve.isOpen)}
+        onPress={() => Sys.DrainValve.Toggle()}
+      />
+    </View>
   </View>
 ))
 

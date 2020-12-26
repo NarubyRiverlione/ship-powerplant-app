@@ -9,6 +9,7 @@ import PowerTabNavigator from './PowerStack'
 import LubTabNavigator from './LubStack'
 import AirTabNavigator from './AirStack'
 import CoolantTabNavigator from './CoolantStack'
+import SteamTabNavigator from './SteamStack'
 
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
@@ -63,6 +64,13 @@ const BottomTabNavigator = () => {
         component={CoolantTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="coolant-temperature" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Steam"
+        component={SteamTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="kettle-steam" color={color} />,
         }}
       />
     </BottomTab.Navigator>

@@ -7,9 +7,9 @@ import TankSys from '../../components/TankSys'
 
 import SimContext from '../../SimulatorContext'
 
-const AirStorageScreen = () => {
+const AirStartScreen = () => {
   const Sim = SimContext()
-  const { AirSys: { Storage } } = Sim
+  const { AirSys: { Start } } = Sim
 
   return (
     <SimulatorScreen>
@@ -19,7 +19,7 @@ const AirStorageScreen = () => {
         }}
         >
           <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }}>
-            <TankSys Sys={Storage} Name="Storage" />
+            <TankSys Sys={Start} Name="Start up air" />
           </View>
 
         </View>
@@ -29,4 +29,4 @@ const AirStorageScreen = () => {
   )
 }
 
-export default AirStorageScreen
+export default AirStartScreen
