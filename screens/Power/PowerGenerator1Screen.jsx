@@ -53,7 +53,7 @@ const PowerGenerator1Screen = observer(() => {
           </View>
 
           <View style={{ flex: 1, flexDirection: 'row' }}>
-            <Text style={styles.text}>{`${DsGen1.CheckAir() ? 'Has enough start air' : 'Doesn\'t have enough start'}`}</Text>
+            <Text style={styles.text}>{`${DsGen1.CheckAir ? 'Has enough start air' : 'Doesn\'t have enough start'}`}</Text>
             <Text style={styles.text}>{`, intake valve is ${TxtOpenClose(DsGen1.AirIntakeValve.isOpen)}`}</Text>
             <Button
               title={BtnOpenCloseTxt(DsGen1.AirIntakeValve)}

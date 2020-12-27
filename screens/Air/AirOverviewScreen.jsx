@@ -10,16 +10,16 @@ import SimulatorScreen from '../SimulatorScreen'
 const AirOverviewScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const { AirSys } = Sim
-
+  const { EmergencyReceiver } = AirSys
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
 
         <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
-          <Text style={styles.subTitle}>Storage</Text>
-          <Button style={{ flex: 1 }} title="Go to storage" onPress={() => navigation.navigate('AirStorageScreen')} />
+          <Text style={styles.subTitle}>Start air</Text>
+          <Button style={{ flex: 1 }} title="Go to start air" onPress={() => navigation.navigate('AirStartScreen')} />
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-            {AirSys && AirSys.Storage && <Text style={styles.text}>{`Air storage tank ${AirSys.Storage.Tank.Content()} liter`}</Text>}
+            <Text style={styles.text}>{`Emergency start air receiver ${EmergencyReceiver.Tank.Content()} %`}</Text>
           </View>
         </View>
       </View>

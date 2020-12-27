@@ -8,11 +8,14 @@ import { BtnOpenCloseTxt, TxtOpenClose } from '../CstTxt'
 
 const TankSys = observer(({ Sys, Name }) => (
   <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 2 }}>
       <Text style={styles.subTitle}>{Name}</Text>
     </View>
 
-    <View style={{ flex: 1, flexDirection: 'row' }}>
+    <View style={{
+      flex: 2, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start',
+    }}
+    >
       <Text style={styles.text}>{`${Name} intake valve ${TxtOpenClose(Sys.IntakeValve.isOpen)}`}</Text>
       <Button
         title={BtnOpenCloseTxt(Sys.IntakeValve.isOpen)}
@@ -20,11 +23,11 @@ const TankSys = observer(({ Sys, Name }) => (
       />
     </View>
 
-    <View style={{ flex: 1, flexDirection: 'row' }}>
-      <Text style={styles.text}>{`${Name} tank content ${Sys.Tank.Content()} liter`}</Text>
+    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+      <Text style={styles.text}>{`${Name} tank content ${Sys.Tank.Content().toFixed(1)} %`}</Text>
     </View>
 
-    <View style={{ flex: 1, flexDirection: 'row' }}>
+    <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
       <Text style={styles.text}>{`${Name} outlet valve ${TxtOpenClose(Sys.OutletValve.isOpen)}`}</Text>
       <Button
         title={BtnOpenCloseTxt(Sys.OutletValve.isOpen)}
@@ -32,7 +35,7 @@ const TankSys = observer(({ Sys, Name }) => (
       />
     </View>
 
-    <View style={{ flex: 1, flexDirection: 'row' }}>
+    <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
       <Text style={styles.text}>{`${Name} drain valve ${TxtOpenClose(Sys.DrainValve.isOpen)}`}</Text>
       <Button
         title={BtnOpenCloseTxt(Sys.DrainValve.isOpen)}

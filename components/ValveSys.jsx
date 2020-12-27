@@ -8,11 +8,11 @@ import { BtnOpenCloseTxt, TxtOpenClose } from '../CstTxt'
 
 const ValveSys = observer(({ Sys, Name }) => (
   <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, justifyContent: 'flex-start' }}>
       <Text style={styles.subTitle}>{Name}</Text>
     </View>
 
-    <View style={{ flex: 1, flexDirection: 'row' }}>
+    <View style={{ flex: 2, flexDirection: 'row' }}>
       <Text style={styles.text}>{`${Name} ${TxtOpenClose(Sys.isOpen)}`}</Text>
       <Button
         title={BtnOpenCloseTxt(Sys.isOpen)}

@@ -18,11 +18,16 @@ const LubStorageScreen = () => {
           flex: 1, flexDirection: 'column', margin: 20, justifyContent: 'flex-start',
         }}
         >
-          <View style={{ flex: 4, justifyContent: 'flex-start', flexDirection: 'column' }}>
+
+          <View style={{ flex: 2, justifyContent: 'flex-start', flexDirection: 'column' }}>
             <ValveSys Sys={ShoreValve} Name="Shore fill valve" />
+          </View>
+
+          <View style={{ flex: 3, justifyContent: 'flex-start', flexDirection: 'column' }}>
             <TankSys Sys={Storage} Name="Storage" />
           </View>
 
+          <View style={{ flex: 3, justifyContent: 'flex-start', flexDirection: 'column' }} />
         </View>
       </View>
     </SimulatorScreen>

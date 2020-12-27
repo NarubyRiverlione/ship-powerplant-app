@@ -14,7 +14,7 @@ const AirTabNavigator = () => (
       options={{ headerTitle: 'COMPRESSED AIR - Overview' }}
     />
     <AirStack.Screen
-      name="AirStorageScreen"
+      name="AirStartScreen"
       component={AirStartScreen}
       options={{ headerTitle: 'COMPRESSED AIR - Start up' }}
     />

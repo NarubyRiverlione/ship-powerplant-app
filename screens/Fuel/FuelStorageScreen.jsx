@@ -26,12 +26,16 @@ const FuelStorageScreen = () => {
             <Text style={styles.title}>Diesel</Text>
           </View>
 
-          <View style={{ flex: 4, justifyContent: 'flex-start', flexDirection: 'column' }}>
-            <ValveSys Sys={DsShoreValve} Name="Shore fill valve" />
-            <TankSys Sys={DsStorage} Name="Storage" />
+          <View style={{ flex: 6, justifyContent: 'flex-start', flexDirection: 'column' }}>
+            <View style={{ flex: 1, justifyContent: 'flex-start', flexDirection: 'column' }}>
+              <ValveSys Sys={DsShoreValve} Name="Shore fill valve" />
+            </View>
+            <View style={{ flex: 2, justifyContent: 'flex-start', flexDirection: 'column' }}>
+              <TankSys Sys={DsStorage} Name="Storage" />
+            </View>
           </View>
 
-          <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }}>
+          <View style={{ flex: 5, justifyContent: 'flex-end', flexDirection: 'column' }}>
             <TankSys Sys={DsService} Name="Service" />
           </View>
 
