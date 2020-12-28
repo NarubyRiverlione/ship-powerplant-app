@@ -15,12 +15,20 @@ const AirOverviewScreen = observer(({ navigation }) => {
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
 
-        <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
-          <Text style={styles.subTitle}>Start air</Text>
-          <Button style={{ flex: 1 }} title="Go to start air" onPress={() => navigation.navigate('AirStartScreen')} />
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.title}>Start air</Text>
+          </View>
+          <Button style={{ flex: 1 }} title="Go to start air (txt)" onPress={() => navigation.navigate('TxtAirStartScreen')} />
+          <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'space-around' }}>
+            <Text style={styles.text}>{`Start air receiver 1 ${0} %`}</Text>
             <Text style={styles.text}>{`Emergency start air receiver ${EmergencyReceiver.Tank.Content()} %`}</Text>
           </View>
+          <Button style={{ flex: 2 }} title="Go to start air" onPress={() => navigation.navigate('AirStartScreen')} />
+        </View>
+
+        <View style={{ flex: 1, flexDirection: 'column' }}>
+          <Text style={styles.title}>Service air</Text>
         </View>
       </View>
     </SimulatorScreen>

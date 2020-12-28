@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import FuelOverviewScreen from '../screens/Fuel/FuelOverviewScreen'
-import FuelStorageScreen from '../screens/Fuel/FuelStorageScreen'
+import FuelStorageScreen from '../screens/Fuel/TxtFuelStorageScreen'
 import FuelDsStorageScreen from '../screens/Fuel/FuelDsStorageScreen'
 import FuelHfStorageScreen from '../screens/Fuel/FuelHfStorageScreen'
 import FuelHfServiceScreen from '../screens/Fuel/FuelHfServiceScreen'

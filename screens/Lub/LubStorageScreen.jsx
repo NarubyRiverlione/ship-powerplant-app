@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { View } from 'react-native'
 import Svg, { Text } from 'react-native-svg'
+import { observer } from 'mobx-react-lite'
 
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
@@ -8,7 +9,7 @@ import TankValves from '../../components/svg/TankValves'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
 
-const LubStorageScreen = () => {
+const LubStorageScreen = observer(() => {
   const Sim = SimContext()
   const { LubSys: { Storage, ShoreValve } } = Sim
 
@@ -18,7 +19,7 @@ const LubStorageScreen = () => {
         <Svg width="100%" height="100%">
           <Text x={30} y={40} stroke="black" fontSize={12}>Shore fill valve</Text>
 
-          <Pipe x1={10} y1={60} x2={40} y2={60} Color="green" HasContent />
+          <Pipe x1={10} y1={60} x2={40} y2={60} ContentColor="darkgoldenrod" HasContent />
           <Valve
             X={40}
             Y={60}
@@ -26,20 +27,21 @@ const LubStorageScreen = () => {
             Position={ShoreValve.isOpen}
             cb={() => ShoreValve.Toggle()}
           />
-          <Pipe x1={100} y1={60} x2={210} y2={60} Color="green" HasContent={ShoreValve.isOpen} />
+          <Pipe x1={120} y1={60} x2={210} y2={60} ContentColor="darkgoldenrod" HasContent={ShoreValve.isOpen} />
 
           <TankValves
             X={200}
             Y={10}
             Name="Lubrication storage tank"
             TankSys={Storage}
+            ContentColor="darkgoldenrod"
           />
 
-          <Pipe x1={550} y1={210} x2={610} y2={210} Color="green" HasContent={Storage.OutletValve.Content() !== 0} />
+          <Pipe x1={550} y1={210} x2={610} y2={210} ContentColor="darkgoldenrod" HasContent={Storage.OutletValve.Content() !== 0} />
         </Svg>
       </View>
     </SimulatorScreen>
   )
-}
+})
 
 export default LubStorageScreen
