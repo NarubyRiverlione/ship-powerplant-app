@@ -5,7 +5,7 @@ import Svg, { Rect } from 'react-native-svg'
 const limitPct = (pct) => (pct < 0 ? 0 : pct > 100 ? 100 : pct) // eslint-disable-line
 
 const LookingGlass = ({
-  X, Y, Size, ContentPct, Color,
+  X, Y, Size, ContentPct, ContentColor,
 }) => {
   const height = Size
   const width = 20
@@ -13,7 +13,7 @@ const LookingGlass = ({
   return (
     <Svg>
       <Rect x={X} y={Y} width={width} height={height} fill="black" stroke="white" />
-      <Rect x={X} y={Size - fillPct + Y} width={width} height={fillPct} fill={Color} stroke="white" />
+      <Rect x={X} y={Size - fillPct + Y} width={width} height={fillPct} fill={ContentColor} stroke="white" />
     </Svg>
 
   )
@@ -23,10 +23,10 @@ LookingGlass.propTypes = {
   Y: PropTypes.number.isRequired,
   Size: PropTypes.number.isRequired,
   ContentPct: PropTypes.number.isRequired,
-  Color: PropTypes.string,
+  ContentColor: PropTypes.string,
 }
 LookingGlass.defaultProps = {
-  Color: 'white',
+  ContentColor: 'white',
 }
 
 export default LookingGlass

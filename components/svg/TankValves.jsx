@@ -9,7 +9,7 @@ import ValveSvg from './Valve'
 import Pipe from './Pipe'
 
 const TankValves = observer(({
-  Name, TankSys, X, Y, ContentColor,
+  Name, TankSys, X, Y, ContentColor, TankColor,
 }) => {
   const {
     Tank, OutletValve, IntakeValve,
@@ -23,7 +23,7 @@ const TankValves = observer(({
       <Pipe x1={X + 100} y1={Y + 50} x2={X + 125} y2={Y + 50} ContentColor={ContentColor} HasContent={IntakeValve.Content() !== 0} />
       <Pipe x1={X + 125} y1={Y + 50} x2={X + 125} y2={Y + 75} ContentColor={ContentColor} HasContent={IntakeValve.Content() !== 0} />
 
-      <TankSvg Size={250} X={X + 50} Y={Y + 75} ContentPct={Tank.Content()} ContentColor={ContentColor} />
+      <TankSvg Size={250} X={X + 50} Y={Y + 75} ContentPct={Tank.Content()} ContentColor={ContentColor} TankColor={TankColor} />
 
       <Pipe x1={X + 200} y1={Y + 160} x2={X + 200} y2={Y + 200} ContentColor={ContentColor} HasContent={Tank.Content() !== 0} />
       <ValveSvg X={X + 200} Y={Y + 200} LeftToRight Position={OutletValve.isOpen} cb={() => { OutletValve.Toggle() }} />
@@ -39,6 +39,7 @@ TankValves.propTypes = {
   Name: PropTypes.string.isRequired,
   TankSys: PropTypes.object.isRequired,
   ContentColor: PropTypes.string.isRequired,
+  TankColor: PropTypes.string,
 }
 
 export default TankValves
