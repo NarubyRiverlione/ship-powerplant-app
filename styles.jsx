@@ -6,18 +6,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  titleView: {
+  partTitleView: {
     flex: 1,
     borderWidth: 1,
     borderColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  contentView: {
+  partContentView: {
     flex: 9,
     borderWidth: 1,
     borderColor: 'white',
     backgroundColor: 'azure',
+    flexDirection: 'column',
   },
 
   separator: {

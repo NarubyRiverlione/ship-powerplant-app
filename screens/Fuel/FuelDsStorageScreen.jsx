@@ -1,5 +1,6 @@
-import * as React from 'react'
+import React from 'react'
 import { View } from 'react-native'
+import { observer } from 'mobx-react-lite'
 import Svg, { Text } from 'react-native-svg'
 
 import SimContext from '../../SimulatorContext'
@@ -8,10 +9,10 @@ import TankValves from '../../components/svg/TankValves'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
 
-const LubStorageScreen = () => {
+const FuelDsStorageScreen = observer(() => {
   const Sim = SimContext()
-  const { LubSys: { Storage, ShoreValve } } = Sim
-
+  const { FuelSys } = Sim
+  const { DsShoreValve, DsStorage } = FuelSys
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -23,23 +24,31 @@ const LubStorageScreen = () => {
             X={40}
             Y={60}
             LeftToRight
-            Position={ShoreValve.isOpen}
-            cb={() => ShoreValve.Toggle()}
+            Position={FuelSys.DsShoreValve.isOpen}
+            cb={() => FuelSys.DsShoreValve.Toggle()}
           />
-          <Pipe x1={100} y1={60} x2={210} y2={60} Color="green" HasContent={ShoreValve.isOpen} />
+          <Pipe x1={100} y1={60} x2={210} y2={60} Color="green" HasContent={DsShoreValve.isOpen} />
 
           <TankValves
             X={200}
             Y={10}
-            Name="Lubrication storage tank"
-            TankSys={Storage}
+            Name="DS Storage tank"
+            TankSys={FuelSys.DsStorage}
           />
 
-          <Pipe x1={550} y1={210} x2={610} y2={210} Color="green" HasContent={Storage.OutletValve.Content() !== 0} />
+          <Pipe x1={550} y1={210} x2={610} y2={210} Color="green" HasContent={DsStorage.OutletValve.Content() !== 0} />
+
+          <TankValves
+            X={600}
+            Y={160}
+            Name="DS Service tank"
+            TankSys={FuelSys.DsService}
+          />
+
         </Svg>
       </View>
     </SimulatorScreen>
   )
-}
+})
 
-export default LubStorageScreen
+export default FuelDsStorageScreen
