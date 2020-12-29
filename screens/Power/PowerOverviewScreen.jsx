@@ -16,11 +16,6 @@ const PowerOverviewScreen = ({ navigation }) => (
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text style={styles.subTitle}>Consumers</Text>
-        <Button title="Go to consumers" onPress={() => navigation.navigate('PowerConsumersScreen')} />
-      </View>
-
-      <View style={{ flex: 1 }}>
         <Text style={styles.subTitle}>Diesel generator 1</Text>
         <Button title="Go to DS Gen 1" onPress={() => navigation.navigate('PowerGenerator1Screen')} />
       </View>

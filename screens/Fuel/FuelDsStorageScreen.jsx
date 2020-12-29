@@ -1,13 +1,13 @@
 import React from 'react'
 import { View } from 'react-native'
 import { observer } from 'mobx-react-lite'
-import Svg, { Text } from 'react-native-svg'
+import Svg, { Text, Line } from 'react-native-svg'
 
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
-import Valve from '../../components/svg/Valve'
-import Pipe from '../../components/svg/Pipe'
+import BigValve from '../../components/svg/BigValve'
+import BigPipe from '../../components/svg/BigPipe'
 import CstResourceColor from '../../CstColors'
 
 const FuelDsStorageScreen = observer(() => {
@@ -18,9 +18,8 @@ const FuelDsStorageScreen = observer(() => {
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
-          <Text x={30} y={40} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
 
-          <Pipe
+          <BigPipe
             x1={10}
             y1={60}
             x2={40}
@@ -28,14 +27,15 @@ const FuelDsStorageScreen = observer(() => {
             ContentColor={CstResourceColor.Diesel}
             HasContent
           />
-          <Valve
+          <BigValve
             X={40}
-            Y={60}
-            LeftToRight
-            Position={FuelSys.DsShoreValve.isOpen}
+            Y={25}
+            isOpen={FuelSys.DsShoreValve.isOpen}
             cb={() => FuelSys.DsShoreValve.Toggle()}
+            OpenColor={CstResourceColor.Diesel}
           />
-          <Pipe x1={120} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />
+          <Text x={20} y={90} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
+          <BigPipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />
 
           <TankValves
             X={200}
@@ -45,8 +45,16 @@ const FuelDsStorageScreen = observer(() => {
             ContentColor={CstResourceColor.Diesel}
             TankColor="gray"
           />
+          <Line
+            x1={205}
+            y1={57}
+            x2={205}
+            y2={63}
+            strokeWidth="2"
+            stroke={DsShoreValve.isOpen ? CstResourceColor.Diesel : 'white'}
+          />
 
-          <Pipe
+          <BigPipe
             x1={550}
             y1={210}
             x2={610}
@@ -62,6 +70,22 @@ const FuelDsStorageScreen = observer(() => {
             TankSys={DsService}
             ContentColor={CstResourceColor.Diesel}
             TankColor="gainsboro"
+          />
+          <Line
+            x1={605}
+            y1={207}
+            x2={605}
+            y2={213}
+            strokeWidth="2"
+            stroke={DsStorage.OutletValve.Content() !== 0 ? CstResourceColor.Diesel : 'white'}
+          />
+          <Line
+            x1={550}
+            y1={207}
+            x2={550}
+            y2={213}
+            strokeWidth="2"
+            stroke={DsStorage.OutletValve.Content() !== 0 ? CstResourceColor.Diesel : 'white'}
           />
 
         </Svg>

@@ -11,12 +11,11 @@ const TankSvg = ({
 }) => {
   const Width = Size
   const Height = Size / 3
-  // width={Width} height={Height}>
   return (
     <Svg>
-      <Circle cx={X + Height / 2} cy={Y + Height / 2} r={Height / 2} fill={TankColor} />
-      <Rect x={X + Height / 2} y={Y} width={Width - Height} height={Height} fill={TankColor} />
-      <Circle cx={X + Width - Height + Height / 2} cy={Y + Height / 2} r={Height / 2} fill={TankColor} />
+      <Circle cx={X + Height / 2} cy={Y + Height / 2} r={Height / 2} fill={TankColor} stroke="black" />
+      <Circle cx={X + Width - Height + Height / 2} cy={Y + Height / 2} r={Height / 2} fill={TankColor} stroke="black" />
+      <Rect x={X + Height / 2} y={Y} width={Width - Height} height={Height} fill={TankColor} stroke="black" />
       {ContentPct !== null
         && (
           <LookingGlass

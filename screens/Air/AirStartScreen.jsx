@@ -1,13 +1,13 @@
 import React from 'react'
 import { View } from 'react-native'
 import { observer } from 'mobx-react-lite'
-import Svg from 'react-native-svg'
+import Svg, { Line } from 'react-native-svg'
 
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
-import Valve from '../../components/svg/Valve'
-import Pipe from '../../components/svg/Pipe'
+import BigValve from '../../components/svg/BigValve'
+import BigPipe from '../../components/svg/BigPipe'
 import Compressor from '../../components/svg/Compressor'
 import CstResourceColor from '../../CstColors'
 
@@ -33,15 +33,15 @@ const AirStartScreen = observer(() => {
               EmergencyCompressor.Toggle()
             }}
           />
-          <Valve
+          <BigValve
             X={300}
-            Y={400}
-            LeftToRight
-            Position={EmergencyOutletValve.isOpen}
+            Y={365}
+            isOpen={EmergencyOutletValve.isOpen}
             cb={() => EmergencyOutletValve.Toggle()}
+            OpenColor={CstResourceColor.CompressedAir}
           />
-          <Pipe
-            x1={380}
+          <BigPipe
+            x1={352}
             y1={400}
             x2={660}
             y2={400}
@@ -56,6 +56,15 @@ const AirStartScreen = observer(() => {
             TankSys={EmergencyReceiver}
             ContentColor={CstResourceColor.CompressedAir}
             TankColor="gainsboro"
+          />
+
+          <Line
+            x1={655}
+            y1={397}
+            x2={655}
+            y2={403}
+            strokeWidth="2"
+            stroke={EmergencyOutletValve.Content() !== 0 ? CstResourceColor.CompressedAir : 'white'}
           />
         </Svg>
       </View>

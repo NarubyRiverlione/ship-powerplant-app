@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 import { G, Path, Text } from 'react-native-svg'
 import PropTypes from 'prop-types'
-import Pipe from './Pipe'
+import BigPipe from './BigPipe'
 import CstResourceColor from '../../CstColors'
 
 const ElectricalMotor = ({ X, Y, isRunning }) => (
@@ -41,9 +41,9 @@ const Compressor = ({
 }) => (
   <AnimatedG onPress={cb}>
     <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
-    <Pipe x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
+    <BigPipe x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
     <ElectricalMotor X={X} Y={Y} isRunning={isRunning} />
-    <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
+    <BigPipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
   </AnimatedG>
 )
 Compressor.propTypes = {
@@ -52,6 +52,6 @@ Compressor.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
   hasElectricity: PropTypes.bool.isRequired,
-  Name: PropTypes.number.isRequired,
+  Name: PropTypes.string.isRequired,
 }
 export default Compressor
