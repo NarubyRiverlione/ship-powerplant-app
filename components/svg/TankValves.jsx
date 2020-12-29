@@ -16,7 +16,7 @@ const TankValves = observer(({
   } = TankSys
   return (
     <React.Fragment>
-      <Text x={X + 175} y={Y + 60} stroke="black" fontSize={12}>{Name}</Text>
+      <Text x={X + 175} y={Y + 60} fill="black" fontSize={12}>{Name}</Text>
 
       <Pipe x1={X + 5} y1={Y + 50} x2={X + 20} y2={Y + 50} ContentColor={ContentColor} HasContent={IntakeValve.Source.Content() !== 0} />
       <ValveSvg X={X + 20} Y={Y + 50} LeftToRight Position={IntakeValve.isOpen} cb={() => { IntakeValve.Toggle() }} />

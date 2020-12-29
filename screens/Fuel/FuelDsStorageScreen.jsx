@@ -18,7 +18,7 @@ const FuelDsStorageScreen = observer(() => {
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
-          <Text x={30} y={40} stroke="black" fontSize={12}>{DsShoreValve.Name}</Text>
+          <Text x={30} y={40} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
 
           <Pipe
             x1={10}

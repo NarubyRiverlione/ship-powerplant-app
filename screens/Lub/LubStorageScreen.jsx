@@ -18,7 +18,7 @@ const LubStorageScreen = observer(() => {
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
-          <Text x={30} y={40} stroke="black" fontSize={12}>{ShoreValve.Name}</Text>
+          <Text x={30} y={40} fill="black" fontSize={12}>{ShoreValve.Name}</Text>
 
           <Pipe x1={10} y1={60} x2={40} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent />
           <Valve
