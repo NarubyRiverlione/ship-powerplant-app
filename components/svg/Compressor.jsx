@@ -41,7 +41,7 @@ const Compressor = ({
 }) => (
   <AnimatedG onPress={cb}>
     <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
-    <BigPipe x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
+    <BigPipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
     <ElectricalMotor X={X} Y={Y} isRunning={isRunning} />
     <BigPipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
   </AnimatedG>

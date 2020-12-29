@@ -1,10 +1,9 @@
 import React from 'react'
+import { useColorScheme } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-// import { observer } from 'mobx-react-lite'
 
 import useCachedResources from './hooks/useCachedResources'
-import useColorScheme from './hooks/useColorScheme'
 
 import { SimulatorProvider } from './SimulatorContext'
 import Navigation from './navigation'
