@@ -17,17 +17,9 @@ const SimulatorScreen = observer(({ children }) => {
   }
   return (
     <View style={{
-      flex: 1, flexDirection: 'column', margin: 5, justifyContent: 'flex-start',
+      flex: 1, flexDirection: 'column', justifyContent: 'flex-start',
     }}
     >
-
-      <View style={{
-        flex: 9, flexDirection: 'column', justifyContent: 'flex-start', backgroundColor: 'whitesmoke',
-      }}
-      >
-        {children}
-      </View>
-
       <View style={{
         flex: 1, flexDirection: 'row', justifyContents: 'flex-end', alignItems: 'center', backgroundColor: 'snow',
       }}
@@ -36,6 +28,13 @@ const SimulatorScreen = observer(({ children }) => {
         <Button style={{ flex: 1 }} title={BtnStartStopTxt(Sim.Running !== null)} onPress={() => ToggleSim()} />
         <Button style={{ flex: 1 }} title="Thick" onPress={() => Sim.Thick()} />
         <Button style={{ flex: 1 }} title="RESET" onPress={() => Sim.Reset()} />
+      </View>
+
+      <View style={{
+        flex: 9, flexDirection: 'column', margin: 5, justifyContent: 'flex-start', backgroundColor: 'whitesmoke',
+      }}
+      >
+        {children}
       </View>
     </View>
   )
