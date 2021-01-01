@@ -5,7 +5,7 @@ const CstResourceColor = {
   Lubrication: 'darkgoldenrod',
   CompressedAir: 'grey',
   SeaWater: 'darkblue',
-  FreshWater: 'blue',
+  FreshWater: 'lightblue',
 }
 
 export const CstItemsColor = {

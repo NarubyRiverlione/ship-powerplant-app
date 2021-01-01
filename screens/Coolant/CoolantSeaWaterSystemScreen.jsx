@@ -73,7 +73,7 @@ const CoolantSeaWaterSystemScreen = observer(() => {
           />
 
           <BigPipe x1={150} y1={335} x2={184} y2={335} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
-          <BigPipe x1={186} y1={331} x2={194} y2={506} ContentColor={CstResourceColor.SeaWater} S HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
+          <BigPipe x1={186} y1={331} x2={194} y2={506} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
           <Line x1={182} y1={332} x2={182} y2={338} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
 
           <BigPipe x1={170} y1={535} x2={184} y2={535} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestHighSuctionIntakeValve.isOpen} />
@@ -98,8 +98,8 @@ const CoolantSeaWaterSystemScreen = observer(() => {
           <Pump X={600} Y={360} Scale={0.75} isRunning={AuxPump.isRunning} cb={() => AuxPump.Toggle()} />
           <Text x={510} y={370} fill="black">{AuxPump.Name.replace('Sea water', '')}</Text>
 
-          <BigPipe x1={327} y1={300} x2={673} y2={300} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <BigPipe x1={673} y1={300} x2={894} y2={300} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <BigPipe x1={327} y1={300} x2={673} y2={300} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
+          <BigPipe x1={673} y1={300} x2={894} y2={300} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
 
           <BigPipe x1={666} y1={310} x2={666} y2={360} ContentColor={CstResourceColor.SeaWater} Size={12} HasContent={AuxPump.isRunning} />
           <Line x1={661} y1={310} x2={671} y2={310} strokeWidth={2} stroke={AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
@@ -136,11 +136,11 @@ const CoolantSeaWaterSystemScreen = observer(() => {
           <Text x={700} y={200} fill="black">{SteamCondensor.Name}</Text>
           <Cooler X={800} Y={150} />
 
-          <BigPipe x1={295} y1={54} x2={295} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={AuxPump.isRunning} />
-          <BigPipe x1={525} y1={54} x2={525} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={AuxPump.isRunning} />
-          <BigPipe x1={820} y1={54} x2={820} y2={152} ContentColor={CstResourceColor.SeaWater} />
+          <BigPipe x1={295} y1={54} x2={295} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
+          <BigPipe x1={525} y1={54} x2={525} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
+          <BigPipe x1={820} y1={54} x2={820} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
 
-          <BigPipe x1={250} y1={50} x2={530} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={AuxPump.isRunning} />
+          <BigPipe x1={250} y1={50} x2={530} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
           <BigPipe x1={530} y1={50} x2={824} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
 
           <Line x1={292} y1={54} x2={298} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
@@ -153,9 +153,10 @@ const CoolantSeaWaterSystemScreen = observer(() => {
             Y={16}
             isOpen={OverboardDumpValve.isOpen}
             cb={() => OverboardDumpValve.Toggle()}
+            OpenColor={CstResourceColor.SeaWater}
           />
 
-          <BigPipe x1={0} y1={50} x2={200} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={OverboardDumpValve.isOpen && AuxPump.isRunning} />
+          <BigPipe x1={0} y1={50} x2={200} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={OverboardDumpValve.isOpen && (SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning)} />
 
         </Svg>
       </View>

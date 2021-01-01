@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import CoolantOverviewScreen from '../screens/Coolant/CoolantOverviewScreen'
 import CoolantSeaWaterScreen from '../screens/Coolant/CoolantSeaWaterSystemScreen'
-import CoolantFreshWaterScreen from '../screens/Coolant/CoolantFreshWaterSystemScreen'
+import CoolantFreshWaterSystemScreen from '../screens/Coolant/CoolantFreshWaterSystemScreen'
 
 const CoolantStack = createStackNavigator()
 const CoolantTabNavigator = () => (
@@ -19,8 +19,8 @@ const CoolantTabNavigator = () => (
       options={{ headerTitle: 'COOLANT - Sea Water System' }}
     />
     <CoolantStack.Screen
-      name="CoolantFreshWaterScreen"
-      component={CoolantFreshWaterScreen}
+      name="CoolantFreshWaterSystemScreen"
+      component={CoolantFreshWaterSystemScreen}
       options={{ headerTitle: 'COOLANT - Fresh Water System' }}
     />
   </CoolantStack.Navigator>

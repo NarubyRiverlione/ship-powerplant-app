@@ -16,7 +16,7 @@ const CoolantOverviewScreen = ({ navigation }) => (
 
       <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
         <Text style={styles.subTitle}>Fresh Water System</Text>
-        <Button title="Go to fresh water system" onPress={() => navigation.navigate('CoolantFreshWaterScreen')} />
+        <Button title="Go to fresh water system" onPress={() => navigation.navigate('CoolantFreshWaterSystemScreen')} />
       </View>
     </View>
   </SimulatorScreen>

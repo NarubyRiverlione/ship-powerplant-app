@@ -71,17 +71,18 @@ const Cooler = ({
   X, Y, cb, Scale = 1,
 }) => (
   <AnimatedG onPress={cb}>
-    <HeatExchanger X={X} Y={Y} Scale={Scale} />
+    <HeatExchanger X={X} Y={Y} Scale={1 / Scale} />
   </AnimatedG>
 )
 
 Cooler.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  cb: PropTypes.func.isRequired,
+  cb: PropTypes.func,
   Scale: PropTypes.number,
 }
 Cooler.defaultProps = {
   Scale: 1,
+  cb: () => { },
 }
 export default Cooler
