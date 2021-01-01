@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "ship-powerplant",
-    "slug": "ship-powerplant",
-    "version": "1.0.0",
-    "orientation": "portrait",
+    "name": "ship-system-simulator",
+    "slug": "ship-system-simulator",
+    "version": "0.0.1",
+    "orientation": "landscape",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
@@ -19,7 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "be.rmeeuws.ship-systems-simulator"
     },
     "android": {
       "adaptiveIcon": {
