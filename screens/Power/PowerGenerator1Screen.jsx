@@ -23,13 +23,13 @@ const PowerGenerator1Screen = observer(() => {
     CoolingSys: { DsGen1LubCooler },
   } = Sim
   const {
-    FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump,
+    FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump, HasLubrication,
   } = DsGen1
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
-          <DieselGenerator X={300} Y={150} isRunning={DsGen1.isRunning} cb={() => DsGen1.Toggle()} />
+
           <BigPipe x1={5} y1={290} x2={115} y2={290} ContentColor={CstResourceColor.Electricity} HasContent={DsGen1.isRunning} />
 
           <BigPipe x1={5} y1={100} x2={350} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={DsService.OutletValve.Content() !== 0} />
@@ -48,27 +48,38 @@ const PowerGenerator1Screen = observer(() => {
           <BigValve X={250} Y={465} isOpen={LubIntakeValve.isOpen} OpenColor={CstResourceColor.Lubrication} cb={() => LubIntakeValve.Toggle()} />
           <BigPipe x1={300} y1={500} x2={350} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubIntakeValve.Content() !== 0} />
 
-          <Text x={500} y={440} fill="black">Slum</Text>
+          <Text x={490} y={470} fill="black">Slum</Text>
+          <LookingGlass X={540} Y={460} Size={50} ContentColor={CstResourceColor.Lubrication} ContentPct={LubSlump.Content()} />
           <Rect x={350} y={450} width={10} height={100} stroke="black" strokeWidth={2} />
           <Rect x={650} y={450} width={10} height={100} stroke="black" strokeWidth={2} />
           <Rect x={360} y={540} width={290} height={10} stroke="black" strokeWidth={2} />
-          <Rect x={360} y={450} width={290} height={10} stroke="black" strokeWidth={2} />
-          <Rect x={360} y={460} width={290} height={80} fill={LubIntakeValve.Content() !== 0 ? CstResourceColor.Lubrication : 'white'} strokeWidth={2} />
 
-          <BigPipe x1={660} y1={480} x2={720} y2={480} ContentColor={CstResourceColor.Lubrication} />
-          <BigPipe x1={660} y1={520} x2={850} y2={520} ContentColor={CstResourceColor.Lubrication} />
-          <BigPipe x1={724} y1={266} x2={724} y2={484} ContentColor={CstResourceColor.Lubrication} />
+          <BigPipe x1={650} y1={480} x2={710} y2={480} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <BigPipe x1={682} y1={300} x2={710} y2={300} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <BigPipe x1={714} y1={296} x2={714} y2={484} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <Line x1={710} y1={477} x2={710} y2={483} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
+          <Line x1={710} y1={297} x2={710} y2={303} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
 
-          <BigPipe x1={720} y1={266} x2={794} y2={266} ContentColor={CstResourceColor.Lubrication} />
-          <BigPipe x1={790} y1={270} x2={790} y2={305} ContentColor={CstResourceColor.Lubrication} />
-          <BigPipe x1={854} y1={400} x2={854} y2={524} ContentColor={CstResourceColor.Lubrication} />
+          <BigPipe x1={682} y1={270} x2={790} y2={270} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
 
-          <BigPipe x1={860} y1={320} x2={1000} y2={320} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
-          <BigPipe x1={860} y1={380} x2={1000} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
+          <BigPipe x1={760} y1={320} x2={760} y2={524} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <BigPipe x1={650} y1={520} x2={756} y2={520} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <BigPipe x1={756} y1={316} x2={790} y2={316} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <Line x1={756} y1={517} x2={756} y2={523} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
+          <Line x1={757} y1={320} x2={763} y2={320} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
 
-          <Cooler X={765} Y={300} />
-          <Text x={870} y={350} fill="black">{DsGen1LubCooler.Name.replace('Diesel generator 1', '')}</Text>
+          <BigPipe x1={800} y1={230} x2={1000} y2={230} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
+          <BigPipe x1={804} y1={234} x2={804} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
+          <Line x1={801} y1={234} x2={807} y2={234} strokeWidth={2} stroke={DsGen1LubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
 
+          <BigPipe x1={874} y1={380} x2={1000} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
+          <BigPipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
+          <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGen1LubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
+
+          <Cooler X={780} Y={250} />
+          <Text x={880} y={300} fill="black">{DsGen1LubCooler.Name.replace('Diesel generator 1', '')}</Text>
+
+          <DieselGenerator X={300} Y={150} isRunning={DsGen1.isRunning} cb={() => DsGen1.Toggle()} />
         </Svg>
       </View>
     </SimulatorScreen>
