@@ -2,11 +2,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import PowerOverviewScreen from '../screens/Power/PowerOverviewScreen'
-// import TxtPowerSwitchboardScreen from '../screens/Power/TxtPowerSwitchboardScreen'
 import PowerSwitchboardScreen from '../screens/Power/PowerSwitchboardScreen'
-// import TxtPowerGenerator1Screen from '../screens/Power/TxtPowerGenerator1Screen'
 import PowerGenerator1Screen from '../screens/Power/PowerGenerator1Screen'
-// import PowerConsumersScreen from '../screens/Power/PowerConsumersScreen'
 
 const PowerStack = createStackNavigator()
 

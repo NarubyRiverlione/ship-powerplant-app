@@ -15,7 +15,7 @@ import SimulatorScreen from '../SimulatorScreen'
 import SimContext from '../../SimulatorContext'
 import CstResourceColor from '../../CstColors'
 
-const CoolantSeaWaterSystemScreen = observer(() => {
+const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
     CoolingSys: {
@@ -125,16 +125,16 @@ const CoolantSeaWaterSystemScreen = observer(() => {
             <TSpan x={160} y={200}>Fresh water cooler</TSpan>
             <TSpan x={160} y={220}>{FwCoolerDsGen1.Name.replace('Fresh water cooler', '')}</TSpan>
           </Text>
-          <Cooler X={270} Y={150} />
+          <Cooler X={270} Y={150} cb={() => navigation.navigate('CoolantFreshWaterSystemScreen')} />
 
           <Text fill="black">
             <TSpan x={390} y={200}>Fresh water cooler</TSpan>
             <TSpan x={390} y={220}>{FwCoolerDsGen2.Name.replace('Fresh water cooler', '')}</TSpan>
           </Text>
-          <Cooler X={500} Y={150} />
+          <Cooler X={500} Y={150} cb={() => navigation.navigate('CoolantFreshWaterSystemScreen')} />
 
           <Text x={700} y={200} fill="black">{SteamCondensor.Name}</Text>
-          <Cooler X={800} Y={150} />
+          <Cooler X={800} Y={150} cb={() => navigation.navigate('CoolantFreshWaterSystemScreen')} />
 
           <BigPipe x1={295} y1={54} x2={295} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
           <BigPipe x1={525} y1={54} x2={525} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />

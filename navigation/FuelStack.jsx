@@ -2,7 +2,6 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import FuelOverviewScreen from '../screens/Fuel/FuelOverviewScreen'
-import FuelStorageScreen from '../screens/Fuel/TxtFuelStorageScreen'
 import FuelDsStorageScreen from '../screens/Fuel/FuelDsStorageScreen'
 import FuelHfStorageScreen from '../screens/Fuel/FuelHfStorageScreen'
 import FuelHfServiceScreen from '../screens/Fuel/FuelHfServiceScreen'
@@ -14,11 +13,6 @@ const FuelTabNavigator = () => (
       name="FuelOverviewScreen"
       component={FuelOverviewScreen}
       options={{ headerTitle: 'FUEL - Overview' }}
-    />
-    <FuelStack.Screen
-      name="FuelStorageScreen"
-      component={FuelStorageScreen}
-      options={{ headerTitle: 'FUEL - Storage' }}
     />
     <FuelStack.Screen
       name="FuelDsStorageScreen"

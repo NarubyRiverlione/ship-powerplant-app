@@ -8,6 +8,10 @@ const CstTxt = {
   Stopping: 'Stop',
   Running: 'running',
   Stopped: 'not running',
+
+  From: 'From',
+  To: 'To',
+
 }
 
 export const BtnStartStopTxt = (isRunning) => (isRunning ? CstTxt.Stopping : CstTxt.Starting)

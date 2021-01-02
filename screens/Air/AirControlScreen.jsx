@@ -3,7 +3,6 @@ import { View, Text } from 'react-native'
 
 import styles from '../../styles'
 import SimulatorScreen from '../SimulatorScreen'
-import TankSys from '../../components/TankSys'
 
 import SimContext from '../../SimulatorContext'
 
@@ -18,9 +17,7 @@ const AirControlScreen = () => {
           flex: 1, flexDirection: 'column', margin: 20, justifyContent: 'flex-start',
         }}
         >
-          <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }}>
-            <TankSys Sys={Control} Name="Control air" />
-          </View>
+          <View style={{ flex: 2, justifyContent: 'flex-end', flexDirection: 'column' }} />
 
         </View>
 
