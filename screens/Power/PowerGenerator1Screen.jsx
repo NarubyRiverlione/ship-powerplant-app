@@ -7,6 +7,7 @@ import DieselGenerator from '../../components/svg/DieselGenerator'
 import SimContext from '../../SimulatorContext'
 
 import BigPipe from '../../components/svg/BigPipe'
+import LookingGlass from '../../components/svg/LookingGlass'
 import BigValve from '../../components/svg/BigValve'
 import Cooler from '../../components/svg/Cooler'
 import SimulatorScreen from '../SimulatorScreen'
@@ -21,7 +22,9 @@ const PowerGenerator1Screen = observer(() => {
     AirSys: { EmergencyReceiver },
     CoolingSys: { DsGen1LubCooler },
   } = Sim
-  const { FuelIntakeValve, LubIntakeValve, AirIntakeValve } = DsGen1
+  const {
+    FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump,
+  } = DsGen1
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
