@@ -5,35 +5,48 @@ import { Path, G } from 'react-native-svg'
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const BigValve = ({
-  X, Y, cb, isOpen, OpenColor,
-}) => (
-  <AnimatedG onPress={cb}>
-    <G data-name="Valve" transform={`translate(${X},${Y}) scale(0.1)`}>
-      <G fill="#78b9eb">
-        <Path d="M8.533 294.398H76.8v102.4H8.533zM230.4 149.331h51.2v34.133h-51.2z" />
-      </G>
-      <Path fill="#0a87eb" d="M307.2 149.331v-34.133H204.8v34.133H281.6z" />
-      <Path
-        d="M384 115.198V98.131c0-9.429-7.637-17.067-17.067-17.067H145.067c-9.429 0-17.067 7.637-17.067 17.067v17.067h256z"
-        fill="#ed1c24"
-      />
-      <Path
-        d="M187.819 396.798c28.186 37.658 81.553 45.338 119.211 17.152a85.566 85.566 0 0017.152-17.152h42.752v-102.4
+  X, Y, ContentColor, Valve,
+}) => {
+  const [Open, setOpen] = React.useState(Valve.isOpen)
+  const [Content, setContent] = React.useState('white')
+
+  React.useEffect(() => {
+    if (Valve.Content() !== 0) setContent(ContentColor)
+    else setContent('white')
+  }, [Valve.Content()])
+
+  React.useEffect(() => {
+    setOpen(Valve.isOpen)
+  }, [Valve.isOpen])
+
+  return (
+    <AnimatedG onPress={() => { Valve.Toggle() }}>
+      <G data-name="Valve" transform={`translate(${X},${Y}) scale(0.1)`}>
+        <G fill="#78b9eb">
+          <Path d="M8.533 294.398H76.8v102.4H8.533zM230.4 149.331h51.2v34.133h-51.2z" />
+        </G>
+        <Path fill="#0a87eb" d="M307.2 149.331v-34.133H204.8v34.133H281.6z" />
+        <Path
+          d="M384 115.198V98.131c0-9.429-7.637-17.067-17.067-17.067H145.067c-9.429 0-17.067 7.637-17.067 17.067v17.067h256z"
+          fill={Open ? 'lightgreen' : '#ed1c24'}
+        />
+        <Path
+          d="M187.819 396.798c28.186 37.658 81.553 45.338 119.211 17.152a85.566 85.566 0 0017.152-17.152h42.752v-102.4
         h-42.752a80.108 80.108 0 00-16.981-16.981 80.873 80.873 0 00-8.533-5.632v-54.187h-85.333v54.187a80.873 80.873
         0 00-8.533 5.632 80.108 80.108 0 00-16.981 16.981h-42.752v102.4h42.75z"
-        fill={isOpen ? OpenColor : 'red'}
-      />
-      <G fill="#0a87eb">
-        <Path d="M324.267 217.598v-34.134H187.733v34.134h110.934zM110.933 430.931h34.134V251.731h-34.134V413.864zM76.8
-         413.864h34.133V277.331H76.8V396.798z"
+          fill={Content}
         />
-      </G>
-      <Path fill="#78b9eb" d="M435.2 294.398h68.267v102.4H435.2z" />
-      <G fill="#0a87eb">
-        <Path d="M366.933 430.931h34.134v-179.2h-34.134v145.067zM435.2 413.864V277.331h-34.133v136.533z" />
-      </G>
-      <Path
-        d="M512 285.864h-68.267v-17.067H409.6v-25.6h-51.2v42.667h-30.046a88.606 88.606 0 00-16.034-15.283 88.089 88.089
+        <G fill="#0a87eb">
+          <Path d="M324.267 217.598v-34.134H187.733v34.134h110.934zM110.933 430.931h34.134V251.731h-34.134V413.864zM76.8
+         413.864h34.133V277.331H76.8V396.798z"
+          />
+        </G>
+        <Path fill="#78b9eb" d="M435.2 294.398h68.267v102.4H435.2z" />
+        <G fill="#0a87eb">
+          <Path d="M366.933 430.931h34.134v-179.2h-34.134v145.067zM435.2 413.864V277.331h-34.133v136.533z" />
+        </G>
+        <Path
+          d="M512 285.864h-68.267v-17.067H409.6v-25.6h-51.2v42.667h-30.046a88.606 88.606 0 00-16.034-15.283 88.089 88.089
          0 00-5.12-3.575v-40.875h25.6v-51.2h-42.667v-17.067h25.6v-34.133H384a8.536 8.536 0 008.533-8.533V98.131
          c0-14.14-11.46-25.6-25.6-25.6H145.067c-14.14 0-25.6 11.46-25.6 25.6v17.067a8.536 8.536 0 008.533 8.533h68.267
          v34.133h25.6v17.067H179.2v51.2h25.6v40.875a76.103 76.103 0 00-5.06 3.541 88.604 88.604 0 00-16.094 15.317H153.6
@@ -47,22 +60,27 @@ const BigValve = ({
          76.21 76.21 0 0122.955-20.258 8.544 8.544 0 004.267-7.415v-45.653h68.267v45.653a8.538 8.538 0 004.267 7.415 73.316
          73.316 0 017.68 5.12 71.444 71.444 0 0115.172 15.172 8.55 8.55 0 006.827 3.473H358.4v85.299h-34.219zm51.286
          34.134V260.264h17.067v162.133h-17.067zm34.133-17.067V285.864h17.067v119.467H409.6zm85.333-17.067h-51.2v-85.333h51.2v85.333z"
-        fill="#231f20"
-      />
-    </G>
-  </AnimatedG>
-)
+          fill="#231f20"
+        />
+      </G>
+    </AnimatedG>
+  )
+}
 
 BigValve.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  cb: PropTypes.func.isRequired,
-  OpenColor: PropTypes.string,
+  ContentColor: PropTypes.string,
+
+  Valve: PropTypes.shape({
+    isOpen: PropTypes.bool.isRequired,
+    Content: PropTypes.func.isRequired,
+    Toggle: PropTypes.func.isRequired,
+  }).isRequired,
 }
 
 BigValve.defaultProps = {
-  OpenColor: 'green',
+  ContentColor: 'green',
 }
 
 export default BigValve

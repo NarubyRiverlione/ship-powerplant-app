@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { View } from 'react-native'
@@ -24,7 +25,7 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
     CoolingSys: { DsGen1LubCooler },
   } = Sim
   const {
-    FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump, HasLubrication,
+    FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump,
   } = DsGen1
   return (
     <SimulatorScreen>
@@ -36,21 +37,21 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
 
           <Navigate X={5} Y={50} Width={150} NavTo="FuelDsStorageScreen" NavText={`From ${DsService.Tank.Name}`} navigation={navigation} />
           <BigPipe x1={5} y1={100} x2={350} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={DsService.OutletValve.Content() !== 0} />
-          <BigValve X={350} Y={65} isOpen={FuelIntakeValve.isOpen} OpenColor={CstResourceColor.Diesel} cb={() => FuelIntakeValve.Toggle()} />
+          <BigValve X={350} Y={65} Valve={FuelIntakeValve} ContentColor={CstResourceColor.Diesel} />
           <BigPipe x1={400} y1={100} x2={450} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content() !== 0} />
           <BigPipe x1={450} y1={96} x2={450} y2={185} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content() !== 0} />
           <Line x1={446} y1={97} x2={446} y2={103} strokeWidth={2} stroke={FuelIntakeValve.Content() !== 0 ? CstResourceColor.Diesel : 'white'} />
 
           <Navigate X={770} Y={65} Width={220} NavTo="AirStartScreen" NavText={`From ${EmergencyReceiver.Tank.Name}`} navigation={navigation} />
           <BigPipe x1={700} y1={115} x2={1000} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={EmergencyReceiver.OutletValve.Content() !== 0} />
-          <BigValve X={650} Y={80} isOpen={AirIntakeValve.isOpen} OpenColor={CstResourceColor.CompressedAir} cb={() => AirIntakeValve.Toggle()} />
+          <BigValve X={650} Y={80} Valve={AirIntakeValve} ContentColor={CstResourceColor.CompressedAir} />
           <BigPipe x1={600} y1={115} x2={650} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content() !== 0} />
           <BigPipe x1={600} y1={111} x2={600} y2={185} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content() !== 0} />
           <Line x1={604} y1={112} x2={604} y2={118} strokeWidth={2} stroke={AirIntakeValve.Content() !== 0 ? CstResourceColor.CompressedAir : 'white'} />
 
           <Navigate X={5} Y={450} Width={180} NavTo="LubStorageScreen" NavText={`From ${LubSys.Storage.Tank.Name}`} navigation={navigation} />
           <BigPipe x1={5} y1={500} x2={250} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubSys.Storage.OutletValve.Content() !== 0} />
-          <BigValve X={250} Y={465} isOpen={LubIntakeValve.isOpen} OpenColor={CstResourceColor.Lubrication} cb={() => LubIntakeValve.Toggle()} />
+          <BigValve X={250} Y={465} Valve={LubIntakeValve} ContentColor={CstResourceColor.Lubrication} />
           <BigPipe x1={300} y1={500} x2={350} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubIntakeValve.Content() !== 0} />
 
           <Text x={490} y={470} fill="black">Slum</Text>

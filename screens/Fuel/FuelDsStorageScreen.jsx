@@ -30,9 +30,8 @@ const FuelDsStorageScreen = observer(() => {
           <BigValve
             X={40}
             Y={25}
-            isOpen={FuelSys.DsShoreValve.isOpen}
-            cb={() => FuelSys.DsShoreValve.Toggle()}
-            OpenColor={CstResourceColor.Diesel}
+            ContentColor={CstResourceColor.Diesel}
+            Valve={DsShoreValve}
           />
           <Text x={20} y={90} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
           <BigPipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />

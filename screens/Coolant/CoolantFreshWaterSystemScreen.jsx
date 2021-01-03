@@ -10,7 +10,7 @@ import { observer } from 'mobx-react-lite'
 import BigValve from '../../components/svg/BigValve'
 import Tank from '../../components/svg/Tank'
 import BigPipe from '../../components/svg/BigPipe'
-import Pump from '../../components/svg/Pump'
+// import Pump from '../../components/svg/Pump'
 import Cooler from '../../components/svg/Cooler'
 import SimulatorScreen from '../SimulatorScreen'
 import SimContext from '../../SimulatorContext'
@@ -32,9 +32,9 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
         <Svg width="100%" height="100%">
           <BigPipe x1={208} y1={70} x2={620} y2={70} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content() !== 0} />
           <BigPipe x1={800} y1={40} x2={850} y2={40} ContentColor={CstResourceColor.FreshWater} HasContent={FwIntakeValve.isOpen} />
-          <BigValve X={850} Y={5} cb={() => FwIntakeValve.Toggle()} isOpen={FwIntakeValve.isOpen} OpenColor={CstResourceColor.FreshWater} />
+          <BigValve X={850} Y={5} ContentColor={CstResourceColor.FreshWater} Valve={FwIntakeValve} />
           <BigPipe x1={900} y1={40} x2={950} y2={40} ContentColor={CstResourceColor.FreshWater} HasContent />
-          <BigValve X={750} Y={90} cb={() => FwDrainValve.Toggle()} isOpen={FwDrainValve.isOpen} OpenColor={CstResourceColor.FreshWater} />
+          <BigValve X={750} Y={90} ContentColor={CstResourceColor.FreshWater} Valve={FwDrainValve} />
           <BigPipe x1={720} y1={77} x2={720} y2={120} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content() !== 0} />
           <BigPipe x1={716} y1={124} x2={749} y2={124} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content() !== 0} />
           <Line x1={717} y1={120} x2={723} y2={120} strokeWidth={2} stroke={FwExpandTank.Content() !== 0 ? CstResourceColor.FreshWater : 'white'} />
@@ -106,5 +106,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
     </SimulatorScreen>
   )
 })
-
+CoolantFreshWaterSystemScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+}
 export default CoolantFreshWaterSystemScreen

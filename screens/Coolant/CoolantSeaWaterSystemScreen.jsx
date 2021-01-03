@@ -3,7 +3,7 @@ import * as React from 'react'
 import { View } from 'react-native'
 import PropTypes from 'prop-types'
 import Svg, {
-  Text, Line, TSpan, Rect, Polygon,
+  Text, Line, TSpan, Rect,
 } from 'react-native-svg'
 
 import { observer } from 'mobx-react-lite'
@@ -57,8 +57,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <BigValve
             X={100}
             Y={300}
-            isOpen={SeaChestLowSuctionIntakeValve.isOpen}
-            cb={() => SeaChestLowSuctionIntakeValve.Toggle()}
+            ContentColor={CstResourceColor.SeaWater}
+            Valve={SeaChestLowSuctionIntakeValve}
           />
           <BigPipe x1={70} y1={535} x2={120} y2={535} ContentColor={CstResourceColor.SeaWater} HasContent />
           <Text fill="black">
@@ -68,8 +68,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <BigValve
             X={120}
             Y={500}
-            isOpen={SeaChestHighSuctionIntakeValve.isOpen}
-            cb={() => SeaChestHighSuctionIntakeValve.Toggle()}
+            ContentColor={CstResourceColor.SeaWater}
+            Valve={SeaChestHighSuctionIntakeValve}
           />
 
           <BigPipe x1={150} y1={335} x2={184} y2={335} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
@@ -151,9 +151,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <BigValve
             X={200}
             Y={16}
-            isOpen={OverboardDumpValve.isOpen}
-            cb={() => OverboardDumpValve.Toggle()}
-            OpenColor={CstResourceColor.SeaWater}
+            ContentColor={CstResourceColor.SeaWater}
+            Valve={OverboardDumpValve}
           />
 
           <BigPipe x1={0} y1={50} x2={200} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={OverboardDumpValve.isOpen && (SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning)} />

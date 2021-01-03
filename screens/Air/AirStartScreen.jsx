@@ -36,9 +36,8 @@ const AirStartScreen = observer(() => {
           <BigValve
             X={300}
             Y={365}
-            isOpen={EmergencyOutletValve.Content() !== 0}
-            cb={() => EmergencyOutletValve.Toggle()}
-            OpenColor={CstResourceColor.CompressedAir}
+            ContentColor={CstResourceColor.CompressedAir}
+            Valve={EmergencyOutletValve}
           />
           <BigPipe
             x1={352}

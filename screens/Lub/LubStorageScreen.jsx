@@ -23,9 +23,8 @@ const LubStorageScreen = observer(() => {
           <BigValve
             X={40}
             Y={25}
-            OpenColor={CstResourceColor.Lubrication}
-            isOpen={ShoreValve.isOpen}
-            cb={() => ShoreValve.Toggle()}
+            ContentColor={CstResourceColor.Lubrication}
+            Valve={ShoreValve}
           />
           <Text x={20} y={90} fill="black" fontSize={12}>{ShoreValve.Name}</Text>
           <BigPipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent={ShoreValve.isOpen} />
