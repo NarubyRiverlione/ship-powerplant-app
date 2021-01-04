@@ -5,8 +5,10 @@ import PropTypes from 'prop-types'
 import BigPipe from './BigPipe'
 import CstResourceColor from '../../CstColors'
 
-const ElectricalMotor = ({ X, Y, isRunning }) => (
-  <G data-name="Electric Motor-electronics" transform={`translate(${X},${Y}) scale(3)`}>
+const ElectricalMotor = ({
+  X, Y, isRunning, Scale,
+}) => (
+  <G data-name="Electric Motor-electronics" transform={`translate(${X},${Y}) scale(${3 / Scale})`}>
     <Path d="M18 19h33v27H18z" fill="#898890" />
     <Path d="M3 29h8v6H3z" fill="#e0e0e2" />
     <Path d="M22 46h24v4H22z" fill="#57565c" />
@@ -33,16 +35,21 @@ ElectricalMotor.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
   isRunning: PropTypes.bool.isRequired,
+  Scale: PropTypes.number,
+}
+
+ElectricalMotor.defaultProps = {
+  Scale: 1,
 }
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const Compressor = ({
-  X, Y, isRunning, cb, hasElectricity, Name,
+  X, Y, isRunning, cb, hasElectricity, Name, Scale,
 }) => (
   <AnimatedG onPress={cb}>
     <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
     <BigPipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
-    <ElectricalMotor X={X} Y={Y} isRunning={isRunning} />
+    <ElectricalMotor X={X} Y={Y} isRunning={isRunning} Scale={Scale} />
     <BigPipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
   </AnimatedG>
 )
@@ -53,5 +60,10 @@ Compressor.propTypes = {
   Y: PropTypes.number.isRequired,
   hasElectricity: PropTypes.bool.isRequired,
   Name: PropTypes.string.isRequired,
+  Scale: PropTypes.number,
+}
+
+Compressor.defaultProps = {
+  Scale: 1,
 }
 export default Compressor
