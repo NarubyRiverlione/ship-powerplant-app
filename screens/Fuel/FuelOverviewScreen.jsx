@@ -26,8 +26,8 @@ const FuelOverviewScreen = observer(({ navigation }) => {
             flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',
           }}
           >
-            <Text style={styles.text}>{`Diesel storage tank ${DsStorage.Tank.Content()} % full`}</Text>
-            <Text style={styles.text}>{`Diesel service tank ${DsService.Tank.Content()} % full`}</Text>
+            <Text style={styles.text}>{`Diesel storage tank ${DsStorage.Tank.Content.toFixed(0)} % full`}</Text>
+            <Text style={styles.text}>{`Diesel service tank ${DsService.Tank.Content.toFixed(0)} % full`}</Text>
           </View>
           <View style={{ flex: 1, justifyContent: 'flex-start' }}>
             <Button title="Go to diesel oil storage" onPress={() => navigation.navigate('FuelDsStorageScreen')} />

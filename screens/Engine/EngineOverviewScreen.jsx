@@ -19,7 +19,7 @@ const EngineOverviewScreen = observer(({ navigation }) => {
           <Text style={styles.subTitle}>Storage</Text>
           <Button style={{ flex: 1 }} title="Go to storage" onPress={() => navigation.navigate('EngineStorageScreen')} />
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-            {EngineSys && EngineSys.Storage && <Text style={styles.text}>{`Engine storage tank ${EngineSys.Storage.Tank.Content()} liter`}</Text>}
+            {EngineSys && EngineSys.Storage && <Text style={styles.text}>{`Engine storage tank ${EngineSys.Storage.Tank.Content} liter`}</Text>}
           </View>
         </View>
       </View>

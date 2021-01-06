@@ -45,14 +45,14 @@ const LubStorageScreen = observer(() => {
             strokeWidth="2"
             stroke={ShoreValve.isOpen ? CstResourceColor.Lubrication : 'white'}
           />
-          <BigPipe x1={550} y1={210} x2={900} y2={210} ContentColor={CstResourceColor.Lubrication} HasContent={Storage.OutletValve.Content() !== 0} />
+          <BigPipe x1={550} y1={210} x2={900} y2={210} ContentColor={CstResourceColor.Lubrication} HasContent={Storage.OutletValve.Content !== 0} />
           <Line
             x1={550}
             y1={207}
             x2={550}
             y2={213}
             strokeWidth="2"
-            stroke={Storage.OutletValve.Content() !== 0 ? CstResourceColor.Lubrication : 'white'}
+            stroke={Storage.OutletValve.Content !== 0 ? CstResourceColor.Lubrication : 'white'}
           />
         </Svg>
       </View>

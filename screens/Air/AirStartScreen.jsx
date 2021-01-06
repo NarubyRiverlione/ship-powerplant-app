@@ -1,17 +1,18 @@
 import React from 'react'
 import { View } from 'react-native'
 import Svg from 'react-native-svg'
+import { observer } from 'mobx-react-lite'
 
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import StartAirSystem from '../../components/StartAirSystem'
 
-const AirStartScreen = () => {
+const AirStartScreen = observer(() => {
   const Sim = SimContext()
   const {
     AirSys: {
-      StartAirCompressor1, StartCompressor1OutletValve, StartAirReceiver1,
-      EmergencyCompressor, EmergencyOutletValve, EmergencyReceiver,
+      StartAirCompressor1, StartAirReceiver1,
+      EmergencyCompressor, EmergencyReceiver,
     },
   } = Sim
 
@@ -24,7 +25,6 @@ const AirStartScreen = () => {
             X={50}
             Y={20}
             StartCompressor={StartAirCompressor1}
-            CompOutletValve={StartCompressor1OutletValve}
             Receiver={StartAirReceiver1}
             ReceiverColor="grey"
           />
@@ -33,7 +33,6 @@ const AirStartScreen = () => {
             X={50}
             Y={280}
             StartCompressor={EmergencyCompressor}
-            CompOutletValve={EmergencyOutletValve}
             Receiver={EmergencyReceiver}
             ReceiverColor="gainsboro"
           />
@@ -41,6 +40,6 @@ const AirStartScreen = () => {
       </View>
     </SimulatorScreen>
   )
-}
+})
 
 export default AirStartScreen

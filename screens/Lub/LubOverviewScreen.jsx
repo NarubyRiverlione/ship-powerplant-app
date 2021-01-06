@@ -19,7 +19,7 @@ const LubOverviewScreen = observer(({ navigation }) => {
           <Text style={styles.subTitle}>Storage</Text>
           <Button style={{ flex: 1 }} title="Go to storage" onPress={() => navigation.navigate('LubStorageScreen')} />
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-            <Text style={styles.text}>{`Lubrication storage tank ${LubSys.Storage.Tank.Content()} liter`}</Text>
+            <Text style={styles.text}>{`Lubrication storage tank ${LubSys.Storage.Tank.Content} %`}</Text>
           </View>
         </View>
       </View>

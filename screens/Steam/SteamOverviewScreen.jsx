@@ -20,7 +20,7 @@ const SteamOverviewScreen = observer(({ navigation }) => {
           <Button style={{ flex: 1 }} title="Go to boiler" onPress={() => navigation.navigate('SteamBoilerScreen')} />
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
             {SteamSys
-              && <Text style={styles.text}>{`Steam boiler ${SteamSys.Boiler.Content()} bar`}</Text>}
+              && <Text style={styles.text}>{`Steam boiler ${SteamSys.Boiler.Content} bar`}</Text>}
           </View>
         </View>
       </View>

@@ -19,7 +19,7 @@ const SteamBoilerScreen = observer(({ navigation }) => {
           <Text style={styles.subTitle}>Oil boiler</Text>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
             {SteamSys
-              && <Text style={styles.text}>{`Steam boiler ${SteamSys.Boiler.Content()} bar`}</Text>}
+              && <Text style={styles.text}>{`Steam boiler ${SteamSys.Boiler.Content} bar`}</Text>}
           </View>
         </View>
       </View>

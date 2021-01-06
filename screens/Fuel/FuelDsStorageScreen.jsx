@@ -59,7 +59,7 @@ const FuelDsStorageScreen = observer(() => {
             x2={610}
             y2={210}
             ContentColor={CstResourceColor.Diesel}
-            HasContent={DsStorage.OutletValve.Content() !== 0}
+            HasContent={DsStorage.OutletValve.Content !== 0}
           />
 
           <TankValves
@@ -76,7 +76,7 @@ const FuelDsStorageScreen = observer(() => {
             x2={605}
             y2={213}
             strokeWidth="2"
-            stroke={DsStorage.OutletValve.Content() !== 0 ? CstResourceColor.Diesel : 'white'}
+            stroke={DsStorage.OutletValve.Content !== 0 ? CstResourceColor.Diesel : 'white'}
           />
           <Line
             x1={550}
@@ -84,7 +84,7 @@ const FuelDsStorageScreen = observer(() => {
             x2={550}
             y2={213}
             strokeWidth="2"
-            stroke={DsStorage.OutletValve.Content() !== 0 ? CstResourceColor.Diesel : 'white'}
+            stroke={DsStorage.OutletValve.Content !== 0 ? CstResourceColor.Diesel : 'white'}
           />
 
         </Svg>

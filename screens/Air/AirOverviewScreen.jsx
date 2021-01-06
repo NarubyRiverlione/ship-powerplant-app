@@ -3,14 +3,14 @@ import { Text, View, Button } from 'react-native'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react-lite'
 import SimContext from '../../SimulatorContext'
-
+import { TxtRunningStopped } from '../../CstTxt'
 import styles from '../../styles'
 import SimulatorScreen from '../SimulatorScreen'
 
 const AirOverviewScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const { AirSys } = Sim
-  const { EmergencyReceiver } = AirSys
+  const { EmergencyReceiver, EmergencyCompressor } = AirSys
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -20,8 +20,8 @@ const AirOverviewScreen = observer(({ navigation }) => {
             <Text style={styles.title}>Start air</Text>
           </View>
           <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'space-around' }}>
-            <Text style={styles.text}>{`Start air receiver 1 ${0} %`}</Text>
-            <Text style={styles.text}>{`Emergency start air receiver ${EmergencyReceiver.Tank.Content()} %`}</Text>
+            <Text style={styles.text}>{`Start air receiver is ${TxtRunningStopped(EmergencyCompressor)}`}</Text>
+            <Text style={styles.text}>{`Emergency start air receiver ${EmergencyReceiver.Tank.Content} %`}</Text>
           </View>
           <Button style={{ flex: 2 }} title="Go to start air" onPress={() => navigation.navigate('AirStartScreen')} />
         </View>

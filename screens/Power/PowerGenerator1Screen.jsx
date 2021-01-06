@@ -18,7 +18,7 @@ import CstResourceColor from '../../CstColors'
 const PowerGenerator1Screen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
-    PowerSys: { DsGen1, EmergencyBus },
+    PowerSys: { DsGen1, MainBus1 },
     FuelSys: { DsService },
     LubSys,
     AirSys: { EmergencyReceiver },
@@ -32,30 +32,30 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
-          <Navigate X={5} Y={240} Width={100} NavTo="PowerSwitchboardScreen" NavText={`${EmergencyBus.Name}`} navigation={navigation} />
+          <Navigate X={5} Y={240} Width={80} NavTo="PowerSwitchboardScreen" NavText={`${MainBus1.Name}`} navigation={navigation} />
           <BigPipe x1={5} y1={290} x2={115} y2={290} ContentColor={CstResourceColor.Electricity} HasContent={DsGen1.isRunning} />
 
           <Navigate X={5} Y={50} Width={150} NavTo="FuelDsStorageScreen" NavText={`From ${DsService.Tank.Name}`} navigation={navigation} />
-          <BigPipe x1={5} y1={100} x2={350} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={DsService.OutletValve.Content() !== 0} />
+          <BigPipe x1={5} y1={100} x2={350} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={DsService.OutletValve.Content !== 0} />
           <BigValve X={350} Y={65} Valve={FuelIntakeValve} ContentColor={CstResourceColor.Diesel} />
-          <BigPipe x1={400} y1={100} x2={450} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content() !== 0} />
-          <BigPipe x1={450} y1={96} x2={450} y2={185} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content() !== 0} />
-          <Line x1={446} y1={97} x2={446} y2={103} strokeWidth={2} stroke={FuelIntakeValve.Content() !== 0 ? CstResourceColor.Diesel : 'white'} />
+          <BigPipe x1={400} y1={100} x2={450} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content !== 0} />
+          <BigPipe x1={450} y1={96} x2={450} y2={185} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content !== 0} />
+          <Line x1={446} y1={97} x2={446} y2={103} strokeWidth={2} stroke={FuelIntakeValve.Content !== 0 ? CstResourceColor.Diesel : 'white'} />
 
           <Navigate X={770} Y={65} Width={220} NavTo="AirStartScreen" NavText={`From ${EmergencyReceiver.Tank.Name}`} navigation={navigation} />
-          <BigPipe x1={700} y1={115} x2={1000} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={EmergencyReceiver.OutletValve.Content() !== 0} />
+          <BigPipe x1={700} y1={115} x2={1000} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={EmergencyReceiver.OutletValve.Content !== 0} />
           <BigValve X={650} Y={80} Valve={AirIntakeValve} ContentColor={CstResourceColor.CompressedAir} />
-          <BigPipe x1={600} y1={115} x2={650} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content() !== 0} />
-          <BigPipe x1={600} y1={111} x2={600} y2={185} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content() !== 0} />
-          <Line x1={604} y1={112} x2={604} y2={118} strokeWidth={2} stroke={AirIntakeValve.Content() !== 0 ? CstResourceColor.CompressedAir : 'white'} />
+          <BigPipe x1={600} y1={115} x2={650} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content !== 0} />
+          <BigPipe x1={600} y1={111} x2={600} y2={185} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content !== 0} />
+          <Line x1={604} y1={112} x2={604} y2={118} strokeWidth={2} stroke={AirIntakeValve.Content !== 0 ? CstResourceColor.CompressedAir : 'white'} />
 
           <Navigate X={5} Y={450} Width={180} NavTo="LubStorageScreen" NavText={`From ${LubSys.Storage.Tank.Name}`} navigation={navigation} />
-          <BigPipe x1={5} y1={500} x2={250} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubSys.Storage.OutletValve.Content() !== 0} />
+          <BigPipe x1={5} y1={500} x2={250} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubSys.Storage.OutletValve.Content !== 0} />
           <BigValve X={250} Y={465} Valve={LubIntakeValve} ContentColor={CstResourceColor.Lubrication} />
-          <BigPipe x1={300} y1={500} x2={350} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubIntakeValve.Content() !== 0} />
+          <BigPipe x1={300} y1={500} x2={350} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubIntakeValve.Content !== 0} />
 
           <Text x={490} y={470} fill="black">Slum</Text>
-          <LookingGlass X={540} Y={460} Size={50} ContentColor={CstResourceColor.Lubrication} ContentPct={LubSlump.Content()} />
+          <LookingGlass X={540} Y={460} Size={50} ContentColor={CstResourceColor.Lubrication} ContentPct={LubSlump.Content} />
           <Rect x={350} y={450} width={10} height={100} stroke="black" strokeWidth={2} />
           <Rect x={650} y={450} width={10} height={100} stroke="black" strokeWidth={2} />
           <Rect x={360} y={540} width={290} height={10} stroke="black" strokeWidth={2} />

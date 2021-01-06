@@ -11,13 +11,12 @@ import CstResourceColor from '../CstColors'
 */
 const StartAirSystem = observer(({
   X, Y,
-  StartCompressor, CompressorSize,
-  CompOutletValve, Receiver, ReceiverColor,
+  StartCompressor, CompressorSize, Receiver, ReceiverColor,
 }) => (
   <G>
     <Compressor
-      X={X} // 50
-      Y={Y} // 280
+      X={X}
+      Y={Y}
       Name={StartCompressor.Name}
       hasElectricity={StartCompressor.CheckPower()}
       isRunning={StartCompressor.isRunning}
@@ -31,7 +30,7 @@ const StartAirSystem = observer(({
       X={X + 250}
       Y={Y + 85}
       ContentColor={CstResourceColor.CompressedAir}
-      Valve={CompOutletValve}
+      Valve={StartCompressor.OutletValve}
     />
     <BigPipe
       x1={X + 302}
@@ -39,7 +38,7 @@ const StartAirSystem = observer(({
       x2={X + 610}
       y2={Y + 120}
       ContentColor={CstResourceColor.CompressedAir}
-      HasContent={CompOutletValve.Content() !== 0}
+      HasContent={StartCompressor.OutletValve.Content !== 0}
     />
 
     <TankValves
@@ -57,7 +56,7 @@ const StartAirSystem = observer(({
       x2={X + 605}
       y2={Y + 123}
       strokeWidth="2"
-      stroke={CompOutletValve.Content() !== 0 ? CstResourceColor.CompressedAir : 'white'}
+      stroke={StartCompressor.OutletValve.Content !== 0 ? CstResourceColor.CompressedAir : 'white'}
     />
   </G>
 ))
@@ -67,7 +66,6 @@ StartAirSystem.propTypes = {
   Y: PropTypes.number.isRequired,
   // todo shape
   StartCompressor: PropTypes.object.isRequired,
-  CompOutletValve: PropTypes.object.isRequired,
   Receiver: PropTypes.object.isRequired,
   ReceiverColor: PropTypes.string.isRequired,
   CompressorSize: PropTypes.number,

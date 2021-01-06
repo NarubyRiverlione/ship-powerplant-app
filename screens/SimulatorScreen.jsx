@@ -31,7 +31,7 @@ const SimulatorScreen = observer(({ children }) => {
       </View>
 
       <View style={{
-        flex: 9, flexDirection: 'column', margin: 5, justifyContent: 'flex-start', backgroundColor: 'whitesmoke',
+        flex: 9, flexDirection: 'column', padding: 5, justifyContent: 'flex-start', backgroundColor: 'whitesmoke',
       }}
       >
         {children}
