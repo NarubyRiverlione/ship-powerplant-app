@@ -18,7 +18,7 @@ const StartAirSystem = observer(({
       X={X}
       Y={Y}
       Name={StartCompressor.Name}
-      hasElectricity={StartCompressor.CheckPower()}
+      hasElectricity={StartCompressor.CheckPower}
       isRunning={StartCompressor.isRunning}
       cb={() => {
         StartCompressor.Toggle()
