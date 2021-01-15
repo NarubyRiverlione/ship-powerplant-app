@@ -14,11 +14,17 @@ import SteamTabNavigator from './SteamStack'
 import Colors from '../constants/Colors'
 import useColorScheme from '../hooks/useColorScheme'
 
-const BottomTab = createBottomTabNavigator()
+function TabBarIcon({ name, color }) {
+  return <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} name={name} color={color} />
+}
+TabBarIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+}
 
+const BottomTab = createBottomTabNavigator()
 const BottomTabNavigator = () => {
   const colorScheme = useColorScheme()
-
   return (
     <BottomTab.Navigator
       initialRouteName="Fuel"
@@ -76,20 +82,5 @@ const BottomTabNavigator = () => {
     </BottomTab.Navigator>
   )
 }
-// BottomTabNavigator.propTypes = {
-//   color: PropTypes.string.isRequired,
-// }
 
 export default BottomTabNavigator
-
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-
-function TabBarIcon({ name, color }) {
-  return <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} name={name} color={color} />
-}
-TabBarIcon.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-}
-// #endregion

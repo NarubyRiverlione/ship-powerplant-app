@@ -4,12 +4,13 @@ const styles = StyleSheet.create({
   // VIEWS
   container: {
     flex: 1,
-    flexDirection: 'row',
+    // flexDirection: 'row',
   },
   partTitleView: {
     flex: 1,
     borderWidth: 1,
     borderColor: 'black',
+    backgroundColor: 'azure',
     alignItems: 'center',
     justifyContent: 'center',
   },
