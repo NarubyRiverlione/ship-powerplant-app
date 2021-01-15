@@ -4,16 +4,51 @@ import PropTypes from 'prop-types'
 import styles from '../styles'
 import SimContext from '../SimulatorContext'
 
+const StartConditionButton = ({ title, startCon, cb }) => (
+  <View style={{ flex: 2, justifyContent: 'space-evenly' }}>
+    <Button
+      style={styles.subTitle}
+      onPress={() => cb(startCon)}
+      title={title}
+    />
+  </View>
+)
+StartConditionButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  startCon: PropTypes.string.isRequired,
+  cb: PropTypes.func.isRequired,
+}
+
 const StartConditionsScreen = ({ navigation }) => {
   const Sim = SimContext()
+  const [startConditions, setStartConditions] = React.useState()
+
+  // get list of start conditions from Simulator
+  React.useEffect(() => {
+    setStartConditions(Sim.GetStartConditions())
+  }, [])
+
+  // set simulator to selected start conditions & navigate to tabbar
+  const setSimConditions = (condition) => {
+    debugger
+    Sim.SetStartConditions(condition)
+    navigation.navigate('BottomTabNavigator')
+  }
   return (
     <View style={styles.container}>
       <View style={styles.partTitleView}>
         <Text style={styles.title}>Start conditions</Text>
       </View>
       <View style={styles.partContentView}>
-        <Button onPress={() => { navigation.navigate('BottomTabNavigator') }} title="Cold & Dark" />
-        <Text style={styles.subTitle}>No electricity, empty tanks</Text>
+        {startConditions
+          && Object.keys(startConditions).map((keyStartCond) => (
+            <StartConditionButton
+              cb={setSimConditions}
+              startCon={keyStartCond}
+              title={startConditions[keyStartCond]}
+              key={keyStartCond}
+            />
+          ))}
       </View>
     </View>
   )
