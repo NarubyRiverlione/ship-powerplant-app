@@ -18,7 +18,7 @@ import CstResourceColor from '../../CstColors'
 const PowerGenerator1Screen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
-    PowerSys: { DsGen1, MainBus1 },
+    PowerSys: { DsGen1 },
     FuelSys: { DsService },
     LubSys,
     AirSys: { EmergencyReceiver },
@@ -32,7 +32,7 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
-          <Navigate X={5} Y={240} Width={80} NavTo="PowerSwitchboardScreen" NavText={`${MainBus1.Name}`} navigation={navigation} />
+          <Navigate X={5} Y={240} Width={85} NavTo="PowerSwitchboardScreen" NavText="Switchboard" navigation={navigation} />
           <BigPipe x1={5} y1={290} x2={115} y2={290} ContentColor={CstResourceColor.Electricity} HasContent={DsGen1.isRunning} />
 
           <Navigate X={5} Y={50} Width={150} NavTo="FuelDsStorageScreen" NavText={`From ${DsService.Tank.Name}`} navigation={navigation} />
@@ -86,7 +86,7 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
           <Cooler X={780} Y={250} />
           <Text x={880} y={300} fill="black">{DsGen1LubCooler.Name.replace('Diesel generator 1', '')}</Text>
 
-          <DieselGenerator X={300} Y={150} isRunning={DsGen1.isRunning} cb={() => DsGen1.Toggle()} />
+          <DieselGenerator X={300} Y={150} DsGen={DsGen1} />
         </Svg>
       </View>
     </SimulatorScreen>

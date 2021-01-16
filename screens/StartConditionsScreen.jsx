@@ -7,7 +7,6 @@ import SimContext from '../SimulatorContext'
 const StartConditionButton = ({ title, startCon, cb }) => (
   <View style={{ flex: 2, justifyContent: 'space-evenly' }}>
     <Button
-      style={styles.subTitle}
       onPress={() => cb(startCon)}
       title={title}
     />
@@ -30,7 +29,6 @@ const StartConditionsScreen = ({ navigation }) => {
 
   // set simulator to selected start conditions & navigate to tabbar
   const setSimConditions = (condition) => {
-    debugger
     Sim.SetStartConditions(condition)
     navigation.navigate('BottomTabNavigator')
   }
@@ -40,6 +38,13 @@ const StartConditionsScreen = ({ navigation }) => {
         <Text style={styles.title}>Start conditions</Text>
       </View>
       <View style={styles.partContentView}>
+        <View style={{ flex: 4, justifyContent: 'space-evenly' }}>
+          <Button
+            onPress={() => navigation.navigate('BottomTabNavigator')}
+            title="Cold & Dark"
+          />
+        </View>
+
         {startConditions
           && Object.keys(startConditions).map((keyStartCond) => (
             <StartConditionButton
