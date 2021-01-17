@@ -6,10 +6,10 @@ import { observer } from 'mobx-react-lite'
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const BigValve = observer(({
-  X, Y, ContentColor, Valve,
+  X, Y, ContentColor, Valve, Scale, Vertical,
 }) => (
   <AnimatedG onPress={() => { Valve.Toggle() }}>
-    <G data-name="Valve" transform={`translate(${X},${Y}) scale(0.1)`}>
+    <G data-name="Valve" transform={`translate(${X},${Y}) scale(${0.1 * Scale}) rotate(${Vertical ? 90 : 0})`}>
       <G fill="#78b9eb">
         <Path d="M8.533 294.398H76.8v102.4H8.533zM230.4 149.331h51.2v34.133h-51.2z" />
       </G>
@@ -57,7 +57,9 @@ const BigValve = observer(({
 BigValve.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  ContentColor: PropTypes.string,
+  ContentColor: PropTypes.string.isRequired,
+  Scale: PropTypes.number,
+  Vertical: PropTypes.bool,
 
   Valve: PropTypes.shape({
     isOpen: PropTypes.bool.isRequired,
@@ -67,7 +69,8 @@ BigValve.propTypes = {
 }
 
 BigValve.defaultProps = {
-  ContentColor: 'green',
+  Scale: 1,
+  Vertical: false,
 }
 
 export default BigValve

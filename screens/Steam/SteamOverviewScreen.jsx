@@ -9,7 +9,7 @@ import SimulatorScreen from '../SimulatorScreen'
 
 const SteamOverviewScreen = observer(({ navigation }) => {
   const Sim = SimContext()
-  const { SteamSys } = Sim
+  const { SteamSys: { Boiler } } = Sim
 
   return (
     <SimulatorScreen>
@@ -18,9 +18,14 @@ const SteamOverviewScreen = observer(({ navigation }) => {
         <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
           <Text style={styles.subTitle}>Oil boiler</Text>
           <Button style={{ flex: 1 }} title="Go to boiler" onPress={() => navigation.navigate('SteamBoilerScreen')} />
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-            {SteamSys
-              && <Text style={styles.text}>{`Steam boiler ${SteamSys.Boiler.Content} bar`}</Text>}
+          <View style={{
+            flex: 1, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center',
+          }}
+          >
+            <Text style={styles.text}>{`Steam boiler ${Boiler.Content.toFixed(1)} bar`}</Text>
+            <Text style={styles.text}>{`Steam temperature ${Boiler.Temperature.toFixed(1)} °C`}</Text>
+            <Text style={styles.text}>{`Steam water lever ${Boiler.WaterTank.Content.toFixed(0)} %`}</Text>
+            <Text style={styles.text}>{`Steam water  ${Boiler.hasFlame ? 'has' : 'no'} flame`}</Text>
           </View>
         </View>
       </View>
