@@ -6,8 +6,8 @@ import Svg, { Text, Line } from 'react-native-svg'
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
-import BigValve from '../../components/svg/BigValve'
-import BigPipe from '../../components/svg/BigPipe'
+import Valve from '../../components/svg/Valve'
+import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../CstColors'
 
 const FuelDsStorageScreen = observer(() => {
@@ -19,7 +19,7 @@ const FuelDsStorageScreen = observer(() => {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
-          <BigPipe
+          <Pipe
             x1={10}
             y1={60}
             x2={40}
@@ -27,14 +27,14 @@ const FuelDsStorageScreen = observer(() => {
             ContentColor={CstResourceColor.Diesel}
             HasContent
           />
-          <BigValve
+          <Valve
             X={40}
             Y={25}
             ContentColor={CstResourceColor.Diesel}
-            Valve={DsShoreValve}
+            ValveObj={DsShoreValve}
           />
           <Text x={20} y={90} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
-          <BigPipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />
+          <Pipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />
 
           <TankValves
             X={200}
@@ -53,7 +53,7 @@ const FuelDsStorageScreen = observer(() => {
             stroke={DsShoreValve.isOpen ? CstResourceColor.Diesel : 'white'}
           />
 
-          <BigPipe
+          <Pipe
             x1={550}
             y1={210}
             x2={610}

@@ -1,13 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Line } from 'react-native-svg'
+import { Rect } from 'react-native-svg'
 
 const Pipe = ({
-  HasContent, ContentColor, x1, y1, x2, y2,
-}) => (
+  HasContent, ContentColor, x1, y1, x2, y2, Size,
+}) => {
+  const isHorizontal = () => y1 === y2
 
-  <Line x1={x1} y1={y1} x2={x2} y2={y2} stroke={ContentColor} strokeWidth={HasContent ? 3 : 1} />
-)
+  const getCoords = () => {
+    if (isHorizontal()) {
+      const w = x2 - x1
+      const h = Size
+      return {
+        x: x1, y: y1 - Size / 2, width: w, height: h,
+      }
+    }
+    // Vertical
+    const w = Size
+    const h = y2 - y1
+    return {
+      x: x1 - Size / 2, y: y1, width: w, height: h,
+    }
+  }
+  const {
+    x, y, width, height,
+  } = getCoords()
+
+  return (
+    <Rect
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      stroke={ContentColor}
+      strokeWidth={2}
+      fill={HasContent ? ContentColor : 'white'}
+    />
+  )
+}
 
 Pipe.propTypes = {
   HasContent: PropTypes.bool.isRequired,
@@ -16,6 +46,11 @@ Pipe.propTypes = {
   y1: PropTypes.number.isRequired,
   x2: PropTypes.number.isRequired,
   y2: PropTypes.number.isRequired,
+  Size: PropTypes.number,
+}
+
+Pipe.defaultProps = {
+  Size: 8,
 }
 
 export default Pipe

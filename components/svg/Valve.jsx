@@ -5,10 +5,10 @@ import { Path, G } from 'react-native-svg'
 import { observer } from 'mobx-react-lite'
 
 const AnimatedG = Animated.createAnimatedComponent(G)
-const BigValve = observer(({
-  X, Y, ContentColor, Valve, Scale, Vertical,
+const Valve = observer(({
+  X, Y, ContentColor, ValveObj, Scale, Vertical,
 }) => (
-  <AnimatedG onPress={() => { Valve.Toggle() }}>
+  <AnimatedG onPress={() => { ValveObj.Toggle() }}>
     <G data-name="Valve" transform={`translate(${X},${Y}) scale(${0.1 * Scale}) rotate(${Vertical ? 90 : 0})`}>
       <G fill="#78b9eb">
         <Path d="M8.533 294.398H76.8v102.4H8.533zM230.4 149.331h51.2v34.133h-51.2z" />
@@ -16,13 +16,13 @@ const BigValve = observer(({
       <Path fill="#0a87eb" d="M307.2 149.331v-34.133H204.8v34.133H281.6z" />
       <Path
         d="M384 115.198V98.131c0-9.429-7.637-17.067-17.067-17.067H145.067c-9.429 0-17.067 7.637-17.067 17.067v17.067h256z"
-        fill={Valve.isOpen ? 'lightgreen' : '#ed1c24'}
+        fill={ValveObj.isOpen ? 'lightgreen' : '#ed1c24'}
       />
       <Path
         d="M187.819 396.798c28.186 37.658 81.553 45.338 119.211 17.152a85.566 85.566 0 0017.152-17.152h42.752v-102.4
         h-42.752a80.108 80.108 0 00-16.981-16.981 80.873 80.873 0 00-8.533-5.632v-54.187h-85.333v54.187a80.873 80.873
         0 00-8.533 5.632 80.108 80.108 0 00-16.981 16.981h-42.752v102.4h42.75z"
-        fill={Valve.Content !== 0 ? ContentColor : 'white'}
+        fill={ValveObj.Content !== 0 ? ContentColor : 'white'}
       />
       <G fill="#0a87eb">
         <Path d="M324.267 217.598v-34.134H187.733v34.134h110.934zM110.933 430.931h34.134V251.731h-34.134V413.864zM76.8
@@ -54,23 +54,23 @@ const BigValve = observer(({
   </AnimatedG>
 ))
 
-BigValve.propTypes = {
+Valve.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
   ContentColor: PropTypes.string.isRequired,
   Scale: PropTypes.number,
   Vertical: PropTypes.bool,
 
-  Valve: PropTypes.shape({
+  ValveObj: PropTypes.shape({
     isOpen: PropTypes.bool.isRequired,
     Content: PropTypes.number.isRequired,
     Toggle: PropTypes.func.isRequired,
   }).isRequired,
 }
 
-BigValve.defaultProps = {
+Valve.defaultProps = {
   Scale: 1,
   Vertical: false,
 }
 
-export default BigValve
+export default Valve

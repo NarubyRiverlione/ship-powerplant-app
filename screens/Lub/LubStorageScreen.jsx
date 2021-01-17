@@ -6,8 +6,8 @@ import { observer } from 'mobx-react-lite'
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
-import BigValve from '../../components/svg/BigValve'
-import BigPipe from '../../components/svg/BigPipe'
+import Valve from '../../components/svg/Valve'
+import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../CstColors'
 
 const LubStorageScreen = observer(() => {
@@ -19,15 +19,15 @@ const LubStorageScreen = observer(() => {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
-          <BigPipe x1={10} y1={60} x2={40} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent />
-          <BigValve
+          <Pipe x1={10} y1={60} x2={40} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent />
+          <Valve
             X={40}
             Y={25}
             ContentColor={CstResourceColor.Lubrication}
-            Valve={ShoreValve}
+            ValveObj={ShoreValve}
           />
           <Text x={20} y={90} fill="black" fontSize={12}>{ShoreValve.Name}</Text>
-          <BigPipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent={ShoreValve.isOpen} />
+          <Pipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent={ShoreValve.isOpen} />
 
           <TankValves
             X={200}
@@ -45,7 +45,7 @@ const LubStorageScreen = observer(() => {
             strokeWidth="2"
             stroke={ShoreValve.isOpen ? CstResourceColor.Lubrication : 'white'}
           />
-          <BigPipe x1={550} y1={210} x2={900} y2={210} ContentColor={CstResourceColor.Lubrication} HasContent={Storage.OutletValve.Content !== 0} />
+          <Pipe x1={550} y1={210} x2={900} y2={210} ContentColor={CstResourceColor.Lubrication} HasContent={Storage.OutletValve.Content !== 0} />
           <Line
             x1={550}
             y1={207}

@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 import { G, Path, Text } from 'react-native-svg'
 import PropTypes from 'prop-types'
-import BigPipe from './BigPipe'
+import Pipe from './Pipe'
 import CstResourceColor from '../../CstColors'
 
 const ElectricalMotor = ({
@@ -48,9 +48,9 @@ const Compressor = ({
 }) => (
   <AnimatedG onPress={cb}>
     <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
-    <BigPipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
+    <Pipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
     <ElectricalMotor X={X} Y={Y} isRunning={isRunning} Scale={Scale} />
-    <BigPipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
+    <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
   </AnimatedG>
 )
 Compressor.propTypes = {

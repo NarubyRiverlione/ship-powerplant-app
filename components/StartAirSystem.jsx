@@ -3,8 +3,8 @@ import { G, Line } from 'react-native-svg'
 import { observer } from 'mobx-react-lite'
 import PropTypes from 'prop-types'
 import TankValves from './svg/TankValves'
-import BigValve from './svg/BigValve'
-import BigPipe from './svg/BigPipe'
+import Valve from './svg/Valve'
+import Pipe from './svg/Pipe'
 import Compressor from './svg/Compressor'
 import CstResourceColor from '../CstColors'
 /*
@@ -26,13 +26,13 @@ const StartAirSystem = observer(({
       Scale={CompressorSize}
     />
 
-    <BigValve
+    <Valve
       X={X + 250}
       Y={Y + 85}
       ContentColor={CstResourceColor.CompressedAir}
-      Valve={StartCompressor.OutletValve}
+      ValveObj={StartCompressor.OutletValve}
     />
-    <BigPipe
+    <Pipe
       x1={X + 302}
       y1={Y + 120}
       x2={X + 610}
