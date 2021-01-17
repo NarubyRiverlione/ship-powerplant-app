@@ -23,19 +23,26 @@ const SteamBoilerScreen = observer(({ navigation }) => {
     },
   } = Sim
 
+  const ToggleBoiler = () => {
+    if (Boiler.hasFlame) Boiler.Exting()
+    else Boiler.Ignite()
+  }
+
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
           <Navigate X={20} Y={60} Width={90} Height={40} NavText="Diesel service" NavTo={() => navigation.navigate('FuelDsStorageScreen')} />
-          <Pipe x1={600} y1={120} x2={730} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelPump.Content !== 0} />
-          <Pipe x1={200} y1={120} x2={550} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelSourceValve.Content !== 0} />
+          <Pipe x1={500} y1={120} x2={600} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelPump.Content !== 0} />
+          <Pipe x1={200} y1={120} x2={450} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelSourceValve.Content !== 0} />
           <Pipe x1={5} y1={120} x2={150} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelSourceValve.Source.Content !== 0} />
           <Valve X={150} Y={85} ContentColor={CstResourceColor.Diesel} ValveObj={FuelSourceValve} />
-          <Pump X={600} Y={50} Horizontal Scale={0.8} isRunning={FuelPump.isRunning} cb={() => FuelPump.Toggle()} />
+          <Valve X={600} Y={85} ContentColor={CstResourceColor.Diesel} ValveObj={Boiler.FuelIntakeValve} />
+          <Pipe x1={650} y1={120} x2={730} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={Boiler.FuelIntakeValve.Content !== 0} />
+          <Pump X={500} Y={50} Horizontal Scale={0.8} isRunning={FuelPump.isRunning} cb={() => FuelPump.Toggle()} />
 
-          <BoilerSvg X={650} Y={80} />
+          <BoilerSvg X={650} Y={80} BoilerObj={Boiler} cb={() => ToggleBoiler()} />
 
           <Pipe x1={5} y1={260} x2={60} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent />
           <SmallTankValves X={50} Y={210} Name={FeedWaterSupply.Name} ContentColor={CstResourceColor.FreshWater} TankSys={FeedWaterSupply} />

@@ -17,6 +17,7 @@ export default function useCachedResources() {
         await Font.loadAsync({
           ...MaterialCommunityIcons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          LiquidCrystal: require('../assets/fonts/LiquidCrystal-Normal.otf'),
         })
       } catch (e) {
         // We might want to provide this error information to an error reporting service
