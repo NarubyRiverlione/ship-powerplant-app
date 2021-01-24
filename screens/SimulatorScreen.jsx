@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import { observer } from 'mobx-react-lite'
 import styles from '../styles'
@@ -8,22 +9,26 @@ import SimContext from '../SimulatorContext'
 
 const SimulatorScreen = observer(({ children }) => {
   const Sim = SimContext()
-
+  const navigation = useNavigation()
   const Running = () => (Sim.Running ? CstTxt.Running : CstTxt.Stopped)
 
   return (
-    <View style={{
-      flex: 1, flexDirection: 'column', justifyContent: 'flex-start',
-    }}
-    >
+    <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
       <View style={{
         flex: 1, flexDirection: 'row', justifyContents: 'flex-end', alignItems: 'center', backgroundColor: 'snow',
       }}
       >
-        <Text style={{ ...styles.subTitle, flex: 2 }}>{`Simulator is ${Running()}`}</Text>
-        <Button style={{ flex: 1 }} title={BtnStartStopTxt(Sim.Running)} onPress={() => Sim.Toggle()} />
-        <Button style={{ flex: 1 }} title="Thick" onPress={() => Sim.Thick()} />
-        <Button style={{ flex: 1 }} title="RESET" onPress={() => Sim.Reset()} />
+        <View style={{ flex: 1, alignItems: 'flex-start' }}>
+          <Button title="Start Con." onPress={() => { navigation.goBack() }} />
+        </View>
+
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Button title="Alarms" onPress={() => { navigation.navigate('AlarmModal') }} />
+        </View>
+
+        <View style={{ flex: 1, alignItems: 'flex-end' }}>
+          <Button title={`Simulator is ${Running()}`} onPress={() => Sim.Toggle()} />
+        </View>
       </View>
 
       <View style={{

@@ -30,7 +30,7 @@ const StartConditionsScreen = ({ navigation }) => {
   // set simulator to selected start conditions & navigate to tabbar
   const setSimConditions = (condition) => {
     Sim.SetStartConditions(condition)
-    navigation.navigate('BottomTabNavigator')
+    navigation.navigate('RootStack')
   }
   return (
     <View style={styles.container}>
@@ -40,7 +40,7 @@ const StartConditionsScreen = ({ navigation }) => {
       <View style={styles.partContentView}>
         <View style={{ flex: 4, justifyContent: 'space-evenly' }}>
           <Button
-            onPress={() => navigation.navigate('BottomTabNavigator')}
+            onPress={() => navigation.navigate('RootStack')}
             title="Cold & Dark"
           />
         </View>

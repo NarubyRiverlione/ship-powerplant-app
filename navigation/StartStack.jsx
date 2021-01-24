@@ -2,8 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import StartConditionsScreen from '../screens/StartConditionsScreen'
-
-import BottomTabNavigator from './BottomTabNavigator'
+import RootStackNavigator from './RootStack'
 
 const StartStack = createStackNavigator()
 const StartNavigator = () => (
@@ -14,9 +13,8 @@ const StartNavigator = () => (
       options={{ headerTitle: 'Simulator' }}
     />
     <StartStack.Screen
-      name="BottomTabNavigator"
-      component={BottomTabNavigator}
-    //   options={{ headerTitle: 'COMPRESSED AIR - Start up' }}
+      name="RootStack"
+      component={RootStackNavigator}
     />
 
   </StartStack.Navigator>
