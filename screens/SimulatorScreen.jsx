@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { observer } from 'mobx-react-lite'
-import styles from '../styles'
-import CstTxt, { BtnStartStopTxt } from '../CstTxt'
+
+import CstTxt from '../CstTxt'
 import SimContext from '../SimulatorContext'
 
 const SimulatorScreen = observer(({ children }) => {

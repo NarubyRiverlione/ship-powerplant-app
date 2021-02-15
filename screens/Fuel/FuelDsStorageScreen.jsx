@@ -6,6 +6,7 @@ import Svg, { Text, Line } from 'react-native-svg'
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
+import SmallTankValves from '../../components/svg/SmallTankValves'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../CstColors'
@@ -62,7 +63,7 @@ const FuelDsStorageScreen = observer(() => {
             HasContent={DsStorage.OutletValve.Content !== 0}
           />
 
-          <TankValves
+          <SmallTankValves
             X={600}
             Y={160}
             Name={DsService.Tank.Name}

@@ -4,6 +4,7 @@ import { G, Path, Text } from 'react-native-svg'
 import PropTypes from 'prop-types'
 import Pipe from './Pipe'
 import CstResourceColor from '../../CstColors'
+import SafetyValve from './SafetyValve'
 
 const ElectricalMotor = ({
   X, Y, isRunning, Scale,
@@ -44,17 +45,19 @@ ElectricalMotor.defaultProps = {
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const Compressor = ({
-  X, Y, isRunning, cb, hasElectricity, Name, Scale,
+  X, Y, isRunning, cb, hasElectricity, Name, Scale, SafetyOpen,
 }) => (
   <AnimatedG onPress={cb}>
     <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
     <Pipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
     <ElectricalMotor X={X} Y={Y} isRunning={isRunning} Scale={Scale} />
-    <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
+    <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning && !SafetyOpen} />
+    <SafetyValve X={X + 180} Y={Y + 45} isOpen={SafetyOpen} />
   </AnimatedG>
 )
 Compressor.propTypes = {
   isRunning: PropTypes.bool.isRequired,
+  SafetyOpen: PropTypes.bool.isRequired,
   cb: PropTypes.func.isRequired,
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,

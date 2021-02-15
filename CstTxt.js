@@ -11,7 +11,7 @@ const CstTxt = {
 
   From: 'From',
   To: 'To',
-
+  SafetyValve: 'Safety',
 }
 
 export const BtnStartStopTxt = (isRunning) => (isRunning ? CstTxt.Stopping : CstTxt.Starting)
