@@ -32,24 +32,24 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
-          <Navigate X={5} Y={240} Width={85} NavTo="PowerSwitchboardScreen" NavText="Switchboard" navigation={navigation} />
+          <Navigate X={5} Y={240} Width={85} NavStack="Power" NavScreen="PowerSwitchboardScreen" NavText="Switchboard" navigation={navigation} />
           <Pipe x1={5} y1={290} x2={115} y2={290} ContentColor={CstResourceColor.Electricity} HasContent={DsGen1.isRunning} />
 
-          <Navigate X={5} Y={50} Width={150} NavTo="FuelDsStorageScreen" NavText={`From ${DsService.Tank.Name}`} navigation={navigation} />
+          <Navigate X={5} Y={50} Width={150} NavStack="Fuel" NavScreen="FuelDsStorageScreen" NavText={`From ${DsService.Tank.Name}`} navigation={navigation} />
           <Pipe x1={5} y1={100} x2={350} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={DsService.OutletValve.Content !== 0} />
           <Valve X={350} Y={65} ValveObj={FuelIntakeValve} ContentColor={CstResourceColor.Diesel} />
           <Pipe x1={400} y1={100} x2={450} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content !== 0} />
           <Pipe x1={450} y1={96} x2={450} y2={185} ContentColor={CstResourceColor.Diesel} HasContent={FuelIntakeValve.Content !== 0} />
           <Line x1={446} y1={97} x2={446} y2={103} strokeWidth={2} stroke={FuelIntakeValve.Content !== 0 ? CstResourceColor.Diesel : 'white'} />
 
-          <Navigate X={770} Y={65} Width={220} NavTo="AirStartScreen" NavText={`From ${EmergencyReceiver.Tank.Name}`} navigation={navigation} />
+          <Navigate X={770} Y={65} Width={220} NavStack="Comp. Air" NavScreen="AirStartScreen" NavText={`From ${EmergencyReceiver.Tank.Name}`} navigation={navigation} />
           <Pipe x1={700} y1={115} x2={1000} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={EmergencyReceiver.OutletValve.Content !== 0} />
           <Valve X={650} Y={80} ValveObj={AirIntakeValve} ContentColor={CstResourceColor.CompressedAir} />
           <Pipe x1={600} y1={115} x2={650} y2={115} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content !== 0} />
           <Pipe x1={600} y1={111} x2={600} y2={185} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content !== 0} />
           <Line x1={604} y1={112} x2={604} y2={118} strokeWidth={2} stroke={AirIntakeValve.Content !== 0 ? CstResourceColor.CompressedAir : 'white'} />
 
-          <Navigate X={5} Y={450} Width={180} NavTo="LubStorageScreen" NavText={`From ${LubSys.Storage.Tank.Name}`} navigation={navigation} />
+          <Navigate X={5} Y={450} Width={180} NavStack="Lubrication" NavScreen="LubStorageScreen" NavText={`From ${LubSys.Storage.Tank.Name}`} navigation={navigation} />
           <Pipe x1={5} y1={500} x2={250} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubSys.Storage.OutletValve.Content !== 0} />
           <Valve X={250} Y={465} ValveObj={LubIntakeValve} ContentColor={CstResourceColor.Lubrication} />
           <Pipe x1={300} y1={500} x2={350} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubIntakeValve.Content !== 0} />
@@ -74,7 +74,7 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
           <Line x1={756} y1={517} x2={756} y2={523} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
           <Line x1={757} y1={320} x2={763} y2={320} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
 
-          <Navigate X={750} Y={180} Width={250} NavTo="CoolantFreshWaterSystemScreen" NavText={`From ${DsGen1LubCooler.Name}`} navigation={navigation} />
+          <Navigate X={750} Y={180} Width={250} NavStack="Coolant" NavScreen="CoolantFreshWaterSystemScreen" NavText={`From ${DsGen1LubCooler.Name}`} navigation={navigation} />
           <Pipe x1={800} y1={230} x2={1000} y2={230} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
           <Pipe x1={804} y1={234} x2={804} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
           <Line x1={801} y1={234} x2={807} y2={234} strokeWidth={2} stroke={DsGen1LubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />

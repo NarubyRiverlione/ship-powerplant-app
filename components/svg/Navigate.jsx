@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const Navigate = ({
-  navigation, X, Y, Width, Height, NavText, NavTo,
+  navigation, X, Y, Width, Height, NavText, NavStack, NavScreen,
 }) => (
-  <AnimatedG onPress={() => navigation.navigate(NavTo)}>
+  <AnimatedG onPress={() => navigation.navigate(NavStack, { screen: NavScreen })}>
     <Rect x={X} y={Y} width={Width} height={Height} stroke="grey" strokeWidth={2} strokeDasharray="10 5" />
     <Text x={X + 5} y={Y + 25} fill="black">{NavText}</Text>
   </AnimatedG>
@@ -19,7 +19,8 @@ Navigate.propTypes = {
   Width: PropTypes.number.isRequired,
   Height: PropTypes.number,
   NavText: PropTypes.string.isRequired,
-  NavTo: PropTypes.string.isRequired,
+  NavStack: PropTypes.string.isRequired,
+  NavScreen: PropTypes.string.isRequired,
   navigation: PropTypes.object.isRequired,
 }
 Navigate.defaultProps = {

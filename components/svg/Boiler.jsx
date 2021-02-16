@@ -101,7 +101,7 @@ const Boiler = observer(({
       <Path d="M203.737 351.74c-9.652 0-9.668 15 0 15 9.651 0 9.667-15 0-15zM255.864 351.74c-9.652 0-9.668 15 0 15 9.652 0 9.668-15 0-15zM307.991 351.74c-9.652 0-9.668 15 0 15 9.652 0 9.668-15 0-15z" />
 
       <Text x={220} y={50} fill="black" fontSize={20} fontWeight="bold">{`${BoilerObj.Pressure.toFixed(1)} bar`}</Text>
-      <Text x={220} y={70} fill="black" fontSize={20}>{`${BoilerObj.Temperature} °C`}</Text>
+      <Text x={220} y={70} fill="black" fontSize={20}>{`${BoilerObj.Temperature.toFixed(0)} °C`}</Text>
       <LookingGlass X={350} Y={330} Size={60} ContentColor={CstResourceColor.FreshWater} ContentPct={BoilerObj.WaterTank.Content} />
       <Circle cx={390} cy={340} r={8} stroke="white" fill={BoilerObj.hasEnoughWaterForFlame ? 'green' : 'red'} />
       <Circle cx={390} cy={50} r={8} stroke="white" fill={BoilerObj.hasFuel ? 'green' : 'red'} />

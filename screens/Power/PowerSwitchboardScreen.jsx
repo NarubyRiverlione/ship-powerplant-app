@@ -64,7 +64,7 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
           <Circle cx={800} cy={200} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={EmergencyGen.isRunning ? CstResourceColor.Electricity : 'white'} />
           <Circle cx={750} cy={250} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={!DsGenBreaker1.isOpen && DsGen1.isRunning ? CstResourceColor.Electricity : 'white'} />
 
-          <Navigate X={120} Y={5} Width={115} NavTo="PowerGenerator1Screen" NavText={DsGen1.Name} navigation={navigation} />
+          <Navigate X={120} Y={5} Width={115} NavStack="Power" NavScreen="PowerGenerator1Screen" NavText={DsGen1.Name} navigation={navigation} />
           <Pipe x1={250} y1={120} x2={296} y2={120} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen1.isRunning} />
           <Pipe x1={300} y1={117} x2={300} y2={155} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen1.isRunning} />
           <Pipe x1={300} y1={165} x2={300} y2={247} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker1.isOpen && DsGen1.isRunning} />

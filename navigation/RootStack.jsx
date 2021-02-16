@@ -1,10 +1,7 @@
 import React from 'react'
-import { Button } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
-import { useNavigation } from '@react-navigation/native'
-
 import PropTypes from 'prop-types'
 
 import EngineTabNavigator from './EngineStack'
