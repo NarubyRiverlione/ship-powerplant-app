@@ -21,8 +21,8 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
   const {
     CoolingSys: {
       AuxPump, SuctionPump1, SuctionPump2,
-      FwCoolerDsGen2, FwCoolerDsGen1,
-      DsGen1LubCooler, DsGen2LubCooler, FwExpandTank, FwIntakeValve, FwDrainValve,
+      FwCoolerStartAir, FwCoolerDsGen,
+      DsGenLubCooler, StartAirCooler, FwExpandTank, FwIntakeValve, FwDrainValve,
     },
   } = Sim
 
@@ -43,15 +43,14 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
 
           <Pipe x1={205} y1={66} x2={205} y2={105} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={270} y1={198} x2={270} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Text fill="black" x={70} y={120}>Diesel generator 1</Text>
-          <Text fill="black" x={70} y={140}>{DsGen1LubCooler.Name.replace('Diesel generator 1', '')}</Text>
+          <Text fill="black" x={70} y={120}>Diesel generator</Text>
+          <Text fill="black" x={70} y={140}>{DsGenLubCooler.Name.replace('Diesel generator  ', '')}</Text>
           <Cooler X={180} Y={100} cb={() => navigation.navigate('PowerGenerator1Screen')} />
 
           <Line x1={209} y1={67} x2={209} y2={74} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
           <Pipe x1={530} y1={198} x2={530} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
-          <Text fill="black" x={320} y={120}>Diesel generator 2</Text>
-          <Text fill="black" x={320} y={140}>{DsGen2LubCooler.Name.replace('Diesel generator 2', '')}</Text>
+          <Text fill="black" x={350} y={120}>{StartAirCooler.Name}</Text>
 
           <Pipe x1={465} y1={74} x2={205} y2={105} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Cooler X={440} Y={100} />
@@ -76,7 +75,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={300} y1={74} x2={300} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Text fill="black">
             <TSpan x={50} y={450}>Fresh water cooler</TSpan>
-            <TSpan x={50} y={470}>{FwCoolerDsGen1.Name.replace('Fresh water cooler', '')}</TSpan>
+            <TSpan x={50} y={470}>{FwCoolerDsGen.Name.replace('Fresh water cooler', '')}</TSpan>
           </Text>
           <Cooler X={160} Y={420} Scale={0.8} cb={() => navigation.navigate('CoolantSeaWaterScreen')} />
 
@@ -93,7 +92,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={560} y1={74} x2={560} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Text fill="black">
             <TSpan x={320} y={450}>Fresh water cooler</TSpan>
-            <TSpan x={320} y={470}>{FwCoolerDsGen2.Name.replace('Fresh water cooler', '')}</TSpan>
+            <TSpan x={320} y={470}>{FwCoolerStartAir.Name.replace('Fresh water cooler', '')}</TSpan>
           </Text>
           <Cooler X={430} Y={420} Scale={0.8} cb={() => navigation.navigate('CoolantSeaWaterScreen')} />
 

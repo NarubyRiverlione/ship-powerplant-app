@@ -15,25 +15,25 @@ import Cooler from '../../components/svg/Cooler'
 import SimulatorScreen from '../SimulatorScreen'
 import CstResourceColor from '../../CstColors'
 
-const PowerGenerator1Screen = observer(({ navigation }) => {
+const PowerGeneratorScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
-    PowerSys: { DsGen1 },
+    PowerSys: { DsGen },
     FuelSys: { DsService },
     LubSys,
     AirSys: { EmergencyReceiver },
-    CoolingSys: { DsGen1LubCooler },
+    CoolingSys: { DsGenLubCooler },
   } = Sim
   const {
     FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump,
-  } = DsGen1
+  } = DsGen
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
           <Navigate X={5} Y={240} Width={85} NavStack="Power" NavScreen="PowerSwitchboardScreen" NavText="Switchboard" navigation={navigation} />
-          <Pipe x1={5} y1={290} x2={115} y2={290} ContentColor={CstResourceColor.Electricity} HasContent={DsGen1.isRunning} />
+          <Pipe x1={5} y1={290} x2={115} y2={290} ContentColor={CstResourceColor.Electricity} HasContent={DsGen.isRunning} />
 
           <Navigate X={5} Y={50} Width={150} NavStack="Fuel" NavScreen="FuelDsStorageScreen" NavText={`From ${DsService.Tank.Name}`} navigation={navigation} />
           <Pipe x1={5} y1={100} x2={350} y2={100} ContentColor={CstResourceColor.Diesel} HasContent={DsService.OutletValve.Content !== 0} />
@@ -60,37 +60,37 @@ const PowerGenerator1Screen = observer(({ navigation }) => {
           <Rect x={650} y={450} width={10} height={100} stroke="black" strokeWidth={2} />
           <Rect x={360} y={540} width={290} height={10} stroke="black" strokeWidth={2} />
 
-          <Pipe x1={650} y1={480} x2={710} y2={480} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
-          <Pipe x1={682} y1={300} x2={710} y2={300} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
-          <Pipe x1={714} y1={296} x2={714} y2={484} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
-          <Line x1={710} y1={477} x2={710} y2={483} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
-          <Line x1={710} y1={297} x2={710} y2={303} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
+          <Pipe x1={650} y1={480} x2={710} y2={480} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
+          <Pipe x1={682} y1={300} x2={710} y2={300} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
+          <Pipe x1={714} y1={296} x2={714} y2={484} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
+          <Line x1={710} y1={477} x2={710} y2={483} strokeWidth={2} stroke={DsGen.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
+          <Line x1={710} y1={297} x2={710} y2={303} strokeWidth={2} stroke={DsGen.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
 
-          <Pipe x1={682} y1={270} x2={790} y2={270} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
+          <Pipe x1={682} y1={270} x2={790} y2={270} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
 
-          <Pipe x1={760} y1={320} x2={760} y2={524} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
-          <Pipe x1={650} y1={520} x2={756} y2={520} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
-          <Pipe x1={756} y1={316} x2={790} y2={316} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen1.HasLubrication} />
-          <Line x1={756} y1={517} x2={756} y2={523} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
-          <Line x1={757} y1={320} x2={763} y2={320} strokeWidth={2} stroke={DsGen1.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
+          <Pipe x1={760} y1={320} x2={760} y2={524} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
+          <Pipe x1={650} y1={520} x2={756} y2={520} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
+          <Pipe x1={756} y1={316} x2={790} y2={316} ContentColor={CstResourceColor.Lubrication} HasContent={DsGen.HasLubrication} />
+          <Line x1={756} y1={517} x2={756} y2={523} strokeWidth={2} stroke={DsGen.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
+          <Line x1={757} y1={320} x2={763} y2={320} strokeWidth={2} stroke={DsGen.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
 
-          <Navigate X={750} Y={180} Width={250} NavStack="Coolant" NavScreen="CoolantFreshWaterSystemScreen" NavText={`From ${DsGen1LubCooler.Name}`} navigation={navigation} />
-          <Pipe x1={800} y1={230} x2={1000} y2={230} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
-          <Pipe x1={804} y1={234} x2={804} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
-          <Line x1={801} y1={234} x2={807} y2={234} strokeWidth={2} stroke={DsGen1LubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
+          <Navigate X={750} Y={180} Width={250} NavStack="Coolant" NavScreen="CoolantFreshWaterSystemScreen" NavText={`From ${DsGenLubCooler.Name}`} navigation={navigation} />
+          <Pipe x1={800} y1={230} x2={1000} y2={230} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
+          <Pipe x1={804} y1={234} x2={804} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
+          <Line x1={801} y1={234} x2={807} y2={234} strokeWidth={2} stroke={DsGenLubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
 
-          <Pipe x1={874} y1={380} x2={1000} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
-          <Pipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGen1LubCooler.isCooling} />
-          <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGen1LubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
+          <Pipe x1={874} y1={380} x2={1000} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
+          <Pipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
+          <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGenLubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
 
           <Cooler X={780} Y={250} />
-          <Text x={880} y={300} fill="black">{DsGen1LubCooler.Name.replace('Diesel generator 1', '')}</Text>
+          <Text x={880} y={300} fill="black">{DsGenLubCooler.Name.replace('Diesel generator 1', '')}</Text>
 
-          <DieselGenerator X={300} Y={150} DsGen={DsGen1} />
+          <DieselGenerator X={300} Y={150} DsGen={DsGen} />
         </Svg>
       </View>
     </SimulatorScreen>
   )
 })
 
-export default PowerGenerator1Screen
+export default PowerGeneratorScreen

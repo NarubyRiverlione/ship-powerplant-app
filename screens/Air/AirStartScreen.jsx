@@ -11,7 +11,7 @@ const AirStartScreen = observer(() => {
   const Sim = SimContext()
   const {
     AirSys: {
-      StartAirCompressor1, StartAirReceiver1,
+      StartAirCompressor, StartAirReceiver,
       EmergencyCompressor, EmergencyReceiver,
     },
   } = Sim
@@ -24,8 +24,8 @@ const AirStartScreen = observer(() => {
           <StartAirSystem
             X={50}
             Y={20}
-            StartCompressor={StartAirCompressor1}
-            Receiver={StartAirReceiver1}
+            StartCompressor={StartAirCompressor}
+            Receiver={StartAirReceiver}
             ReceiverColor="grey"
           />
 

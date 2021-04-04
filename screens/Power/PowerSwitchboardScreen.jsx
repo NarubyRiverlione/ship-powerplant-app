@@ -19,7 +19,7 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
     PowerSys: {
-      EmergencyGen, EmergencyBus, MainBus1, MainBreaker1, DsGen1, DsGenBreaker1,
+      EmergencyGen, EmergencyBus, MainBus1, MainBreaker1, DsGen, DsGenBreaker,
     },
   } = Sim
   // 30 290
@@ -39,9 +39,9 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
           <Text x={820} y={420} fill="black">{`${EmergencyBus.Voltage} V`}</Text>
           <Pipe x1={800} y1={300} x2={800} y2={500} Size={3} ContentColor={CstResourceColor.Electricity} HasContent={EmergencyBus.Content !== 0} />
 
-          <Pipe x1={50} y1={250} x2={745} y2={250} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker1.isOpen && DsGen1.isRunning} />
+          <Pipe x1={50} y1={250} x2={745} y2={250} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker.isOpen && DsGen.isRunning} />
 
-          <Pipe x1={50} y1={247} x2={50} y2={305} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker1.isOpen && DsGen1.isRunning} />
+          <Pipe x1={50} y1={247} x2={50} y2={305} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker.isOpen && DsGen.isRunning} />
           <Pipe x1={50} y1={345} x2={50} y2={500} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={MainBus1.Content !== 0} />
           <PowerSwitch X={50} Y={300} Vertical isOpen={MainBreaker1.isOpen} cb={() => MainBreaker1.Toggle()} />
           <Text x={80} y={400} fill="black">{MainBus1.Name}</Text>
@@ -62,17 +62,17 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
 
           <Circle cx={800} cy={300} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={EmergencyBus.Content === 0 ? 'white' : CstResourceColor.Electricity} />
           <Circle cx={800} cy={200} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={EmergencyGen.isRunning ? CstResourceColor.Electricity : 'white'} />
-          <Circle cx={750} cy={250} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={!DsGenBreaker1.isOpen && DsGen1.isRunning ? CstResourceColor.Electricity : 'white'} />
+          <Circle cx={750} cy={250} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={!DsGenBreaker.isOpen && DsGen.isRunning ? CstResourceColor.Electricity : 'white'} />
 
-          <Navigate X={120} Y={5} Width={115} NavStack="Power" NavScreen="PowerGenerator1Screen" NavText={DsGen1.Name} navigation={navigation} />
-          <Pipe x1={250} y1={120} x2={296} y2={120} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen1.isRunning} />
-          <Pipe x1={300} y1={117} x2={300} y2={155} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen1.isRunning} />
-          <Pipe x1={300} y1={165} x2={300} y2={247} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker1.isOpen && DsGen1.isRunning} />
-          <Generator X={100} Y={50} Scale={0.8} cb={() => { navigation.navigate('PowerGenerator1Screen') }} />
-          <PowerSwitch X={300} Y={150} Vertical isOpen={DsGenBreaker1.isOpen} cb={() => DsGenBreaker1.Toggle()} />
-          <Line x1={296} y1={118} x2={296} y2={122} stroke={DsGen1.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
-          <Line x1={298} y1={247} x2={302} y2={247} stroke={!DsGenBreaker1.isOpen && DsGen1.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
-          <Line x1={52} y1={248} x2={52} y2={252} stroke={!DsGenBreaker1.isOpen && DsGen1.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
+          <Navigate X={120} Y={5} Width={115} NavStack="Power" NavScreen="PowerGeneratorScreen" NavText={DsGen.Name} navigation={navigation} />
+          <Pipe x1={250} y1={120} x2={296} y2={120} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen.isRunning} />
+          <Pipe x1={300} y1={117} x2={300} y2={155} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen.isRunning} />
+          <Pipe x1={300} y1={165} x2={300} y2={247} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker.isOpen && DsGen.isRunning} />
+          <Generator X={100} Y={50} Scale={0.8} cb={() => { navigation.navigate('PowerGeneratorScreen') }} />
+          <PowerSwitch X={300} Y={150} Vertical isOpen={DsGenBreaker.isOpen} cb={() => DsGenBreaker.Toggle()} />
+          <Line x1={296} y1={118} x2={296} y2={122} stroke={DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
+          <Line x1={298} y1={247} x2={302} y2={247} stroke={!DsGenBreaker.isOpen && DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
+          <Line x1={52} y1={248} x2={52} y2={252} stroke={!DsGenBreaker.isOpen && DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
         </Svg>
       </View>
     </SimulatorScreen>

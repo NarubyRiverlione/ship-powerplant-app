@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import PowerSwitchboardScreen from '../screens/Power/PowerSwitchboardScreen'
-import PowerGenerator1Screen from '../screens/Power/PowerGenerator1Screen'
+import PowerGeneratorScreen from '../screens/Power/PowerGeneratorScreen'
 
 const PowerStack = createStackNavigator()
 
@@ -15,9 +15,9 @@ const PowerTabNavigator = () => (
     />
 
     <PowerStack.Screen
-      name="PowerGenerator1Screen"
-      component={PowerGenerator1Screen}
-      options={{ headerTitle: 'POWER - DS 1' }}
+      name="PowerGeneratorScreen"
+      component={PowerGeneratorScreen}
+      options={{ headerTitle: 'POWER - DIESEL GENERATOR' }}
     />
   </PowerStack.Navigator>
 )
