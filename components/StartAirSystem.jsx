@@ -1,5 +1,5 @@
 import React from 'react'
-import { G, Line } from 'react-native-svg'
+import { G, Line, Text } from 'react-native-svg'
 import { observer } from 'mobx-react-lite'
 import PropTypes from 'prop-types'
 import TankValves from './svg/TankValves'
@@ -12,7 +12,7 @@ import CstResourceColor from '../constants/CstColors'
 */
 const StartAirSystem = observer(({
   X, Y,
-  StartCompressor, Receiver, ReceiverColor,
+  StartCompressor, Receiver, ReceiverColor, StartAirCooler,
 }) => (
   <G>
     <Compressor
@@ -44,8 +44,8 @@ const StartAirSystem = observer(({
     <Cooler
       X={X + 350}
       Y={Y + 100}
-
     />
+    <Text x={X + 450} y={Y + 150} fill="black">{StartAirCooler.Name}</Text>
     <Pipe
       x1={X + 445}
       y1={Y + 120}
@@ -80,6 +80,7 @@ StartAirSystem.propTypes = {
   Y: PropTypes.number.isRequired,
   // todo shape
   StartCompressor: PropTypes.object.isRequired,
+  StartAirCooler: PropTypes.object.isRequired,
   Receiver: PropTypes.object.isRequired,
   ReceiverColor: PropTypes.string.isRequired,
 }

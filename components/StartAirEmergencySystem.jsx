@@ -15,8 +15,8 @@ const StartAirEmergencySystem = observer(({
 }) => (
   <G>
     <Compressor
-      X={X}
-      Y={Y}
+      X={X + 20}
+      Y={Y + 180}
       Name={StartCompressor.Name}
       hasElectricity={StartCompressor.CheckPower}
       isRunning={StartCompressor.isRunning}
@@ -27,6 +27,15 @@ const StartAirEmergencySystem = observer(({
       Scale={0.7}
     />
 
+    <Pipe
+      x1={X + 125}
+      y1={Y + 120}
+      x2={X + 250}
+      y2={Y + 120}
+      ContentColor={CstResourceColor.CompressedAir}
+      HasContent={StartCompressor.OutletValve.Content !== 0}
+      Size={6}
+    />
     <Valve
       X={X + 250}
       Y={Y + 85}
@@ -40,6 +49,7 @@ const StartAirEmergencySystem = observer(({
       y2={Y + 120}
       ContentColor={CstResourceColor.CompressedAir}
       HasContent={StartCompressor.OutletValve.Content !== 0}
+      Size={6}
     />
 
     <SmallTankValves
@@ -53,9 +63,9 @@ const StartAirEmergencySystem = observer(({
 
     <Line
       x1={X + 605}
-      y1={Y + 117}
+      y1={Y + 118}
       x2={X + 605}
-      y2={Y + 123}
+      y2={Y + 122}
       strokeWidth="2"
       stroke={StartCompressor.OutletValve.Content !== 0 ? CstResourceColor.CompressedAir : 'white'}
     />

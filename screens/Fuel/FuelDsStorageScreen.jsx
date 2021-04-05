@@ -59,6 +59,7 @@ const FuelDsStorageScreen = observer(() => {
             y1={210}
             x2={610}
             y2={210}
+            Size={6}
             ContentColor={CstResourceColor.Diesel}
             HasContent={DsStorage.OutletValve.Content !== 0}
           />
@@ -73,9 +74,9 @@ const FuelDsStorageScreen = observer(() => {
           />
           <Line
             x1={605}
-            y1={207}
+            y1={208}
             x2={605}
-            y2={213}
+            y2={212}
             strokeWidth="2"
             stroke={DsStorage.OutletValve.Content !== 0 ? CstResourceColor.Diesel : 'white'}
           />
