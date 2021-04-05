@@ -2,22 +2,21 @@ import React from 'react'
 import { G, Line } from 'react-native-svg'
 import { observer } from 'mobx-react-lite'
 import PropTypes from 'prop-types'
-import TankValves from './svg/TankValves'
-import Cooler from './svg/Cooler'
+import SmallTankValves from './svg/SmallTankValves'
 import Valve from './svg/Valve'
 import Pipe from './svg/Pipe'
 import Compressor from './svg/Compressor'
 import CstResourceColor from '../constants/CstColors'
 /*
 */
-const StartAirSystem = observer(({
+const StartAirEmergencySystem = observer(({
   X, Y,
   StartCompressor, Receiver, ReceiverColor,
 }) => (
   <G>
     <Compressor
       X={X}
-      Y={Y + 60}
+      Y={Y}
       Name={StartCompressor.Name}
       hasElectricity={StartCompressor.CheckPower}
       isRunning={StartCompressor.isRunning}
@@ -25,29 +24,17 @@ const StartAirSystem = observer(({
       cb={() => {
         StartCompressor.Toggle()
       }}
+      Scale={0.7}
     />
 
     <Valve
       X={X + 250}
-      Y={Y + 145}
+      Y={Y + 85}
       ContentColor={CstResourceColor.CompressedAir}
       ValveObj={StartCompressor.OutletValve}
     />
     <Pipe
       x1={X + 302}
-      y1={Y + 180}
-      x2={X + 360}
-      y2={Y + 180}
-      ContentColor={CstResourceColor.CompressedAir}
-      HasContent={StartCompressor.OutletValve.Content !== 0}
-    />
-    <Cooler
-      X={X + 350}
-      Y={Y + 100}
-
-    />
-    <Pipe
-      x1={X + 445}
       y1={Y + 120}
       x2={X + 610}
       y2={Y + 120}
@@ -55,7 +42,7 @@ const StartAirSystem = observer(({
       HasContent={StartCompressor.OutletValve.Content !== 0}
     />
 
-    <TankValves
+    <SmallTankValves
       X={X + 600}
       Y={Y + 70}
       Name={Receiver.Tank.Name}
@@ -75,13 +62,14 @@ const StartAirSystem = observer(({
   </G>
 ))
 
-StartAirSystem.propTypes = {
+StartAirEmergencySystem.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
   // todo shape
   StartCompressor: PropTypes.object.isRequired,
   Receiver: PropTypes.object.isRequired,
   ReceiverColor: PropTypes.string.isRequired,
+
 }
 
-export default StartAirSystem
+export default StartAirEmergencySystem

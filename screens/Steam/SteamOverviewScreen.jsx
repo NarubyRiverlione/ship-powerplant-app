@@ -6,6 +6,7 @@ import SimContext from '../../SimulatorContext'
 
 import styles from '../../styles'
 import SimulatorScreen from '../SimulatorScreen'
+import { NavScreen } from '../../constants/CstNav'
 
 const SteamOverviewScreen = observer(({ navigation }) => {
   const Sim = SimContext()
@@ -17,7 +18,7 @@ const SteamOverviewScreen = observer(({ navigation }) => {
 
         <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
           <Text style={styles.subTitle}>Oil boiler</Text>
-          <Button style={{ flex: 1 }} title="Go to boiler" onPress={() => navigation.navigate('SteamBoilerScreen')} />
+          <Button style={{ flex: 1 }} title="Go to boiler" onPress={() => navigation.navigate(NavScreen.Steam.BoilerScreen)} />
           <View style={{
             flex: 1, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center',
           }}

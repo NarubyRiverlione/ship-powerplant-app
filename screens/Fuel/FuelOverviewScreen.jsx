@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react-lite'
 import SimContext from '../../SimulatorContext'
 
+import { NavScreen } from '../../constants/CstNav'
 import styles from '../../styles'
 import SimulatorScreen from '../SimulatorScreen'
 
@@ -30,7 +31,7 @@ const FuelOverviewScreen = observer(({ navigation }) => {
             <Text style={styles.text}>{`Diesel service tank ${DsService.Tank.Content.toFixed(0)} % full`}</Text>
           </View>
           <View style={{ flex: 1, justifyContent: 'flex-start' }}>
-            <Button title="Go to diesel oil storage" onPress={() => navigation.navigate('FuelDsStorageScreen')} />
+            <Button title="Go to diesel oil storage" onPress={() => navigation.navigate(NavScreen.Fuel.DsStorageScreen)} />
           </View>
         </View>
 
@@ -46,7 +47,7 @@ const FuelOverviewScreen = observer(({ navigation }) => {
             <Text style={styles.text}>{`Fore bunker tank ${0} % `}</Text>
           </View>
           <View style={{ flex: 1, justifyContent: 'flex-start' }}>
-            <Button title="Go to heavy fuel storage" onPress={() => navigation.navigate('FuelHfStorageScreen')} />
+            <Button title="Go to heavy fuel storage" onPress={() => navigation.navigate(NavScreen.Fuel.HfStorageScreen)} />
           </View>
         </View>
 
@@ -60,7 +61,7 @@ const FuelOverviewScreen = observer(({ navigation }) => {
             <Text style={styles.text}>{`Heavy fuel service tank ${0} % full`}</Text>
           </View>
           <View style={{ flex: 1, justifyContent: 'flex-start' }}>
-            <Button title="Go to heavy fuel service" onPress={() => navigation.navigate('FuelHfServiceScreen')} />
+            <Button title="Go to heavy fuel service" onPress={() => navigation.navigate(NavScreen.Fuel.HfServiceScreen)} />
           </View>
         </View>
       </View>

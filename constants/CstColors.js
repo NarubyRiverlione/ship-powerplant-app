@@ -1,7 +1,21 @@
+const CstResourceColor = {
+  Electricity: 'red',
+  Diesel: 'green',
+  HeavyFuel: 'purple',
+  Lubrication: 'darkgoldenrod',
+  CompressedAir: 'grey',
+  SeaWater: 'darkblue',
+  FreshWater: 'lightblue',
+}
+
+export const CstItemsColor = {
+  Tank: '',
+}
+
 const tintColorLight = '#2f95dc'
 const tintColorDark = '#fff'
 
-export default {
+export const AppColors = {
   light: {
     text: '#000',
     background: '#fff',
@@ -17,3 +31,5 @@ export default {
     tabIconSelected: tintColorDark,
   },
 }
+
+export default CstResourceColor

@@ -9,7 +9,7 @@ import TankValves from '../../components/svg/TankValves'
 import SmallTankValves from '../../components/svg/SmallTankValves'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
-import CstResourceColor from '../../CstColors'
+import CstResourceColor from '../../constants/CstColors'
 
 const FuelDsStorageScreen = observer(() => {
   const Sim = SimContext()

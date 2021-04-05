@@ -6,6 +6,7 @@ import SimContext from '../../SimulatorContext'
 
 import styles from '../../styles'
 import SimulatorScreen from '../SimulatorScreen'
+import { NavScreen } from '../../constants/CstNav'
 
 const LubOverviewScreen = observer(({ navigation }) => {
   const Sim = SimContext()
@@ -17,7 +18,7 @@ const LubOverviewScreen = observer(({ navigation }) => {
 
         <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-start' }}>
           <Text style={styles.subTitle}>Storage</Text>
-          <Button style={{ flex: 1 }} title="Go to storage" onPress={() => navigation.navigate('LubStorageScreen')} />
+          <Button style={{ flex: 1 }} title="Go to storage" onPress={() => navigation.navigate(NavScreen.Lubrication.StorageScreen)} />
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
             <Text style={styles.text}>{`Lubrication storage tank ${LubSys.Storage.Tank.Content} %`}</Text>
           </View>

@@ -3,13 +3,13 @@ import { Animated } from 'react-native'
 import { G, Path, Text } from 'react-native-svg'
 import PropTypes from 'prop-types'
 import Pipe from './Pipe'
-import CstResourceColor from '../../CstColors'
+import CstResourceColor from '../../constants/CstColors'
 import SafetyValve from './SafetyValve'
 
 const ElectricalMotor = ({
   X, Y, isRunning, Scale,
 }) => (
-  <G data-name="Electric Motor-electronics" transform={`translate(${X},${Y}) scale(${3 / Scale})`}>
+  <G data-name="Electric Motor-electronics" transform={`translate(${X},${Y}) scale(${Scale * 3})`}>
     <Path d="M18 19h33v27H18z" fill="#898890" />
     <Path d="M3 29h8v6H3z" fill="#e0e0e2" />
     <Path d="M22 46h24v4H22z" fill="#57565c" />

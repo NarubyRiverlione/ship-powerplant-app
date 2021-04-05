@@ -1,6 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { NavScreen, NavText } from '../constants/CstNav'
 import FuelOverviewScreen from '../screens/Fuel/FuelOverviewScreen'
 import FuelDsStorageScreen from '../screens/Fuel/FuelDsStorageScreen'
 import FuelHfStorageScreen from '../screens/Fuel/FuelHfStorageScreen'
@@ -8,26 +9,26 @@ import FuelHfServiceScreen from '../screens/Fuel/FuelHfServiceScreen'
 
 const FuelStack = createStackNavigator()
 const FuelTabNavigator = () => (
-  <FuelStack.Navigator initialRouteName="FuelOverviewScreen">
+  <FuelStack.Navigator initialRouteName={NavScreen.Fuel.OverviewScreen}>
     <FuelStack.Screen
-      name="FuelOverviewScreen"
+      name={NavScreen.Fuel.OverviewScreen}
       component={FuelOverviewScreen}
-      options={{ headerTitle: 'FUEL - Overview' }}
+      options={{ headerTitle: NavText.Fuel.OverviewScreen }}
     />
     <FuelStack.Screen
-      name="FuelDsStorageScreen"
+      name={NavScreen.Fuel.DsStorageScreen}
       component={FuelDsStorageScreen}
-      options={{ headerTitle: 'FUEL - Diesel oil storage' }}
+      options={{ headerTitle: NavText.Fuel.DsStorageScreen }}
     />
     <FuelStack.Screen
-      name="FuelHfStorageScreen"
+      name={NavScreen.Fuel.HfStorageScreen}
       component={FuelHfStorageScreen}
-      options={{ headerTitle: 'FUEL - Heavy fuel storage' }}
+      options={{ headerTitle: NavText.Fuel.HfStorageScreen }}
     />
     <FuelStack.Screen
-      name="FuelHfServiceScreen"
+      name={NavScreen.Fuel.HfServiceScreen}
       component={FuelHfServiceScreen}
-      options={{ headerTitle: 'FUEL - Heavy fuel service' }}
+      options={{ headerTitle: NavText.Fuel.HfServiceScreen }}
     />
   </FuelStack.Navigator>
 )

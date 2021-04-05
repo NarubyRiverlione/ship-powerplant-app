@@ -4,8 +4,9 @@ import { useNavigation } from '@react-navigation/native'
 
 import { observer } from 'mobx-react-lite'
 
-import CstTxt from '../CstTxt'
+import CstTxt from '../constants/CstTxt'
 import SimContext from '../SimulatorContext'
+import { RootStackName } from '../constants/CstNav'
 
 const SimulatorScreen = observer(({ children }) => {
   const Sim = SimContext()
@@ -23,7 +24,7 @@ const SimulatorScreen = observer(({ children }) => {
         </View>
 
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Button title="Alarms" onPress={() => { navigation.navigate('AlarmModal') }} />
+          <Button title="Alarms" onPress={() => { navigation.navigate(RootStackName.AlarmModal) }} />
         </View>
 
         <View style={{ flex: 1, alignItems: 'flex-end' }}>

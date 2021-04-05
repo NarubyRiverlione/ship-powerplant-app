@@ -1,28 +1,28 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { NavScreen, NavText } from '../constants/CstNav'
 import AirOverviewScreen from '../screens/Air/AirOverviewScreen'
-
 import AirStartScreen from '../screens/Air/AirStartScreen'
 import AirControlScreen from '../screens/Air/AirControlScreen'
 
 const AirStack = createStackNavigator()
 const AirTabNavigator = () => (
-  <AirStack.Navigator initialRouteName="AirOverviewScreen">
+  <AirStack.Navigator initialRouteName={NavScreen.Air.OverviewScreen}>
     <AirStack.Screen
-      name="AirOverviewScreen"
+      name={NavScreen.Air.OverviewScreen}
       component={AirOverviewScreen}
-      options={{ headerTitle: 'COMPRESSED AIR - Overview' }}
+      options={{ headerTitle: NavText.Air.OverviewScreen }}
     />
     <AirStack.Screen
-      name="AirStartScreen"
+      name={NavScreen.Air.StartScreen}
       component={AirStartScreen}
-      options={{ headerTitle: 'COMPRESSED AIR - Start up' }}
+      options={{ headerTitle: NavText.Air.StartScreen }}
     />
     <AirStack.Screen
-      name="AirControlScreen"
+      name={NavScreen.Air.ControlScreen}
       component={AirControlScreen}
-      options={{ headerTitle: 'COMPRESSED AIR - Control' }}
+      options={{ headerTitle: NavText.Air.ControlScreen }}
     />
   </AirStack.Navigator>
 

@@ -1,27 +1,28 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { NavScreen, NavText } from '../constants/CstNav'
 import CoolantOverviewScreen from '../screens/Coolant/CoolantOverviewScreen'
 import CoolantSeaWaterScreen from '../screens/Coolant/CoolantSeaWaterSystemScreen'
 import CoolantFreshWaterSystemScreen from '../screens/Coolant/CoolantFreshWaterSystemScreen'
 
 const CoolantStack = createStackNavigator()
 const CoolantTabNavigator = () => (
-  <CoolantStack.Navigator initialRouteName="CoolantOverviewScreen">
+  <CoolantStack.Navigator initialRouteName={NavScreen.Coolant.OverviewScreen}>
     <CoolantStack.Screen
-      name="CoolantOverviewScreen"
+      name={NavScreen.Coolant.OverviewScreen}
       component={CoolantOverviewScreen}
-      options={{ headerTitle: 'COOLANT - Overview' }}
+      options={{ headerTitle: NavText.Coolant.OverviewScreen }}
     />
     <CoolantStack.Screen
-      name="CoolantSeaWaterScreen"
+      name={NavScreen.Coolant.SeaWaterScreen}
       component={CoolantSeaWaterScreen}
-      options={{ headerTitle: 'COOLANT - Sea Water System' }}
+      options={{ headerTitle: NavText.Coolant.SeaWaterScreen }}
     />
     <CoolantStack.Screen
-      name="CoolantFreshWaterSystemScreen"
+      name={NavScreen.Coolant.FreshWaterSystemScreen}
       component={CoolantFreshWaterSystemScreen}
-      options={{ headerTitle: 'COOLANT - Fresh Water System' }}
+      options={{ headerTitle: NavText.Coolant.FreshWaterSystemScreen }}
     />
   </CoolantStack.Navigator>
 

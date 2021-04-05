@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite'
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import StartAirSystem from '../../components/StartAirSystem'
+import StartAirEmergencySystem from '../../components/StartAirEmergencySystem'
 
 const AirStartScreen = observer(() => {
   const Sim = SimContext()
@@ -23,15 +24,15 @@ const AirStartScreen = observer(() => {
 
           <StartAirSystem
             X={50}
-            Y={20}
+            Y={10}
             StartCompressor={StartAirCompressor}
             Receiver={StartAirReceiver}
             ReceiverColor="grey"
           />
 
-          <StartAirSystem
+          <StartAirEmergencySystem
             X={50}
-            Y={280}
+            Y={300}
             StartCompressor={EmergencyCompressor}
             Receiver={EmergencyReceiver}
             ReceiverColor="gainsboro"

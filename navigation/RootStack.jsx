@@ -12,13 +12,14 @@ import AirTabNavigator from './AirStack'
 import CoolantTabNavigator from './CoolantStack'
 import SteamTabNavigator from './SteamStack'
 
-import Colors from '../constants/Colors'
+import { NavStack, RootStackName } from '../constants/CstNav'
+import { AppColors } from '../constants/CstColors'
 import useColorScheme from '../hooks/useColorScheme'
 import AlarmModalScreen from '../screens/AlarmModalScreen'
 
-function TabBarIcon({ name, color }) {
-  return <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} name={name} color={color} />
-}
+const TabBarIcon = ({ name, color }) => (
+  <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} name={name} color={color} />
+)
 TabBarIcon.propTypes = {
   name: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
@@ -29,58 +30,61 @@ const BottomTabBarNavigator = () => {
   const colorScheme = useColorScheme()
   return (
     <BottomTabStack.Navigator
-      initialRouteName="Fuel"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+      initialRouteName={NavStack.MainEngine}
+      tabBarOptions={{ activeTintColor: AppColors[colorScheme].tint }}
     >
+
       <BottomTabStack.Screen
-        name="Main Engine"
+        name={NavStack.MainEngine}
         component={EngineTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="engine" color={color} />,
         }}
       />
+
       <BottomTabStack.Screen
-        name="Power"
+        name={NavStack.Power}
         component={PowerTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="lightning-bolt" color={color} />,
         }}
       />
       <BottomTabStack.Screen
-        name="Fuel"
+        name={NavStack.Fuel}
         component={FuelTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="fuel" color={color} />,
         }}
       />
       <BottomTabStack.Screen
-        name="Lubrication"
+        name={NavStack.Lubrication}
         component={LubTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="oil" color={color} />,
         }}
       />
       <BottomTabStack.Screen
-        name="Comp. Air"
+        name={NavStack.CompAir}
         component={AirTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="air-filter" color={color} />,
         }}
       />
       <BottomTabStack.Screen
-        name="Coolant"
+        name={NavStack.Coolant}
         component={CoolantTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="coolant-temperature" color={color} />,
         }}
       />
       <BottomTabStack.Screen
-        name="Steam"
+        name={NavStack.Steam}
         component={SteamTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="kettle-steam" color={color} />,
         }}
       />
+
     </BottomTabStack.Navigator>
   )
 }
@@ -89,19 +93,18 @@ const RootStack = createStackNavigator()
 const RootStackNavigator = () => (
   <RootStack.Navigator
     mode="modal"
-    initialRouteName="BottomTabBar"
+    initialRouteName={RootStackName.BottomTabBar}
     screenOptions={{ headerShown: false }}
   >
-    <RootStack.Screen
-      name="BottomTabBar"
-      component={BottomTabBarNavigator}
 
+    <RootStack.Screen
+      name={RootStackName.BottomTabBar}
+      component={BottomTabBarNavigator}
     />
 
     <RootStack.Screen
-      name="AlarmModal"
+      name={RootStackName.AlarmModal}
       component={AlarmModalScreen}
-
     />
 
   </RootStack.Navigator>

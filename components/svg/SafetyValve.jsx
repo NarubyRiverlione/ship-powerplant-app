@@ -3,7 +3,7 @@ import React from 'react'
 import { Text, Path, G } from 'react-native-svg'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react-lite'
-import CstTxt, { TxtOpenClose } from '../../CstTxt'
+import CstTxt, { TxtOpenClose } from '../../constants/CstTxt'
 
 const SafetyValve = observer(({
   isOpen, Scale, X, Y,

@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react-lite'
 import LookingGlass from './LookingGlass'
-import CstResourceColor from '../../CstColors'
+import CstResourceColor from '../../constants/CstColors'
 
 const Flame = ({ X, Y, Scale }) => (
   <G data-name="Flame" transform={`translate(${X},${Y}) scale(${0.2 * Scale})`}>

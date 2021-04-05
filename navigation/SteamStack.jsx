@@ -1,21 +1,22 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { NavScreen, NavText } from '../constants/CstNav'
 import SteamOverviewScreen from '../screens/Steam/SteamOverviewScreen'
 import SteamBoilerScreen from '../screens/Steam/SteamBoilerScreen'
 
 const SteamStack = createStackNavigator()
 const SteamTabNavigator = () => (
-  <SteamStack.Navigator initialRouteName="SteamOverviewScreen">
+  <SteamStack.Navigator initialRouteName={NavScreen.Steam.OverviewScreen}>
     <SteamStack.Screen
-      name="SteamOverviewScreen"
+      name={NavScreen.Steam.OverviewScreen}
       component={SteamOverviewScreen}
-      options={{ headerTitle: 'STEAM- Overview' }}
+      options={{ headerTitle: NavText.Steam.OverviewScreen }}
     />
     <SteamStack.Screen
-      name="SteamBoilerScreen"
+      name={NavScreen.Steam.BoilerScreen}
       component={SteamBoilerScreen}
-      options={{ headerTitle: 'STEAM - Boiler' }}
+      options={{ headerTitle: NavText.Steam.BoilerScreen }}
     />
   </SteamStack.Navigator>
 )

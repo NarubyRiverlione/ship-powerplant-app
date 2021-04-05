@@ -13,7 +13,8 @@ import Navigate from '../../components/svg/Navigate'
 import Valve from '../../components/svg/Valve'
 import SmallTankValves from '../../components/svg/SmallTankValves'
 import Pump from '../../components/svg/Pump'
-import CstResourceColor from '../../CstColors'
+import CstResourceColor from '../../constants/CstColors'
+import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const SteamBoilerScreen = observer(({ navigation }) => {
   const Sim = SimContext()
@@ -33,7 +34,7 @@ const SteamBoilerScreen = observer(({ navigation }) => {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
-          <Navigate X={20} Y={60} Width={90} Height={40} NavText="Diesel service" NavStack="Fuel" NavScreen="FuelDsStorageScreen" navigation={navigation} />
+          <Navigate X={20} Y={60} Width={90} Height={40} NavText="Diesel service" NavStack={NavStack.Fuel} NavScreen={NavScreen.Fuel.DsStorageScreen} navigation={navigation} />
           <Pipe x1={500} y1={120} x2={600} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelPump.Content !== 0} />
           <Pipe x1={200} y1={120} x2={450} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelSourceValve.Content !== 0} />
           <Pipe x1={5} y1={120} x2={150} y2={120} ContentColor={CstResourceColor.Diesel} HasContent={FuelSourceValve.Source.Content !== 0} />

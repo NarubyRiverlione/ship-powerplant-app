@@ -8,7 +8,7 @@ import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
-import CstResourceColor from '../../CstColors'
+import CstResourceColor from '../../constants/CstColors'
 
 const LubStorageScreen = observer(() => {
   const Sim = SimContext()

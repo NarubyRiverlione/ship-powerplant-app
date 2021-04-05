@@ -13,7 +13,8 @@ import Navigate from '../../components/svg/Navigate'
 import Pipe from '../../components/svg/Pipe'
 import PowerSwitch from '../../components/svg/PowerSwitch'
 import SimContext from '../../SimulatorContext'
-import CstResourceColor from '../../CstColors'
+import CstResourceColor from '../../constants/CstColors'
+import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const PowerSwitchboardScreen = observer(({ navigation }) => {
   const Sim = SimContext()
@@ -64,11 +65,11 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
           <Circle cx={800} cy={200} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={EmergencyGen.isRunning ? CstResourceColor.Electricity : 'white'} />
           <Circle cx={750} cy={250} r={5} stroke={CstResourceColor.Electricity} strokeWidth={2} fill={!DsGenBreaker.isOpen && DsGen.isRunning ? CstResourceColor.Electricity : 'white'} />
 
-          <Navigate X={120} Y={5} Width={115} NavStack="Power" NavScreen="PowerGeneratorScreen" NavText={DsGen.Name} navigation={navigation} />
+          <Navigate X={120} Y={5} Width={115} NavStack={NavStack.Power} NavScreen={NavScreen.Power.DsGeneratorScreen} NavText={DsGen.Name} navigation={navigation} />
           <Pipe x1={250} y1={120} x2={296} y2={120} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen.isRunning} />
           <Pipe x1={300} y1={117} x2={300} y2={155} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen.isRunning} />
           <Pipe x1={300} y1={165} x2={300} y2={247} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker.isOpen && DsGen.isRunning} />
-          <Generator X={100} Y={50} Scale={0.8} cb={() => { navigation.navigate('PowerGeneratorScreen') }} />
+          <Generator X={100} Y={50} Scale={0.8} cb={() => { navigation.navigate(NavScreen.Power.DsGeneratorScreen) }} />
           <PowerSwitch X={300} Y={150} Vertical isOpen={DsGenBreaker.isOpen} cb={() => DsGenBreaker.Toggle()} />
           <Line x1={296} y1={118} x2={296} y2={122} stroke={DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
           <Line x1={298} y1={247} x2={302} y2={247} stroke={!DsGenBreaker.isOpen && DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />

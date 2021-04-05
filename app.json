@@ -3,6 +3,7 @@
     "name": "ship-system-simulator",
     "slug": "ship-system-simulator",
     "version": "0.0.1",
+    "sdkVersion": "40.0.0",
     "orientation": "landscape",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
