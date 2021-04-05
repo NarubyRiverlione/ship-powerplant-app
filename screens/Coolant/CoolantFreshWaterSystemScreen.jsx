@@ -46,17 +46,16 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={205} y1={66} x2={205} y2={105} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={270} y1={198} x2={270} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
-          <Navigate X={70} Y={120} Width={110} Height={50} NavText="Diesel generator" NavStack={NavStack.Power} NavScreen={NavScreen.DsGeneratorScreen} navigation={navigation} />
+          <Navigate X={70} Y={120} Width={110} Height={50} NavText="Diesel generator" NavStack={NavStack.Power} NavScreen={NavScreen.Power.DsGeneratorScreen} navigation={navigation} />
           <Text fill="black" x={70} y={160}>{DsGenLubCooler.Name.replace('Diesel generator ', '')}</Text>
-          <Cooler X={180} Y={100} cb={() => navigation.navigate(NavScreen.DsGeneratorScreen)} />
+          <Cooler X={180} Y={100} cb={() => navigation.navigate(NavStack.Power, { screen: NavScreen.Power.DsGeneratorScreen })} />
 
           <Line x1={209} y1={67} x2={209} y2={74} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
           <Pipe x1={530} y1={198} x2={530} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
-          <Navigate X={350} Y={120} Width={110} Height={50} NavText={StartAirCooler.Name} NavStack={NavStack.Power} NavScreen={NavScreen.DsGeneratorScreen} navigation={navigation} />
-
+          <Navigate X={350} Y={120} Width={110} Height={50} NavText={StartAirCooler.Name} NavStack={NavStack.CompAir} NavScreen={NavScreen.Air.StartScreen} navigation={navigation} />
           <Pipe x1={465} y1={74} x2={205} y2={105} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Cooler X={440} Y={100} />
+          <Cooler X={440} Y={100} cb={() => navigation.navigate(NavScreen.Air.StartScreen)} />
 
           <Pipe x1={180} y1={404} x2={180} y2={425} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
           <Pipe x1={230} y1={495} x2={230} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />

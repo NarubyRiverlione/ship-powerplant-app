@@ -8,7 +8,7 @@ import SimulatorScreen from '../SimulatorScreen'
 import StartAirSystem from '../../components/StartAirSystem'
 import StartAirEmergencySystem from '../../components/StartAirEmergencySystem'
 
-const AirStartScreen = observer(() => {
+const AirStartScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
     AirSys: {
@@ -29,6 +29,7 @@ const AirStartScreen = observer(() => {
             StartCompressor={StartAirCompressor}
             Receiver={StartAirReceiver}
             ReceiverColor="grey"
+            navigation={navigation}
           />
 
           <StartAirEmergencySystem

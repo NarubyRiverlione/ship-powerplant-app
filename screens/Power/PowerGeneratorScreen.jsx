@@ -50,7 +50,7 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
           <Pipe x1={600} y1={111} x2={600} y2={185} ContentColor={CstResourceColor.CompressedAir} HasContent={AirIntakeValve.Content !== 0} />
           <Line x1={604} y1={112} x2={604} y2={118} strokeWidth={2} stroke={AirIntakeValve.Content !== 0 ? CstResourceColor.CompressedAir : 'white'} />
 
-          <Navigate X={5} Y={450} Width={180} NavStack={NavStack.Lubrication} NavScreen={NavStack.Lubrication.StorageScreen} NavText={`From ${LubSys.Storage.Tank.Name}`} navigation={navigation} />
+          <Navigate X={5} Y={450} Width={180} NavStack={NavStack.Lubrication} NavScreen={NavScreen.Lubrication.StorageScreen} NavText={`From ${LubSys.Storage.Tank.Name}`} navigation={navigation} />
           <Pipe x1={5} y1={500} x2={250} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubSys.Storage.OutletValve.Content !== 0} />
           <Valve X={250} Y={465} ValveObj={LubIntakeValve} ContentColor={CstResourceColor.Lubrication} />
           <Pipe x1={300} y1={500} x2={350} y2={500} ContentColor={CstResourceColor.Lubrication} HasContent={LubIntakeValve.Content !== 0} />
@@ -84,7 +84,7 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
           <Pipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
           <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGenLubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
 
-          <Cooler X={780} Y={250} />
+          <Cooler X={780} Y={250} cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.FreshWaterSystemScreen })} />
           <Text x={880} y={300} fill="black">{DsGenLubCooler.Name.replace('Diesel generator 1', '')}</Text>
 
           <DieselGenerator X={300} Y={150} DsGen={DsGen} />

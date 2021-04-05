@@ -8,10 +8,10 @@ import Valve from './svg/Valve'
 import Pipe from './svg/Pipe'
 import Compressor from './svg/Compressor'
 import CstResourceColor from '../constants/CstColors'
-/*
-*/
+import { NavScreen, NavStack } from '../constants/CstNav'
+
 const StartAirSystem = observer(({
-  X, Y,
+  X, Y, navigation,
   StartCompressor, Receiver, ReceiverColor, StartAirCooler,
 }) => (
   <G>
@@ -44,6 +44,7 @@ const StartAirSystem = observer(({
     <Cooler
       X={X + 350}
       Y={Y + 100}
+      cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.FreshWaterSystemScreen })}
     />
     <Text x={X + 450} y={Y + 150} fill="black">{StartAirCooler.Name}</Text>
     <Pipe
@@ -83,6 +84,7 @@ StartAirSystem.propTypes = {
   StartAirCooler: PropTypes.object.isRequired,
   Receiver: PropTypes.object.isRequired,
   ReceiverColor: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
 }
 
 export default StartAirSystem
