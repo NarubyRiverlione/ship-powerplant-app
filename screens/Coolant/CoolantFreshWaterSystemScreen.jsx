@@ -48,14 +48,26 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
 
           <Navigate X={70} Y={120} Width={110} Height={50} NavText="Diesel generator" NavStack={NavStack.Power} NavScreen={NavScreen.Power.DsGeneratorScreen} navigation={navigation} />
           <Text fill="black" x={70} y={160}>{DsGenLubCooler.Name.replace('Diesel generator ', '')}</Text>
-          <Cooler X={180} Y={100} cb={() => navigation.navigate(NavStack.Power, { screen: NavScreen.Power.DsGeneratorScreen })} />
+          <Cooler
+            X={180}
+            Y={100}
+            HasCooling={DsGenLubCooler.hasCooling}
+            IsCooling={DsGenLubCooler.isCooling}
+            cb={() => navigation.navigate(NavStack.Power, { screen: NavScreen.Power.DsGeneratorScreen })}
+          />
 
           <Line x1={209} y1={67} x2={209} y2={74} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
           <Pipe x1={530} y1={198} x2={530} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
           <Navigate X={350} Y={120} Width={110} Height={50} NavText={StartAirCooler.Name} NavStack={NavStack.CompAir} NavScreen={NavScreen.Air.StartScreen} navigation={navigation} />
           <Pipe x1={465} y1={74} x2={205} y2={105} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Cooler X={440} Y={100} cb={() => navigation.navigate(NavScreen.Air.StartScreen)} />
+          <Cooler
+            X={440}
+            Y={100}
+            HasCooling={StartAirCooler.hasCooling}
+            IsCooling={StartAirCooler.isCooling}
+            cb={() => navigation.navigate(NavScreen.Air.StartScreen)}
+          />
 
           <Pipe x1={180} y1={404} x2={180} y2={425} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
           <Pipe x1={230} y1={495} x2={230} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
@@ -78,15 +90,22 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={235} y1={445} x2={266} y2={445} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={270} y1={420} x2={270} y2={449} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
-          <Pipe x1={235} y1={480} x2={296} y2={480} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Pipe x1={300} y1={420} x2={300} y2={484} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
+          <Pipe x1={235} y1={470} x2={296} y2={470} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
+          <Pipe x1={300} y1={420} x2={300} y2={474} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
           <Pipe x1={300} y1={74} x2={300} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Text fill="black">
             <TSpan x={50} y={450}>Fresh water cooler</TSpan>
             <TSpan x={50} y={470}>{FwCoolerDsGen.Name.replace('Fresh water cooler', '')}</TSpan>
           </Text>
-          <Cooler X={160} Y={420} Scale={0.8} cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)} />
+          <Cooler
+            X={160}
+            Y={420}
+            Scale={0.8}
+            HasCooling={FwCoolerDsGen.hasCooling}
+            IsCooling={FwCoolerDsGen.isCooling}
+            cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)}
+          />
 
           <Line x1={297} y1={74} x2={303} y2={74} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
           <Line x1={266} y1={442} x2={266} y2={448} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
@@ -95,15 +114,22 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={505} y1={445} x2={526} y2={445} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={530} y1={420} x2={530} y2={449} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
-          <Pipe x1={505} y1={480} x2={556} y2={480} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Pipe x1={560} y1={420} x2={560} y2={484} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
+          <Pipe x1={505} y1={470} x2={556} y2={470} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
+          <Pipe x1={560} y1={420} x2={560} y2={474} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
 
           <Pipe x1={560} y1={74} x2={560} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Text fill="black">
             <TSpan x={320} y={450}>Fresh water cooler</TSpan>
             <TSpan x={320} y={470}>{FwCoolerStartAir.Name.replace('Fresh water cooler', '')}</TSpan>
           </Text>
-          <Cooler X={430} Y={420} Scale={0.8} cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)} />
+          <Cooler
+            X={430}
+            Y={420}
+            Scale={0.8}
+            HasCooling={FwCoolerStartAir.hasCooling}
+            IsCooling={FwCoolerStartAir.isCooling}
+            cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)}
+          />
 
           <Line x1={526} y1={442} x2={526} y2={448} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
           <Line x1={556} y1={477} x2={556} y2={483} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />

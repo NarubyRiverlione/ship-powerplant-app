@@ -6,10 +6,11 @@
   "configurations": [
     {
       "name": "Debug in Exponent",
-      "cwd": "${workspaceFolder}",
-      "type": "reactnative",
       "request": "launch",
-      "platform": "exponent"
+      "type": "reactnative",
+      "cwd": "${workspaceFolder}",
+      "platform": "exponent",
+      "expoHostType": "lan"
     }
   ]
 }

@@ -1,7 +1,12 @@
 import React from 'react'
 import { Animated } from 'react-native'
-import { G, Path, Circle } from 'react-native-svg'
+
+import {
+  G, Path, Circle,
+} from 'react-native-svg'
 import PropTypes from 'prop-types'
+import { observer } from 'mobx-react-lite'
+import Led from './Led'
 
 const HeatExchanger = ({ X, Y, Scale }) => (
   <G data-name="Pump" transform={`translate(${X},${Y}) scale(${0.2 / Scale})`}>
@@ -67,17 +72,21 @@ HeatExchanger.propTypes = {
 }
 
 const AnimatedG = Animated.createAnimatedComponent(G)
-const Cooler = ({
-  X, Y, cb, Scale = 1,
+const Cooler = observer(({
+  X, Y, HasCooling, IsCooling, cb, Scale,
 }) => (
   <AnimatedG onPress={cb}>
     <HeatExchanger X={X} Y={Y} Scale={1 / Scale} />
+    <Led X={X + 110} Y={Y + 70} Label="Hot side" Status={HasCooling} />
+    <Led X={X + 110} Y={Y + 90} Label="Cold side" Status={IsCooling} />
   </AnimatedG>
-)
+))
 
 Cooler.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
+  IsCooling: PropTypes.bool.isRequired,
+  HasCooling: PropTypes.bool.isRequired,
   cb: PropTypes.func,
   Scale: PropTypes.number,
 }
