@@ -10,7 +10,7 @@ import { observer } from 'mobx-react-lite'
 import Valve from '../../components/svg/Valve'
 import Tank from '../../components/svg/Tank'
 import Pipe from '../../components/svg/Pipe'
-// import Pump from '../../components/svg/Pump'
+import Pump from '../../components/svg/Pump'
 import Cooler from '../../components/svg/Cooler'
 import SimulatorScreen from '../SimulatorScreen'
 import SimContext from '../../SimulatorContext'
@@ -21,10 +21,11 @@ import { NavScreen, NavStack } from '../../constants/CstNav'
 const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
-    CoolingSys: {
-      AuxPump, SuctionPump1, SuctionPump2,
+    CoolingFreshWaterSys: {
       FwCoolerStartAir, FwCoolerDsGen,
-      DsGenLubCooler, StartAirCooler, FwExpandTank, FwIntakeValve, FwDrainValve,
+      DsGenLubCooler, StartAirCooler,
+      FwPumpDsGen, FwPumpStartAir,
+      FwExpandTank, FwIntakeValve, FwDrainValve,
     },
   } = Sim
 
@@ -51,8 +52,8 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={180}
             Y={100}
-            HasCooling={DsGenLubCooler.hasCooling}
-            IsCooling={DsGenLubCooler.isCooling}
+            CoolSide={DsGenLubCooler.CoolCircuitComplete}
+            HotSide={DsGenLubCooler.HotCircuitComplete}
             cb={() => navigation.navigate(NavStack.Power, { screen: NavScreen.Power.DsGeneratorScreen })}
           />
 
@@ -64,28 +65,28 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={440}
             Y={100}
-            HasCooling={StartAirCooler.hasCooling}
-            IsCooling={StartAirCooler.isCooling}
+            CoolSide={StartAirCooler.CoolCircuitComplete}
+            HotSide={StartAirCooler.HotCircuitComplete}
             cb={() => navigation.navigate(NavScreen.Air.StartScreen)}
           />
 
-          <Pipe x1={180} y1={404} x2={180} y2={425} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
-          <Pipe x1={230} y1={495} x2={230} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
-          <Pipe x1={450} y1={404} x2={450} y2={425} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
-          <Pipe x1={500} y1={495} x2={500} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
+          <Pipe x1={180} y1={404} x2={180} y2={425} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerDsGen.CoolCircuitComplete} />
+          <Pipe x1={230} y1={495} x2={230} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerDsGen.CoolCircuitComplete} />
+          <Pipe x1={450} y1={404} x2={450} y2={425} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerStartAir.CoolCircuitComplete} />
+          <Pipe x1={500} y1={495} x2={500} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerStartAir.CoolCircuitComplete} />
 
-          <Pipe x1={5} y1={530} x2={234} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
-          <Pipe x1={234} y1={530} x2={504} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
+          <Pipe x1={5} y1={530} x2={234} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerDsGen.CoolCircuitComplete} />
+          <Pipe x1={234} y1={530} x2={504} y2={530} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerStartAir.CoolCircuitComplete} />
 
-          <Pipe x1={5} y1={400} x2={184} y2={400} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
-          <Pipe x1={184} y1={400} x2={454} y2={400} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
+          <Pipe x1={5} y1={400} x2={184} y2={400} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerDsGen.CoolCircuitComplete} />
+          <Pipe x1={184} y1={400} x2={454} y2={400} ContentColor={CstResourceColor.SeaWater} HasContent={FwCoolerStartAir.CoolCircuitComplete} />
 
-          <Line x1={177} y1={404} x2={183} y2={404} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={184} y1={397} x2={184} y2={403} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={447} y1={404} x2={453} y2={404} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={497} y1={526} x2={503} y2={526} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={227} y1={526} x2={233} y2={526} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={234} y1={526} x2={234} y2={533} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={177} y1={404} x2={183} y2={404} strokeWidth={2} stroke={FwCoolerDsGen.CoolCircuitComplete ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={184} y1={397} x2={184} y2={403} strokeWidth={2} stroke={FwCoolerDsGen.CoolCircuitComplete ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={447} y1={404} x2={453} y2={404} strokeWidth={2} stroke={FwCoolerStartAir.CoolCircuitComplete ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={497} y1={526} x2={503} y2={526} strokeWidth={2} stroke={FwCoolerStartAir.CoolCircuitComplete ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={227} y1={526} x2={233} y2={526} strokeWidth={2} stroke={FwCoolerDsGen.CoolCircuitComplete ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={234} y1={526} x2={234} y2={533} strokeWidth={2} stroke={FwCoolerDsGen.CoolCircuitComplete ? CstResourceColor.SeaWater : 'white'} />
 
           <Pipe x1={235} y1={445} x2={266} y2={445} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={270} y1={420} x2={270} y2={449} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
@@ -102,8 +103,8 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             X={160}
             Y={420}
             Scale={0.8}
-            HasCooling={FwCoolerDsGen.hasCooling}
-            IsCooling={FwCoolerDsGen.isCooling}
+            CoolSide={FwCoolerDsGen.CoolCircuitComplete}
+            HotSide={FwCoolerDsGen.HotCircuitComplete}
             cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)}
           />
 
@@ -126,8 +127,8 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             X={430}
             Y={420}
             Scale={0.8}
-            HasCooling={FwCoolerStartAir.hasCooling}
-            IsCooling={FwCoolerStartAir.isCooling}
+            CoolSide={FwCoolerStartAir.CoolCircuitComplete}
+            HotSide={FwCoolerStartAir.HotCircuitComplete}
             cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)}
           />
 

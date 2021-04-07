@@ -23,7 +23,7 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
     FuelSys: { DsService },
     LubSys,
     AirSys: { EmergencyReceiver },
-    CoolingSys: { DsGenLubCooler },
+    CoolingFreshWaterSys: { DsGenLubCooler },
   } = Sim
   const {
     FuelIntakeValve, LubIntakeValve, AirIntakeValve, LubSlump,
@@ -84,7 +84,13 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
           <Pipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
           <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGenLubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
 
-          <Cooler X={780} Y={250} cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.FreshWaterSystemScreen })} />
+          <Cooler
+            X={780}
+            Y={250}
+            CoolSide={DsGenLubCooler.CoolCircuitComplete}
+            HotSide={DsGenLubCooler.HotCircuitComplete}
+            cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.FreshWaterSystemScreen })}
+          />
           <Text x={880} y={300} fill="black">{DsGenLubCooler.Name.replace('Diesel generator 1', '')}</Text>
 
           <DieselGenerator X={300} Y={150} DsGen={DsGen} />

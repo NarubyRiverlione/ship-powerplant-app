@@ -19,7 +19,7 @@ import { NavScreen } from '../../constants/CstNav'
 const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
-    CoolingSys: {
+    CoolingSeaWaterSys: {
       SeaChestLowSuctionIntakeValve, SeaChestHighSuctionIntakeValve,
       OverboardDumpValve, SuctionPump1, SuctionPump2, AuxPump,
       SteamCondensor, FwCoolerStartAir, FwCoolerDsGen,
@@ -127,8 +127,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={800}
             Y={150}
-            HasCooling={FwCoolerDsGen.hasCooling}
-            IsCooling={FwCoolerDsGen.isCooling}
+            CoolSide={FwCoolerDsGen.CoolCircuitComplete}
+            HotSide={FwCoolerDsGen.HotCircuitComplete}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
 
@@ -139,8 +139,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={500}
             Y={150}
-            HasCooling={FwCoolerStartAir.hasCooling}
-            IsCooling={FwCoolerStartAir.isCooling}
+            CoolSide={FwCoolerStartAir.CoolCircuitComplete}
+            HotSide={FwCoolerStartAir.HotCircuitComplete}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
 
@@ -148,8 +148,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={270}
             Y={150}
-            HasCooling={SteamCondensor.hasCooling}
-            IsCooling={SteamCondensor.isCooling}
+            CoolSide={SteamCondensor.CoolCircuitComplete}
+            HotSide={SteamCondensor.HotCircuitComplete}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
 

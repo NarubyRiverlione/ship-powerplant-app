@@ -31,6 +31,7 @@ const StartConditionsScreen = ({ navigation }) => {
   // set simulator to selected start conditions & navigate to tabbar
   const setSimConditions = (condition) => {
     Sim.SetStartConditions(condition)
+    Sim.Start()
     navigation.navigate(NavStack.Root)
   }
   return (
