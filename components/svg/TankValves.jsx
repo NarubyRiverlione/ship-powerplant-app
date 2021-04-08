@@ -45,7 +45,13 @@ TankValves.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
   Name: PropTypes.string.isRequired,
-  TankSys: PropTypes.object.isRequired,
+  TankSys: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    OutletValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+    IntakeValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+    DrainValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+  }).isRequired,
+
   ContentColor: PropTypes.string.isRequired,
   TankColor: PropTypes.string,
 }

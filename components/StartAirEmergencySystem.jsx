@@ -75,11 +75,21 @@ const StartAirEmergencySystem = observer(({
 StartAirEmergencySystem.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  // todo shape
-  StartCompressor: PropTypes.object.isRequired,
-  Receiver: PropTypes.object.isRequired,
-  ReceiverColor: PropTypes.string.isRequired,
 
+  StartCompressor: PropTypes.shape({
+    OutletValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+    Toggle: PropTypes.func.isRequired,
+    Name: PropTypes.string.isRequired,
+    isRunning: PropTypes.bool.isRequired,
+    SafetyOpen: PropTypes.bool.isRequired,
+    CheckPower: PropTypes.bool.isRequired,
+  }).isRequired,
+
+  Receiver: PropTypes.shape({
+    Tank: PropTypes.shape({ Name: PropTypes.string.isRequired }).isRequired,
+  }).isRequired,
+
+  ReceiverColor: PropTypes.string.isRequired,
 }
 
 export default StartAirEmergencySystem

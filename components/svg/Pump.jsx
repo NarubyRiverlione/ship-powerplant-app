@@ -1,3 +1,4 @@
+/* eslint max-len:off */
 import React from 'react'
 import { Path, G } from 'react-native-svg'
 import { Animated } from 'react-native'

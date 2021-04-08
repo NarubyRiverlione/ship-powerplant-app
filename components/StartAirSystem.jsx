@@ -81,10 +81,26 @@ const StartAirSystem = observer(({
 StartAirSystem.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  // todo shape
-  StartCompressor: PropTypes.object.isRequired,
-  StartAirCooler: PropTypes.object.isRequired,
-  Receiver: PropTypes.object.isRequired,
+
+  StartAirCooler: PropTypes.shape({
+    CoolCircuitComplete: PropTypes.bool.isRequired,
+    HotCircuitComplete: PropTypes.bool.isRequired,
+  }).isRequired,
+
+  StartCompressor: PropTypes.shape({
+    OutletValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+    Toggle: PropTypes.func.isRequired,
+    Name: PropTypes.string.isRequired,
+    hasElectricity: PropTypes.bool.isRequired,
+    isRunning: PropTypes.bool.isRequired,
+    SafetyOpen: PropTypes.bool.isRequired,
+    CheckPower: PropTypes.bool.isRequired,
+  }).isRequired,
+
+  Receiver: PropTypes.shape({
+    Tank: PropTypes.shape({ Name: PropTypes.string.isRequired }).isRequired,
+  }).isRequired,
+
   ReceiverColor: PropTypes.string.isRequired,
   navigation: PropTypes.object.isRequired,
 }

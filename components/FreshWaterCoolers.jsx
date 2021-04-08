@@ -10,8 +10,6 @@ import { NavScreen } from '../constants/CstNav'
 import CstResourceColor from '../constants/CstColors'
 
 import Cooler from './svg/Cooler'
-import Valve from './svg/Valve'
-import Tank from './svg/Tank'
 import Pipe from './svg/Pipe'
 import Pump from './svg/Pump'
 
@@ -76,12 +74,15 @@ const FreshWaterCoolers = observer(({
 FreshWaterCoolers.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  // TODO objects
-  FwCooler: PropTypes.object.isRequired,
-  SystemCooler: PropTypes.object.isRequired,
+
+  FwCooler: PropTypes.shape({ CoolCircuitComplete: PropTypes.bool.isRequired, HotCircuitComplete: PropTypes.bool.isRequired }).isRequired,
+
+  SystemCooler: PropTypes.shape({ CoolCircuitComplete: PropTypes.bool.isRequired, HotCircuitComplete: PropTypes.bool.isRequired }).isRequired,
   SystemCoolerNameLine1: PropTypes.string.isRequired,
   SystemCoolerNameLine2: PropTypes.string,
-  FwPump: PropTypes.object.isRequired,
+
+  FwPump: PropTypes.shape({ isRunning: PropTypes.bool.isRequired, Toggle: PropTypes.func.isRequired }).isRequired,
+
   navigation: PropTypes.object.isRequired,
   NavToScreen: PropTypes.string.isRequired,
   NavToStack: PropTypes.string.isRequired,

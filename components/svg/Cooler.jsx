@@ -1,3 +1,4 @@
+/* eslint max-len:off */
 import React from 'react'
 import { Animated } from 'react-native'
 

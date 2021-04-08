@@ -23,10 +23,8 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
       EmergencyGen, EmergencyBus, MainBus1, MainBreaker1, DsGen, DsGenBreaker,
     },
   } = Sim
-  // 30 290
   return (
     <SimulatorScreen>
-
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Svg width="100%" height="100%">
 
