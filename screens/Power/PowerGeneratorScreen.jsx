@@ -10,6 +10,7 @@ import SimContext from '../../SimulatorContext'
 import Navigate from '../../components/svg/Navigate'
 import Pipe from '../../components/svg/Pipe'
 import LookingGlass from '../../components/svg/LookingGlass'
+import Led from '../../components/svg/Led'
 import Valve from '../../components/svg/Valve'
 import Cooler from '../../components/svg/Cooler'
 import SimulatorScreen from '../SimulatorScreen'
@@ -94,6 +95,11 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
           <Text x={880} y={300} fill="black">{DsGenLubCooler.Name.replace('Diesel generator 1', '')}</Text>
 
           <DieselGenerator X={300} Y={150} DsGen={DsGen} />
+
+          <Led X={480} Y={90} Label="Has fuel" Status={DsGen.HasFuel} />
+          <Led X={480} Y={110} Label="Has lubrication" Status={DsGen.HasLubrication} />
+          <Led X={480} Y={130} Label="Has cooling" Status={DsGen.HasCooling} />
+          <Led X={480} Y={150} Label="Enough start air" Status={DsGen.CheckAir} />
         </Svg>
       </View>
     </SimulatorScreen>

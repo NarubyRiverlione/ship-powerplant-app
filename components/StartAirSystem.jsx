@@ -91,7 +91,6 @@ StartAirSystem.propTypes = {
     OutletValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
     Toggle: PropTypes.func.isRequired,
     Name: PropTypes.string.isRequired,
-    hasElectricity: PropTypes.bool.isRequired,
     isRunning: PropTypes.bool.isRequired,
     SafetyOpen: PropTypes.bool.isRequired,
     CheckPower: PropTypes.bool.isRequired,
