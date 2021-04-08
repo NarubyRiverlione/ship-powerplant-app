@@ -40,6 +40,9 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             SystemCoolerNameLine1="Diesel generator"
             SystemCoolerNameLine2={DsGenLubCooler.Name.replace('Diesel generator  ', '')}
             FwPump={FwPumpDsGen}
+            navigation={navigation}
+            NavToScreen={NavScreen.Power.DsGeneratorScreen}
+            NavToStack={NavStack.Power}
           />
 
           <FreshWaterCoolers
@@ -49,6 +52,9 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             SystemCooler={StartAirCooler}
             SystemCoolerNameLine1={StartAirCooler.Name}
             FwPump={FwPumpStartAir}
+            navigation={navigation}
+            NavToScreen={NavScreen.Air.StartScreen}
+            NavToStack={NavStack.CompAir}
           />
 
           <Pipe

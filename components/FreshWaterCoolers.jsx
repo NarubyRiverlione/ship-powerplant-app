@@ -16,7 +16,7 @@ import Pipe from './svg/Pipe'
 import Pump from './svg/Pump'
 
 const FreshWaterCoolers = observer(({
-  X, Y, FwCooler, SystemCooler, navigation,
+  X, Y, FwCooler, SystemCooler, navigation, NavToScreen, NavToStack,
   SystemCoolerNameLine1, SystemCoolerNameLine2, FwPump,
 }) => (
   <G>
@@ -67,7 +67,7 @@ const FreshWaterCoolers = observer(({
       Y={Y + 70}
       CoolSide={SystemCooler.CoolCircuitComplete}
       HotSide={SystemCooler.HotCircuitComplete}
-      cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)}
+      cb={() => navigation.navigate(NavToStack, { screen: NavToScreen })}
     />
 
   </G>
@@ -83,6 +83,8 @@ FreshWaterCoolers.propTypes = {
   SystemCoolerNameLine2: PropTypes.string,
   FwPump: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
+  NavToScreen: PropTypes.string.isRequired,
+  NavToStack: PropTypes.string.isRequired,
 }
 
 FreshWaterCoolers.defaultProps = {

@@ -14,7 +14,7 @@ import Cooler from '../../components/svg/Cooler'
 import SimulatorScreen from '../SimulatorScreen'
 import SimContext from '../../SimulatorContext'
 import CstResourceColor from '../../constants/CstColors'
-import { NavScreen } from '../../constants/CstNav'
+import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
   const Sim = SimContext()
@@ -150,7 +150,7 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             Y={150}
             CoolSide={SteamCondensor.CoolCircuitComplete}
             HotSide={SteamCondensor.HotCircuitComplete}
-            cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
+            cb={() => navigation.navigate(NavStack.Steam, { screen: NavScreen.Steam.BoilerScreen })}
           />
 
           <Pipe x1={295} y1={54} x2={295} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />

@@ -76,13 +76,13 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
           <Line x1={757} y1={320} x2={763} y2={320} strokeWidth={2} stroke={DsGen.HasLubrication ? CstResourceColor.Lubrication : 'white'} />
 
           <Navigate X={750} Y={180} Width={250} NavStack={NavStack.Coolant} NavScreen={NavScreen.Coolant.FreshWaterSystemScreen} NavText={`From ${DsGenLubCooler.Name}`} navigation={navigation} />
-          <Pipe x1={800} y1={230} x2={1000} y2={230} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
-          <Pipe x1={804} y1={234} x2={804} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
-          <Line x1={801} y1={234} x2={807} y2={234} strokeWidth={2} stroke={DsGenLubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
+          <Pipe x1={800} y1={230} x2={1000} y2={230} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.IsCooling} />
+          <Pipe x1={804} y1={234} x2={804} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.IsCooling} />
+          <Line x1={801} y1={234} x2={807} y2={234} strokeWidth={2} stroke={DsGenLubCooler.IsCooling ? CstResourceColor.FreshWater : 'white'} />
 
-          <Pipe x1={874} y1={380} x2={1000} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
-          <Pipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.isCooling} />
-          <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGenLubCooler.isCooling ? CstResourceColor.FreshWater : 'white'} />
+          <Pipe x1={874} y1={380} x2={1000} y2={380} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.IsCooling} />
+          <Pipe x1={870} y1={350} x2={870} y2={384} ContentColor={CstResourceColor.FreshWater} HasContent={DsGenLubCooler.IsCooling} />
+          <Line x1={874} y1={377} x2={874} y2={383} strokeWidth={2} stroke={DsGenLubCooler.IsCooling ? CstResourceColor.FreshWater : 'white'} />
 
           <Cooler
             X={780}

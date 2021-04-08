@@ -1,18 +1,22 @@
 import React from 'react'
-import { View, Button } from 'react-native'
+import { View, Button, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { observer } from 'mobx-react-lite'
 
-import CstTxt from '../constants/CstTxt'
+import CstTxt, { BlackoutWarningTxt } from '../constants/CstTxt'
 import SimContext from '../SimulatorContext'
 import { RootStackName } from '../constants/CstNav'
 
 import { AppColors } from '../constants/CstColors'
 import useColorScheme from '../hooks/useColorScheme'
+import styles from '../styles'
+
+const Blackout = (EmergencyBus) => (EmergencyBus.Voltage === 0 ? 'darkgrey' : 'whitesmoke')
 
 const SimulatorScreen = observer(({ children }) => {
   const Sim = SimContext()
+  const { PowerSys: { EmergencyBus } } = Sim
   const navigation = useNavigation()
   const Running = () => (Sim.Running ? CstTxt.Running : CstTxt.Stopped)
   const colorScheme = useColorScheme()
@@ -25,7 +29,11 @@ const SimulatorScreen = observer(({ children }) => {
     }}
     >
       <View style={{
-        flex: 1, flexDirection: 'row', justifyContents: 'flex-end', alignItems: 'center', backgroundColor: 'snow',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContents: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: Blackout(EmergencyBus),
       }}
       >
         <View style={{ flex: 1, alignItems: 'flex-start' }}>
@@ -33,7 +41,14 @@ const SimulatorScreen = observer(({ children }) => {
         </View>
 
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Button title="Alarms" onPress={() => { navigation.navigate(RootStackName.AlarmModal) }} />
+          {EmergencyBus.Voltage === 0
+            && (
+              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={styles.BlackoutWarning}>{BlackoutWarningTxt}</Text>
+              </View>
+            )}
+          {EmergencyBus.Voltage !== 0
+            && <Button title="Alarms" onPress={() => { navigation.navigate(RootStackName.AlarmModal) }} />}
         </View>
 
         <View style={{ flex: 1, alignItems: 'flex-end' }}>
@@ -42,7 +57,7 @@ const SimulatorScreen = observer(({ children }) => {
       </View>
 
       <View style={{
-        flex: 9, flexDirection: 'column', padding: 5, justifyContent: 'flex-start', backgroundColor: 'whitesmoke',
+        flex: 9, flexDirection: 'column', padding: 5, justifyContent: 'flex-start', backgroundColor: Blackout(EmergencyBus),
       }}
       >
         {children}

@@ -15,6 +15,8 @@ export const CstItemsColor = {
 const tintColorLight = '#2f95dc'
 const tintColorDark = '#fff'
 
+export const BlackoutColor = 'darkgrey'
+
 export const AppColors = {
   light: {
     text: '#000',

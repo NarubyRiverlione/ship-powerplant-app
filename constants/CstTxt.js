@@ -20,4 +20,6 @@ export const BtnOpenCloseTxt = (isOpen) => (isOpen ? CstTxt.Closing : CstTxt.Ope
 export const TxtOpenClose = (isOpen) => (isOpen ? CstTxt.Open : CstTxt.Closed)
 export const TxtRunningStopped = (isRunning) => (isRunning ? CstTxt.Running : CstTxt.Stopped)
 
+export const BlackoutWarningTxt = 'BLACKOUT'
+
 export default CstTxt

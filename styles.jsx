@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'azure',
     flexDirection: 'column',
   },
-
   separator: {
     marginVertical: 30,
     height: 1,
@@ -54,7 +53,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
-
+  BlackoutWarning: {
+    fontFamily: 'Arial',
+    letterSpacing: 25,
+    fontSize: 30,
+    color: 'white',
+  },
 })
 
 export default styles
