@@ -10,10 +10,10 @@ const SafetyValve = observer(({
 }) => (
   <G>
     <Text
-      x={X + 5}
-      y={Y + 47}
+      x={X + 5 * Scale}
+      y={Y + 47 * Scale}
       fill={isOpen ? 'red' : 'grey'}
-      fontSize={isOpen ? 12 : 8}
+      fontSize={isOpen ? 12 * Scale : 8 * Scale}
     >
       {`${CstTxt.SafetyValve} ${TxtOpenClose(isOpen)}`}
     </Text>

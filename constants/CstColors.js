@@ -6,6 +6,8 @@ const CstResourceColor = {
   CompressedAir: 'grey',
   SeaWater: 'darkblue',
   FreshWater: 'lightblue',
+  Steam: 'gainsboro',
+  Empty: 'beige',
 }
 
 export const CstItemsColor = {

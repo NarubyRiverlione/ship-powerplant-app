@@ -43,6 +43,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             navigation={navigation}
             NavToScreen={NavScreen.Power.DsGeneratorScreen}
             NavToStack={NavStack.Power}
+
           />
 
           <FreshWaterCoolers
@@ -111,9 +112,11 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={640} y1={90} x2={804} y2={90} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={640} y1={390} x2={804} y2={390} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={804} y1={300} x2={850} y2={300} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Line x1={797} y1={94} x2={803} y2={94} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
-          <Line x1={797} y1={386} x2={803} y2={386} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
-          <Line x1={804} y1={297} x2={804} y2={303} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : 'white'} />
+          <Line x1={797} y1={94} x2={803} y2={94} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
+          <Line x1={797} y1={386} x2={803} y2={386} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
+          <Line x1={804} y1={297} x2={804} y2={303} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
+          <Line x1={640} y1={86} x2={640} y2={92} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
+          <Line x1={640} y1={386} x2={640} y2={392} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
 
           <SmallTank
             X={800}

@@ -9,6 +9,9 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react-lite'
 import LookingGlass from './LookingGlass'
 import CstResourceColor from '../../constants/CstColors'
+import Led from './Led'
+import SafetyValve from './SafetyValve'
+import Pipe from './Pipe'
 
 const Flame = ({ X, Y, Scale }) => (
   <G data-name="Flame" transform={`translate(${X},${Y}) scale(${0.2 * Scale})`}>
@@ -102,17 +105,22 @@ const Boiler = observer(({
       />
       <Path d="M203.737 351.74c-9.652 0-9.668 15 0 15 9.651 0 9.667-15 0-15zM255.864 351.74c-9.652 0-9.668 15 0 15 9.652 0 9.668-15 0-15zM307.991 351.74c-9.652 0-9.668 15 0 15 9.652 0 9.668-15 0-15z" />
 
-      <Text x={220} y={50} fill="black" fontSize={20} fontWeight="bold">{`${BoilerObj.Pressure.toFixed(1)} bar`}</Text>
-      <Text x={220} y={70} fill="black" fontSize={20}>{`${BoilerObj.Temperature.toFixed(0)} °C`}</Text>
-      <LookingGlass X={350} Y={330} Size={60} ContentColor={CstResourceColor.FreshWater} ContentPct={BoilerObj.WaterTank.Content} />
-      <Circle cx={390} cy={340} r={8} stroke="white" fill={BoilerObj.hasEnoughWaterForFlame ? 'green' : 'red'} />
-      <Circle cx={390} cy={50} r={8} stroke="white" fill={BoilerObj.hasFuel ? 'green' : 'red'} />
-
-      {BoilerObj.hasFlame && <Flame X={200} Y={200} />}
+      <Text x={X - 380} y={Y - 60} fill="black" fontSize={20} fontWeight="bold">{`${BoilerObj.Pressure.toFixed(1)} bar`}</Text>
+      <Text x={X - 380} y={Y - 40} fill="black" fontSize={20}>{`${BoilerObj.Temperature.toFixed(0)} °C`}</Text>
+      <LookingGlass X={X - 320} Y={Y + 230} Size={60} ContentColor={CstResourceColor.FreshWater} ContentPct={BoilerObj.WaterTank.Content} />
     </G>
+
+    <Led X={X + 350} Y={Y + 250} Status={BoilerObj.HasEnoughWaterForFlame} Label="Enough water" />
+    <Led X={X + 350} Y={Y + 270} Status={BoilerObj.HasFuel} Label="Has fuel" />
+    <Led X={X + 350} Y={Y + 300} Status={BoilerObj.AutoFlame} Label="Auto enabled" />
+
+    <Pipe x1={X + 147} y1={Y - 65} x2={X + 147} y2={Y + 15} Size={25} HasContent={BoilerObj.Pressure > 1} ContentColor={CstResourceColor.Steam} />
+    <SafetyValve X={X + 160} Y={Y - 97} isOpen={BoilerObj.SafetyRelease.isOpen} Scale={1.7} />
+
+    {BoilerObj.HasFlame && <Flame X={X + 160} Y={Y + 150} />}
   </AnimatedG>
 ))
-
+// 650 80
 Boiler.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
@@ -120,10 +128,12 @@ Boiler.propTypes = {
   BoilerObj: PropTypes.shape({
     Temperature: PropTypes.number.isRequired,
     Pressure: PropTypes.number.isRequired,
-    hasFlame: PropTypes.bool.isRequired,
-    hasEnoughWaterForFlame: PropTypes.bool.isRequired,
-    hasFuel: PropTypes.bool.isRequired,
-    WaterTank: PropTypes.shape({ Content: PropTypes.number.isRequired }),
+    HasFlame: PropTypes.bool.isRequired,
+    HasEnoughWaterForFlame: PropTypes.bool.isRequired,
+    HasFuel: PropTypes.bool.isRequired,
+    AutoFlame: PropTypes.bool.isRequired,
+    WaterTank: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+    SafetyRelease: PropTypes.shape({ isOpen: PropTypes.bool.isRequired }).isRequired,
   }).isRequired,
   Scale: PropTypes.number,
 }

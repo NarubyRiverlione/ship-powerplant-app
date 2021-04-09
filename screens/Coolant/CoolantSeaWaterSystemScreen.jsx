@@ -75,22 +75,22 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
 
           <Pipe x1={150} y1={335} x2={184} y2={335} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
           <Pipe x1={186} y1={331} x2={194} y2={506} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
-          <Line x1={182} y1={332} x2={182} y2={338} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={182} y1={332} x2={182} y2={338} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={170} y1={535} x2={184} y2={535} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestHighSuctionIntakeValve.isOpen} />
           <Pipe x1={186} y1={506} x2={194} y2={539} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestHighSuctionIntakeValve.isOpen} />
-          <Line x1={182} y1={532} x2={182} y2={538} strokeWidth={2} stroke={SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={182} y1={532} x2={182} y2={538} strokeWidth={2} stroke={SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={182} y1={506} x2={892} y2={506} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen} />
-          <Line x1={183} y1={496} x2={189} y2={496} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={183} y1={516} x2={189} y2={516} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={183} y1={496} x2={189} y2={496} strokeWidth={6} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
+          <Line x1={183} y1={516} x2={189} y2={516} strokeWidth={6} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={337} y1={450} x2={337} y2={496} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen} />
           <Pipe x1={487} y1={450} x2={487} y2={496} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen} />
           <Pipe x1={886} y1={430} x2={886} y2={496} ContentColor={CstResourceColor.SeaWater} Size={12} HasContent={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen} />
-          <Line x1={328} y1={496} x2={346} y2={496} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={478} y1={496} x2={496} y2={496} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={881} y1={496} x2={891} y2={496} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={329} y1={496} x2={345} y2={496} strokeWidth={6} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
+          <Line x1={479} y1={496} x2={495} y2={496} strokeWidth={6} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
+          <Line x1={881} y1={496} x2={890} y2={496} strokeWidth={6} stroke={SeaChestLowSuctionIntakeValve.isOpen || SeaChestHighSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pump X={250} Y={350} isRunning={SuctionPump1.isRunning} cb={() => SuctionPump1.Toggle()} />
           <Text x={220} y={360} fill="black">{SuctionPump1.Name.replace('Sea water', '')}</Text>
@@ -102,23 +102,23 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Pipe x1={327} y1={300} x2={884} y2={300} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
 
           <Pipe x1={487} y1={310} x2={487} y2={350} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump2.isRunning} />
-          <Line x1={478} y1={310} x2={496} y2={310} strokeWidth={2} stroke={SuctionPump2.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={479} y1={310} x2={495} y2={310} strokeWidth={6} stroke={SuctionPump2.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={337} y1={310} x2={337} y2={350} ContentColor={CstResourceColor.SeaWater} Size={20} HasContent={SuctionPump1.isRunning} />
-          <Line x1={328} y1={310} x2={346} y2={310} strokeWidth={2} stroke={SuctionPump1.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={329} y1={310} x2={345} y2={310} strokeWidth={6} stroke={SuctionPump1.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={359} y1={250} x2={359} y2={290} Size={10} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
-          <Line x1={355} y1={290} x2={363} y2={290} strokeWidth={2} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={355} y1={290} x2={363} y2={290} strokeWidth={6} stroke={SuctionPump1.isRunning || SuctionPump2.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={589} y1={250} x2={589} y2={290} Size={10} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
-          <Line x1={585} y1={290} x2={593} y2={290} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={585} y1={290} x2={593} y2={290} strokeWidth={6} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Pipe x1={889} y1={250} x2={889} y2={310} Size={10} ContentColor={CstResourceColor.SeaWater} HasContent={AuxPump.isRunning || SuctionPump1.isRunning || SuctionPump2.isRunning} />
           <Pipe x1={889} y1={310} x2={889} y2={360} Size={10} ContentColor={CstResourceColor.SeaWater} HasContent={AuxPump.isRunning} />
-          <Line x1={885} y1={310} x2={893} y2={310} strokeWidth={2} stroke={AuxPump.isRunning || SuctionPump2.isRunning || SuctionPump1.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={884} y1={291} x2={884} y2={309} strokeWidth={2} stroke={AuxPump.isRunning || SuctionPump2.isRunning || SuctionPump1.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={885} y1={310} x2={893} y2={310} strokeWidth={6} stroke={AuxPump.isRunning || SuctionPump2.isRunning || SuctionPump1.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
+          <Line x1={884} y1={292} x2={884} y2={308} strokeWidth={6} stroke={AuxPump.isRunning || SuctionPump2.isRunning || SuctionPump1.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
-          <Line x1={356} y1={250} x2={364} y2={250} strokeWidth={2} stroke={SuctionPump1.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={356} y1={250} x2={364} y2={250} strokeWidth={2} stroke={SuctionPump1.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Text fill="black">
             <TSpan x={690} y={160}>Fresh water cooler</TSpan>
@@ -159,9 +159,9 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
 
           <Pipe x1={250} y1={50} x2={824} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning || AuxPump.isRunning} />
 
-          <Line x1={292} y1={54} x2={298} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={522} y1={54} x2={528} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
-          <Line x1={817} y1={54} x2={823} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : 'white'} />
+          <Line x1={292} y1={54} x2={298} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
+          <Line x1={522} y1={54} x2={528} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
+          <Line x1={817} y1={54} x2={823} y2={54} strokeWidth={2} stroke={SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
 
           <Text x={140} y={80} fontSize={12} fill="black">{OverboardDumpValve.Name}</Text>
           <Valve

@@ -4,8 +4,10 @@ import { Animated } from 'react-native'
 import { G, Path, Text } from 'react-native-svg'
 import PropTypes from 'prop-types'
 import Pipe from './Pipe'
+import Navigate from './Navigate'
 import CstResourceColor from '../../constants/CstColors'
 import SafetyValve from './SafetyValve'
+import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const ElectricalMotor = ({
   X, Y, isRunning,
@@ -41,28 +43,41 @@ ElectricalMotor.propTypes = {
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const Compressor = ({
-  X, Y, isRunning, cb, hasElectricity, Name, Scale, SafetyOpen,
-}) => (
-  <AnimatedG onPress={cb} transform={`scale(${Scale})`}>
+  X, Y, CompressorObj, cb, Scale, navigation,
+}) => {
+  const {
+    isRunning, Name, SafetyOpen, Bus,
+  } = CompressorObj
+  return (
+    <AnimatedG onPress={cb} transform={`scale(${Scale})`}>
 
-    <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
-    <Pipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={hasElectricity} />
-    <ElectricalMotor X={X} Y={Y} isRunning={isRunning} />
-    <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning && !SafetyOpen} />
-    <SafetyValve X={X + 180} Y={Y + 45} isOpen={SafetyOpen} />
+      <Text x={X + 130} y={Y + 30} fill="black" fontSize={12}>{Name}</Text>
+      <Pipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={Bus.Voltage > 0} />
+      <Navigate X={X + 5} Y={Y - 30} Width={105} Height={35} NavText={Bus.Name} navigation={navigation} NavStack={NavStack.Power} NavScreen={NavScreen.Power.SwitchboardScreen} />
+      <ElectricalMotor X={X} Y={Y} isRunning={isRunning} />
+      <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning && !SafetyOpen} />
+      <SafetyValve X={X + 180} Y={Y + 45} isOpen={SafetyOpen} />
 
-  </AnimatedG>
+    </AnimatedG>
+  )
+}
 
-)
 Compressor.propTypes = {
-  isRunning: PropTypes.bool.isRequired,
-  SafetyOpen: PropTypes.bool.isRequired,
-  cb: PropTypes.func.isRequired,
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  hasElectricity: PropTypes.bool.isRequired,
-  Name: PropTypes.string.isRequired,
+  CompressorObj: PropTypes.shape({
+    isRunning: PropTypes.bool.isRequired,
+    SafetyOpen: PropTypes.bool.isRequired,
+    Name: PropTypes.string.isRequired,
+    Bus: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Voltage: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+
+  cb: PropTypes.func.isRequired,
   Scale: PropTypes.number,
+  navigation: PropTypes.object.isRequired,
 }
 
 Compressor.defaultProps = {

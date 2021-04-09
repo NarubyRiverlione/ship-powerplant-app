@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Rect } from 'react-native-svg'
+import CstResourceColor from '../../constants/CstColors'
 
 const Pipe = ({
   HasContent, ContentColor, x1, y1, x2, y2, Size,
@@ -33,8 +34,8 @@ const Pipe = ({
       width={width}
       height={height}
       stroke={ContentColor}
-      strokeWidth={2}
-      fill={HasContent ? ContentColor : 'white'}
+      strokeWidth={Size / 4}
+      fill={HasContent ? ContentColor : CstResourceColor.Empty}
     />
   )
 }

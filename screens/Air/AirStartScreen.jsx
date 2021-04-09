@@ -38,6 +38,7 @@ const AirStartScreen = observer(({ navigation }) => {
             StartCompressor={EmergencyCompressor}
             Receiver={EmergencyReceiver}
             ReceiverColor="gainsboro"
+            navigation={navigation}
           />
         </Svg>
       </View>

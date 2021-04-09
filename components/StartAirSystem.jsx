@@ -18,10 +18,8 @@ const StartAirSystem = observer(({
     <Compressor
       X={X}
       Y={Y + 60}
-      Name={StartCompressor.Name}
-      hasElectricity={StartCompressor.CheckPower}
-      isRunning={StartCompressor.isRunning}
-      SafetyOpen={StartCompressor.SafetyOpen}
+      navigation={navigation}
+      CompressorObj={StartCompressor}
       cb={() => {
         StartCompressor.Toggle()
       }}
@@ -101,7 +99,7 @@ StartAirSystem.propTypes = {
   }).isRequired,
 
   ReceiverColor: PropTypes.string.isRequired,
-  navigation: PropTypes.object.isRequired,
+
 }
 
 export default StartAirSystem

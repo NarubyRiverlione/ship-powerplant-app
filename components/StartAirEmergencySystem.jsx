@@ -11,16 +11,14 @@ import CstResourceColor from '../constants/CstColors'
 */
 const StartAirEmergencySystem = observer(({
   X, Y,
-  StartCompressor, Receiver, ReceiverColor,
+  StartCompressor, Receiver, ReceiverColor, navigation,
 }) => (
   <G>
     <Compressor
       X={X + 20}
       Y={Y + 180}
-      Name={StartCompressor.Name}
-      hasElectricity={StartCompressor.CheckPower}
-      isRunning={StartCompressor.isRunning}
-      SafetyOpen={StartCompressor.SafetyOpen}
+      navigation={navigation}
+      CompressorObj={StartCompressor}
       cb={() => {
         StartCompressor.Toggle()
       }}
@@ -90,6 +88,7 @@ StartAirEmergencySystem.propTypes = {
   }).isRequired,
 
   ReceiverColor: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
 }
 
 export default StartAirEmergencySystem

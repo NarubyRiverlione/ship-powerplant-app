@@ -9,7 +9,7 @@ const Navigate = ({
 }) => (
   <AnimatedG onPress={() => navigation.navigate(NavStack, { screen: NavScreen })}>
     <Rect x={X} y={Y} width={Width} height={Height} stroke="grey" strokeWidth={2} strokeDasharray="10 5" />
-    <Text x={X + 5} y={Y + 25} fill="black">{NavText}</Text>
+    <Text x={X + 10} y={Y + 25} fill="black">{NavText}</Text>
   </AnimatedG>
 
 )
