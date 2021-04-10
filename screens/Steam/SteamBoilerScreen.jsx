@@ -22,9 +22,8 @@ const SteamBoilerScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
     SteamSys: {
-      FeedWaterSupply, FeedWaterPump, Boiler, FuelPump, FuelSourceValve,
+      FeedWaterSupply, FeedWaterPump, Boiler, FuelPump, FuelSourceValve, SteamCondensor, MainSteamValve,
     },
-    CoolingSeaWaterSys: { SteamCondensor },
   } = Sim
 
   const ToggleBoiler = () => {
@@ -65,14 +64,14 @@ const SteamBoilerScreen = observer(({ navigation }) => {
           <Pipe x1={705} y1={500} x2={705} y2={550} ContentColor={CstResourceColor.FreshWater} HasContent={Boiler.WaterDrainValve.Content !== 0} />
           <Valve X={740} Y={470} Vertical ContentColor={CstResourceColor.FreshWater} ValveObj={Boiler.WaterDrainValve} />
 
-          <Pipe x1={920} y1={130} x2={950} y2={130} ContentColor={CstResourceColor.Steam} HasContent={Boiler.Pressure > 1} />
-          <Valve X={950} Y={95} ContentColor={CstResourceColor.Steam} ValveObj={Boiler.MainSteamValve} />
-          <Pipe x1={1000} y1={130} x2={1200} y2={130} ContentColor={CstResourceColor.Steam} HasContent={Boiler.MainSteamValve.Content} />
+          <Pipe x1={920} y1={130} x2={950} y2={130} ContentColor={CstResourceColor.Steam} HasContent={Boiler.Content > 1} />
+          <Valve X={950} Y={95} ContentColor={CstResourceColor.Steam} ValveObj={MainSteamValve} />
+          <Pipe x1={1000} y1={130} x2={1200} y2={130} ContentColor={CstResourceColor.Steam} HasContent={MainSteamValve.Content > 1} />
 
-          <Pipe x1={1050} y1={200} x2={1200} y2={200} ContentColor={CstResourceColor.Steam} HasContent={Boiler.MainSteamValve.Content} />
-          <Pipe x1={920} y1={250} x2={965} y2={250} ContentColor={CstResourceColor.Steam} HasContent={Boiler.MainSteamValve.Content} />
-          <Text x={960} y={300} fill="black">Steam condensor</Text>
-          <Cooler X={960} Y={180} HotSide={Boiler.MainSteamValve.Content} CoolSide={SteamCondensor.CoolCircuitComplete} />
+          <Pipe x1={1050} y1={200} x2={1200} y2={200} ContentColor={CstResourceColor.Steam} HasContent={MainSteamValve.Content > 1} />
+          <Pipe x1={920} y1={250} x2={965} y2={250} ContentColor={CstResourceColor.Steam} HasContent={MainSteamValve.Content > 1} />
+          <Navigate X={960} Y={290} Width={120} NavText={SteamCondensor.Name} NavStack={NavStack.Coolant} NavScreen={NavScreen.Coolant.SeaWaterScreen} navigation={navigation} />
+          <Cooler X={960} Y={180} CoolerObj={SteamCondensor} cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.SeaWaterScreen })} />
 
         </Svg>
       </View>

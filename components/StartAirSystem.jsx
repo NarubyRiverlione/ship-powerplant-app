@@ -42,8 +42,7 @@ const StartAirSystem = observer(({
     <Cooler
       X={X + 350}
       Y={Y + 100}
-      CoolSide={StartAirCooler.CoolCircuitComplete}
-      HotSide={StartAirCooler.HotCircuitComplete}
+      CoolerObj={StartAirCooler}
       cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.FreshWaterSystemScreen })}
     />
     <Text x={X + 450} y={Y + 150} fill="black">{StartAirCooler.Name}</Text>

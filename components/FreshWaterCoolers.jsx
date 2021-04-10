@@ -53,8 +53,7 @@ const FreshWaterCoolers = observer(({
       X={X + 120}
       Y={Y + 20}
       Scale={0.8}
-      CoolSide={FwCooler.CoolCircuitComplete}
-      HotSide={FwCooler.HotCircuitComplete}
+      CoolerObj={FwCooler}
       cb={() => navigation.navigate(NavScreen.Coolant.SeaWaterScreen)}
     />
 
@@ -65,8 +64,7 @@ const FreshWaterCoolers = observer(({
     <Cooler
       X={X + 600}
       Y={Y + 70}
-      CoolSide={SystemCooler.CoolCircuitComplete}
-      HotSide={SystemCooler.HotCircuitComplete}
+      CoolerObj={SystemCooler}
       cb={() => navigation.navigate(NavToStack, { screen: NavToScreen })}
     />
 

@@ -74,20 +74,23 @@ HeatExchanger.propTypes = {
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const Cooler = observer(({
-  X, Y, HotSide, CoolSide, cb, Scale,
+  X, Y, CoolerObj, cb, Scale,
 }) => (
   <AnimatedG onPress={cb}>
     <HeatExchanger X={X} Y={Y} Scale={1 / Scale} />
-    <Led X={X + 110} Y={Y + 70} Label="Hot side" Status={HotSide} />
-    <Led X={X + 110} Y={Y + 90} Label="Cold side" Status={CoolSide} />
+    <Led X={X + 110} Y={Y + 70} Label="Hot side" Status={CoolerObj.HotCircuitComplete} />
+    <Led X={X + 110} Y={Y + 90} Label="Cold side" Status={CoolerObj.CoolCircuitComplete} />
   </AnimatedG>
 ))
 
 Cooler.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
-  CoolSide: PropTypes.bool.isRequired,
-  HotSide: PropTypes.bool.isRequired,
+  CoolerObj: PropTypes.shape({
+    CoolCircuitComplete: PropTypes.bool.isRequired,
+    HotCircuitComplete: PropTypes.bool.isRequired,
+
+  }),
   cb: PropTypes.func,
   Scale: PropTypes.number,
 }

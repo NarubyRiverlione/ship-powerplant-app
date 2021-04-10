@@ -127,8 +127,7 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={800}
             Y={150}
-            CoolSide={FwCoolerDsGen.CoolCircuitComplete}
-            HotSide={FwCoolerDsGen.HotCircuitComplete}
+            CoolerObj={FwCoolerDsGen}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
 
@@ -139,8 +138,7 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={500}
             Y={150}
-            CoolSide={FwCoolerStartAir.CoolCircuitComplete}
-            HotSide={FwCoolerStartAir.HotCircuitComplete}
+            CoolerObj={FwCoolerStartAir}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
 
@@ -148,8 +146,7 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
           <Cooler
             X={270}
             Y={150}
-            CoolSide={SteamCondensor.CoolCircuitComplete}
-            HotSide={SteamCondensor.HotCircuitComplete}
+            CoolerObj={SteamCondensor}
             cb={() => navigation.navigate(NavStack.Steam, { screen: NavScreen.Steam.BoilerScreen })}
           />
 
