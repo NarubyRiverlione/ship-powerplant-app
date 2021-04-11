@@ -31,7 +31,7 @@ const StartAirEmergencySystem = observer(({
       x2={X + 250}
       y2={Y + 120}
       ContentColor={CstResourceColor.CompressedAir}
-      HasContent={StartCompressor.OutletValve.Content !== 0}
+      HasContent={StartCompressor.isRunning}
       Size={6}
     />
     <Valve

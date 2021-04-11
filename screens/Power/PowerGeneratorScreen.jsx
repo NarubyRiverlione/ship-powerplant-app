@@ -88,8 +88,7 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
           <Cooler
             X={780}
             Y={250}
-            CoolSide={DsGenLubCooler.CoolCircuitComplete}
-            HotSide={DsGenLubCooler.HotCircuitComplete}
+            CoolerObj={DsGenLubCooler}
             cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.FreshWaterSystemScreen })}
           />
           <Text x={880} y={300} fill="black">{DsGenLubCooler.Name.replace('Diesel generator 1', '')}</Text>

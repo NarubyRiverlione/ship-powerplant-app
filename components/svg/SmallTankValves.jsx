@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite'
 import SmallTankSvg from './SmallTank'
 import Valve from './Valve'
 import Pipe from './Pipe'
+import CstResourceColor from '../../constants/CstColors'
 
 const SmallTankValves = observer(({
   Name, TankSys, X, Y, ContentColor, TankColor,
@@ -22,18 +23,25 @@ const SmallTankValves = observer(({
       <Pipe Size={6} x1={X + 72} y1={Y + 50} x2={X + 125} y2={Y + 50} ContentColor={ContentColor} HasContent={IntakeValve.Content !== 0} />
       <Pipe Size={6} x1={X + 125} y1={Y + 47} x2={X + 125} y2={Y + 77} ContentColor={ContentColor} HasContent={IntakeValve.Content !== 0} />
       <Valve X={X + 20} Y={Y + 15} ContentColor={ContentColor} ValveObj={IntakeValve} />
-      <Line x1={X + 122} y1={Y + 48} x2={X + 122} y2={Y + 52} strokeWidth="2" stroke={IntakeValve.Content !== 0 ? ContentColor : 'white'} />
+      <Line
+        x1={X + 122}
+        y1={Y + 48}
+        x2={X + 122}
+        y2={Y + 52}
+        strokeWidth="2"
+        stroke={IntakeValve.Content !== 0 ? ContentColor : CstResourceColor.Empty}
+      />
       {/* Outlet */}
       <Pipe Size={6} x1={X + 200} y1={Y + 160} x2={X + 230} y2={Y + 160} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
       <Pipe Size={6} x1={X + 280} y1={Y + 160} x2={X + 300} y2={Y + 160} ContentColor={ContentColor} HasContent={OutletValve.Content !== 0} />
       <Valve X={X + 230} Y={Y + 125} ContentColor={ContentColor} ValveObj={OutletValve} />
       {/* Drain */}
-      <Pipe Size={6} x1={X + 42} y1={Y + 115} x2={X + 100} y2={Y + 115} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
-      <Pipe Size={6} x1={X + 45} y1={Y + 120} x2={X + 45} y2={Y + 140} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
-      <Line x1={X + 43} y1={Y + 119} x2={X + 47} y2={Y + 119} strokeWidth="4" stroke={Tank.Content !== 0 ? ContentColor : 'white'} />
-      <Text x={X} y={Y + 170} fill="black">Drain</Text>
-      <Pipe Size={6} x1={X + 45} y1={Y + 190} x2={X + 45} y2={Y + 210} ContentColor={ContentColor} HasContent={DrainValve.Content !== 0} />
-      <Valve X={X + 80} Y={Y + 140} Vertical ContentColor={ContentColor} ValveObj={DrainValve} />
+      <Pipe Size={6} x1={X + 130} y1={Y + 215} x2={X + 170} y2={Y + 215} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
+      <Pipe Size={6} x1={X + 167} y1={Y + 100} x2={X + 167} y2={Y + 212} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
+      <Line x1={X + 164} y1={Y + 212} x2={X + 169} y2={Y + 212} strokeWidth="2" stroke={Tank.Content !== 0 ? ContentColor : CstResourceColor.Empty} />
+      <Text x={X + 50} y={Y + 200} fill="black">Drain</Text>
+      <Pipe Size={6} x1={X + 40} y1={Y + 215} x2={X + 80} y2={Y + 215} ContentColor={ContentColor} HasContent={DrainValve.Content !== 0} />
+      <Valve X={X + 80} Y={Y + 180} ContentColor={ContentColor} ValveObj={DrainValve} />
 
       <SmallTankSvg Size={100} X={X + 50} Y={Y + 75} ContentPct={Tank.Content} ContentColor={ContentColor} TankColor={TankColor} />
     </G>

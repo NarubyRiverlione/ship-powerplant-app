@@ -6,7 +6,7 @@ import { Path, G } from 'react-native-svg'
 
 const AnimatedG = Animated.createAnimatedComponent(G)
 const Generator = ({
-  X, Y, Scale, cb,
+  X, Y, Scale, cb, IsRunning,
 }) => (
   <AnimatedG onPress={cb}>
     <G data-name="Generator" transform={`translate(${X},${Y}) scale(${0.4 * Scale})`}>
@@ -21,7 +21,7 @@ const Generator = ({
       />
       <Path
         d="M328 120v192c-.027 8.824-7.176 15.973-16 16H168c-8.824-.027-15.973-7.176-16-16V120c.027-8.824 7.176-15.973 16-16h144c8.824.027 15.973 7.176 16 16zM208 280l88-88h-48l40-40h-86.16L184 192h25.36L200 216h32zm0 0"
-        fill="#d80027"
+        fill={IsRunning ? 'green' : '#d80027'}
       />
       <Path
         d="M296 192l-88 88 24-64h-32l9.36-24H184l17.84-40H288l-40 40zm0 0M56 168v96H40v48H8V120h32v48zm0 0"
@@ -39,6 +39,7 @@ Generator.propTypes = {
   X: PropTypes.number.isRequired,
   Y: PropTypes.number.isRequired,
   Scale: PropTypes.number,
+  IsRunning: PropTypes.bool.isRequired,
   cb: PropTypes.func,
 }
 

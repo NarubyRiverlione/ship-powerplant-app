@@ -107,13 +107,13 @@ const Boiler = observer(({
 
       <Text x={X - 370} y={Y - 50} fill="black" fontSize={20} fontWeight="bold">{`${BoilerObj.Pressure.toFixed(1)} bar`}</Text>
       <Text x={X - 370} y={Y - 30} fill="black" fontSize={20}>{`${BoilerObj.Temperature.toFixed(0)} °C`}</Text>
-      <Text x={X - 410} y={Y + 270} fill="black" fontSize={20}>{`Water level ${BoilerObj.WaterLevel.toFixed(0) - 50}`}</Text>
+      <Text x={X - 410} y={Y + 270} fill="black" fontSize={20}>{`Hotwel level ${BoilerObj.WaterLevel.toFixed(0) - 50}`}</Text>
       {/* <LookingGlass X={X - 270} Y={Y + 230} Size={60} ContentColor={CstResourceColor.FreshWater} ContentPct={BoilerObj.WaterTank.Content} /> */}
     </G>
 
     <Led X={X + 350} Y={Y + 270} Status={BoilerObj.HasEnoughWaterForFlame} Label="Enough water" />
     <Led X={X + 350} Y={Y + 290} Status={BoilerObj.HasFuel} Label="Has fuel" />
-    <Led X={X + 350} Y={Y + 320} Status={BoilerObj.AutoFlame} Label="Auto enabled" />
+    <Led X={X + 350} Y={Y + 320} Status={BoilerObj.TempInsideAutoZone} Label="Auto available" />
 
     <Pipe x1={X + 147} y1={Y - 65} x2={X + 147} y2={Y + 15} Size={25} HasContent={BoilerObj.Pressure > 1} ContentColor={CstResourceColor.Steam} />
     <SafetyValve X={X + 160} Y={Y - 97} isOpen={BoilerObj.SafetyRelease.isOpen} Scale={1.7} />
