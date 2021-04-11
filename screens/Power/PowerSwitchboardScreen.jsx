@@ -31,7 +31,7 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
           <Text x={820} y={90} fill="black">{EmergencyGen.Name}</Text>
           <Pipe x1={800} y1={130} x2={855} y2={130} Size={3} ContentColor={CstResourceColor.Electricity} HasContent={EmergencyGen.isRunning} />
           <Pipe x1={800} y1={129} x2={750} y2={195} Size={3} ContentColor={CstResourceColor.Electricity} HasContent={EmergencyGen.isRunning} />
-          <Generator X={850} Y={100} Scale={0.4} cb={() => EmergencyGen.Toggle()} IsRunning={EmergencyGen.isRunning} />
+          <Generator X={850} Y={100} Scale={0.4} cb={() => EmergencyGen.Toggle()} isRunning={EmergencyGen.isRunning} />
           <Line x1={800} y1={130} x2={803} y2={130} stroke={EmergencyGen.isRunning ? CstResourceColor.Electricity : 'white'} />
 
           <Text x={820} y={400} fill="black">{EmergencyBus.Name}</Text>
@@ -67,7 +67,7 @@ const PowerSwitchboardScreen = observer(({ navigation }) => {
           <Pipe x1={250} y1={120} x2={296} y2={120} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen.isRunning} />
           <Pipe x1={300} y1={117} x2={300} y2={155} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={DsGen.isRunning} />
           <Pipe x1={300} y1={165} x2={300} y2={247} ContentColor={CstResourceColor.Electricity} Size={6} HasContent={!DsGenBreaker.isOpen && DsGen.isRunning} />
-          <Generator X={100} Y={50} Scale={0.8} cb={() => { navigation.navigate(NavScreen.Power.DsGeneratorScreen) }} IsRunning={DsGen.isRunning} />
+          <Generator X={100} Y={50} Scale={0.8} cb={() => { navigation.navigate(NavScreen.Power.DsGeneratorScreen) }} isRunning={DsGen.isRunning} />
           <PowerSwitch X={300} Y={150} Vertical isOpen={DsGenBreaker.isOpen} cb={() => DsGenBreaker.Toggle()} />
           <Line x1={296} y1={118} x2={296} y2={122} stroke={DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />
           <Line x1={298} y1={247} x2={302} y2={247} stroke={!DsGenBreaker.isOpen && DsGen.isRunning ? CstResourceColor.Electricity : 'white'} strokeWidth={4} />

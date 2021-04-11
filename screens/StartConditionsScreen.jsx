@@ -42,7 +42,7 @@ const StartConditionsScreen = ({ navigation }) => {
       <View style={styles.partContentView}>
         <View style={{ flex: 4, justifyContent: 'space-evenly' }}>
           <Button
-            onPress={() => navigation.navigate(NavStack.Root)}
+            onPress={() => { setSimConditions('ColdAndDark') }}
             title="Cold & Dark"
           />
         </View>

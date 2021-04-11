@@ -9,6 +9,7 @@ import SimContext from '../../SimulatorContext'
 
 import SimulatorScreen from '../SimulatorScreen'
 import Pipe from '../../components/svg/Pipe'
+import Led from '../../components/svg/Led'
 import BoilerSvg from '../../components/svg/Boiler'
 import Cooler from '../../components/svg/Cooler'
 import Navigate from '../../components/svg/Navigate'
@@ -17,6 +18,7 @@ import SmallTankValves from '../../components/svg/SmallTankValves'
 import Pump from '../../components/svg/Pump'
 import CstResourceColor from '../../constants/CstColors'
 import { NavScreen, NavStack } from '../../constants/CstNav'
+import PowerSwitch from '../../components/svg/PowerSwitch'
 
 const SteamBoilerScreen = observer(({ navigation }) => {
   const Sim = SimContext()
@@ -25,11 +27,6 @@ const SteamBoilerScreen = observer(({ navigation }) => {
       FeedWaterSupply, FeedWaterPump, Boiler, FuelPump, FuelSourceValve, SteamCondensor, MainSteamValve,
     },
   } = Sim
-
-  const ToggleBoiler = () => {
-    if (Boiler.hasFlame) Boiler.Extinguishing()
-    else Boiler.Ignite()
-  }
 
   return (
     <SimulatorScreen>
@@ -47,7 +44,7 @@ const SteamBoilerScreen = observer(({ navigation }) => {
           <Navigate X={470} Y={150} Width={105} Height={35} NavText={FuelPump.Bus.Name} navigation={navigation} NavStack={NavStack.Power} NavScreen={NavScreen.Power.SwitchboardScreen} />
           <Pump X={500} Y={50} Horizontal Scale={0.8} isRunning={FuelPump.isRunning} cb={() => FuelPump.Toggle()} />
 
-          <BoilerSvg X={600} Y={100} BoilerObj={Boiler} cb={() => ToggleBoiler()} />
+          <BoilerSvg X={600} Y={100} BoilerObj={Boiler} cb={() => Boiler.Toggle()} />
 
           <Pipe x1={5} y1={260} x2={60} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent />
           <SmallTankValves X={50} Y={210} Name={FeedWaterSupply.Name} ContentColor={CstResourceColor.FreshWater} TankSys={FeedWaterSupply} />
@@ -72,6 +69,10 @@ const SteamBoilerScreen = observer(({ navigation }) => {
           <Pipe x1={920} y1={250} x2={965} y2={250} ContentColor={CstResourceColor.Steam} HasContent={MainSteamValve.Content > 1} />
           <Navigate X={960} Y={290} Width={120} NavText={SteamCondensor.Name} NavStack={NavStack.Coolant} NavScreen={NavScreen.Coolant.SeaWaterScreen} navigation={navigation} />
           <Cooler X={960} Y={180} CoolerObj={SteamCondensor} cb={() => navigation.navigate(NavStack.Coolant, { screen: NavScreen.Coolant.SeaWaterScreen })} />
+
+          <PowerSwitch X={960} Y={450} isOpen={!Boiler.AutoFlame} cb={() => { Boiler.AutoFlameToggle() }} />
+          <Text x={960} y={480} fill="black">Auto Control</Text>
+          <Led X={965} Y={495} Status={Boiler.TempInsideAutoZone} Label="available" />
 
         </Svg>
       </View>

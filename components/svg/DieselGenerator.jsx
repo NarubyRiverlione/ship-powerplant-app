@@ -9,7 +9,7 @@ const DieselGenerator = ({
 }) => (
   <G>
     <Motor X={X} Y={Y} isRunning={DsGen.isRunning} cb={() => DsGen.Toggle()} />
-    <Generator X={X - 190} Y={Y + 30} />
+    <Generator X={X - 190} Y={Y + 30} isRunning={DsGen.isRunning} />
   </G>
 )
 

@@ -114,7 +114,7 @@ const FuelDsStorageScreen = observer(() => {
             stroke={DsStorage.OutletValve.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
           {/* TODO outlet valve handpump */}
-          <Valve X={760} Y={365} ValveObj={{ isOpen: false, Content: 0, Toggle: () => { } }} />
+          <Valve X={760} Y={365} ValveObj={{ isOpen: false, Content: 0, Toggle: () => { } }} ContentColor={CstResourceColor.Diesel} />
           <Pipe
             x1={810}
             y1={400}
