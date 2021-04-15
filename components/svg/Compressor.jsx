@@ -55,7 +55,7 @@ const Compressor = ({
       <Pipe Size={3} x1={X} y1={Y + 30} x2={X + 60} y2={Y + 30} ContentColor={CstResourceColor.Electricity} HasContent={Bus.Voltage > 0} />
       <Navigate X={X + 5} Y={Y - 30} Width={105} Height={35} NavText={Bus.Name} navigation={navigation} NavStack={NavStack.Power} NavScreen={NavScreen.Power.SwitchboardScreen} />
       <ElectricalMotor X={X} Y={Y} isRunning={isRunning} />
-      <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning && !SafetyOpen} />
+      <Pipe x1={X + 180} y1={Y + 120} x2={X + 250} y2={Y + 120} ContentColor={CstResourceColor.CompressedAir} HasContent={isRunning} />
       <SafetyValve X={X + 180} Y={Y + 45} isOpen={SafetyOpen} />
 
     </AnimatedG>

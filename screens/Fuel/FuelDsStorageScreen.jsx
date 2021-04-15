@@ -11,12 +11,14 @@ import SmallTankValves from '../../components/svg/SmallTankValves'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../constants/CstColors'
+import Navigate from '../../components/svg/Navigate'
+import { NavScreen, NavStack } from '../../constants/CstNav'
 
-const FuelDsStorageScreen = observer(() => {
+const FuelDsStorageScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const { FuelSys } = Sim
   const {
-    DsShoreValve, DsStorage, DsService, DsBypassValve, DsPurification,
+    DsShoreValve, DsStorage, DsService, DsBypassValve, DsPurification, DsServiceMulti,
   } = FuelSys
   return (
     <SimulatorScreen>
@@ -48,7 +50,7 @@ const FuelDsStorageScreen = observer(() => {
             ContentColor={CstResourceColor.Diesel}
             TankColor="gray"
           />
-          <Text x={500} y={100} fill="black">{`Fuel consumption ${(DsStorage.Tank.RemoveEachStep * 60).toFixed(1)} / minute`}</Text>
+          <Text x={500} y={100} fill="black">{`Fuel consumption ${(DsStorage.Tank.ReadoutConsumption * 60).toFixed(1)} / minute`}</Text>
           <Line
             x1={205}
             y1={57}
@@ -58,13 +60,65 @@ const FuelDsStorageScreen = observer(() => {
             stroke={DsShoreValve.isOpen ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
 
-          <Rect x={550} y={350} width={150} height={200} stroke="black" onPress={() => DsPurification.Toggle()} />
-          <Text x={570} y={400} fill="black">Purification (ToDo)</Text>
-          <Led X={570} Y={420} Status={DsPurification.isRunning} Label="is running" />
-          <Led X={570} Y={450} Status={DsPurification.CheckPower} Label="has power" />
+          <Rect x={600} y={350} width={120} height={170} stroke="black" onPress={() => DsPurification.Toggle()} />
+          <Text x={610} y={400} fill="black">Purification (ToDo)</Text>
+          <Led X={610} Y={420} Status={DsPurification.isRunning} Label="is running" />
+          <Led X={610} Y={450} Status={DsPurification.CheckPower} Label="has power" />
+          <Led X={610} Y={470} Status={DsPurification.HasSteam} Label="has steam" />
 
           <Pipe
+            x1={420}
+            y1={450}
+            x2={600}
+            y2={450}
+            Size={2}
+            ContentColor={CstResourceColor.Electricity}
+            HasContent={DsPurification.Bus.Voltage !== 0}
+          />
+          <Navigate
+            X={430}
+            Y={460}
+            Width={80}
+            NavText={DsPurification.Bus.Name}
+            navigation={navigation}
+            NavStack={NavStack.Power}
+            NavScreen={NavScreen.Power.SwitchboardScreen}
+          />
+
+          <Pipe
+            x1={620}
+            y1={520}
+            x2={620}
+            y2={530}
+            ContentColor={CstResourceColor.Steam}
+            HasContent={DsPurification.SteamIntakeValve.Content !== 0}
+          />
+          <Pipe
+            x1={620}
+            y1={580}
+            x2={620}
+            y2={620}
+            ContentColor={CstResourceColor.Steam}
+            HasContent={DsPurification.SteamIntakeValve.Source.Content !== 0}
+          />
+          <Valve
+            X={655}
+            Y={530}
+            ContentColor={CstResourceColor.Steam}
+            ValveObj={DsPurification.SteamIntakeValve}
+            Vertical
+          />
+          <Pipe
             x1={700}
+            y1={520}
+            x2={700}
+            y2={620}
+            ContentColor={CstResourceColor.Steam}
+            HasContent={DsPurification.SteamIntakeValve.Content !== 0}
+          />
+
+          <Pipe
+            x1={720}
             y1={500}
             x2={742}
             y2={500}
@@ -93,7 +147,22 @@ const FuelDsStorageScreen = observer(() => {
           <Pipe
             x1={500}
             y1={400}
-            x2={550}
+            x2={520}
+            y2={400}
+            Size={6}
+            ContentColor={CstResourceColor.Diesel}
+            HasContent={DsStorage.OutletValve.Content !== 0}
+          />
+          <Valve
+            X={520}
+            Y={365}
+            ContentColor={CstResourceColor.Diesel}
+            ValveObj={DsPurification.IntakeValve}
+          />
+          <Pipe
+            x1={570}
+            y1={400}
+            x2={600}
             y2={400}
             Size={6}
             ContentColor={CstResourceColor.Diesel}
@@ -134,7 +203,7 @@ const FuelDsStorageScreen = observer(() => {
             x1={744}
             y1={197}
             x2={744}
-            y2={298}
+            y2={296}
             Size={6}
             ContentColor={CstResourceColor.Diesel}
             HasContent={DsBypassValve.Content !== 0}
@@ -146,11 +215,11 @@ const FuelDsStorageScreen = observer(() => {
             y2={300}
             Size={6}
             ContentColor={CstResourceColor.Diesel}
-            HasContent={DsBypassValve.Content !== 0 || DsPurification.Content !== 0}
+            HasContent={DsServiceMulti.Content !== 0}
           />
           <Pipe
             x1={744}
-            y1={302}
+            y1={303}
             x2={744}
             y2={503}
             Size={6}
@@ -203,7 +272,7 @@ const FuelDsStorageScreen = observer(() => {
             x2={805}
             y2={302}
             strokeWidth="2"
-            stroke={DsPurification.Content !== 0 || DsBypassValve.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
+            stroke={DsServiceMulti.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
           <Line
             x1={745}
@@ -213,19 +282,9 @@ const FuelDsStorageScreen = observer(() => {
             strokeWidth="2"
             stroke={DsPurification.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
-          {/*
-          <Line
-            x1={700}
-            y1={207}
-            x2={700}
-            y2={213}
-            strokeWidth="2"
-            stroke={DsStorage.OutletValve.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
-          />
-          */}
 
           <Text x={1000} y={450} fill="black">Fuel consumption</Text>
-          <Text x={1000} y={470} fill="black">{`${(DsService.Tank.RemoveEachStep * 60).toFixed(1)} / minute`}</Text>
+          <Text x={1000} y={470} fill="black">{`${(DsService.Tank.ReadoutConsumption * 60).toFixed(1)} / minute`}</Text>
         </Svg>
       </View>
     </SimulatorScreen>

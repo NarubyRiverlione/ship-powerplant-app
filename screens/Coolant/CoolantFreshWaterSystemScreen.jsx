@@ -122,7 +122,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             X={800}
             Y={250}
             Size={100}
-            ContentPct={FwExpandTank.Content}
+            Tank={FwExpandTank}
             ContentColor={CstResourceColor.FreshWater}
             TankColor="grey"
           />

@@ -43,7 +43,7 @@ const SmallTankValves = observer(({
       <Pipe Size={6} x1={X + 40} y1={Y + 215} x2={X + 80} y2={Y + 215} ContentColor={ContentColor} HasContent={DrainValve.Content !== 0} />
       <Valve X={X + 80} Y={Y + 180} ContentColor={ContentColor} ValveObj={DrainValve} />
 
-      <SmallTankSvg Size={100} X={X + 50} Y={Y + 75} ContentPct={Tank.Content} ContentColor={ContentColor} TankColor={TankColor} />
+      <SmallTankSvg Size={100} X={X + 50} Y={Y + 75} Tank={Tank} ContentColor={ContentColor} TankColor={TankColor} />
     </G>
   )
 })
@@ -57,6 +57,7 @@ SmallTankValves.propTypes = {
     OutletValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
     IntakeValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
     DrainValve: PropTypes.shape({ Content: PropTypes.number.isRequired }).isRequired,
+    Tank: PropTypes.shape({ Content: PropTypes.number.isRequired, Volume: PropTypes.number.isRequired }).isRequired,
   }).isRequired,
   ContentColor: PropTypes.string.isRequired,
   TankColor: PropTypes.string,
