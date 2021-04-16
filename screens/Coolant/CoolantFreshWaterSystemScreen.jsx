@@ -23,7 +23,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
       FwCoolerStartAir, FwCoolerDsGen,
       DsGenLubCooler, StartAirCooler,
       FwPumpDsGen, FwPumpStartAir,
-      FwExpandTank, FwIntakeValve, FwDrainValve,
+      FwExpandTank, FwIntakeValve, FwDrainValve, FwEnoughForCooling,
     },
   } = Sim
 
@@ -61,14 +61,14 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Pipe
             x1={950}
             y1={270}
-            x2={970}
+            x2={1000}
             y2={270}
             ContentColor={CstResourceColor.FreshWater}
             HasContent={FwIntakeValve.isOpen}
           />
 
           <Pipe
-            x1={1020}
+            x1={1050}
             y1={270}
             x2={1100}
             y2={270}
@@ -76,12 +76,12 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             HasContent
           />
           <Valve
-            X={970}
+            X={1000}
             Y={235}
             ContentColor={CstResourceColor.FreshWater}
             ValveObj={FwIntakeValve}
           />
-          <Arrow X={1050} Y={290} Left />
+          <Arrow X={1090} Y={290} Left />
 
           <Pipe
             x1={920}
@@ -111,10 +111,10 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           />
           <Arrow X={910} Y={430} Down />
 
-          <Pipe x1={800} y1={94} x2={800} y2={386} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Pipe x1={640} y1={90} x2={804} y2={90} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Pipe x1={640} y1={390} x2={804} y2={390} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
-          <Pipe x1={804} y1={300} x2={850} y2={300} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
+          <Pipe x1={800} y1={94} x2={800} y2={386} ContentColor={CstResourceColor.FreshWater} HasContent={FwEnoughForCooling} />
+          <Pipe x1={640} y1={90} x2={804} y2={90} ContentColor={CstResourceColor.FreshWater} HasContent={FwEnoughForCooling} />
+          <Pipe x1={640} y1={390} x2={804} y2={390} ContentColor={CstResourceColor.FreshWater} HasContent={FwEnoughForCooling} />
+          <Pipe x1={804} y1={300} x2={850} y2={300} ContentColor={CstResourceColor.FreshWater} HasContent={FwEnoughForCooling} />
           <Line x1={797} y1={94} x2={803} y2={94} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
           <Line x1={797} y1={386} x2={803} y2={386} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
           <Line x1={804} y1={297} x2={804} y2={303} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
