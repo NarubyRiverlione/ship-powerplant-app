@@ -13,6 +13,8 @@ import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../constants/CstColors'
 import Navigate from '../../components/svg/Navigate'
 import Arrow from '../../components/svg/Arrow'
+import Machine from '../../components/svg/Machine'
+
 import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const FuelDsStorageScreen = observer(({ navigation }) => {
@@ -63,16 +65,10 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             stroke={DsShoreValve.isOpen ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
 
-          <Rect x={600} y={350} width={120} height={170} stroke="black" onPress={() => DsPurification.Toggle()} />
-          <Text x={610} y={400} fill="black">Purification (ToDo)</Text>
-          <Led X={610} Y={420} Status={DsPurification.isRunning} Label="is running" />
-          <Led X={610} Y={450} Status={DsPurification.CheckPower} Label="has power" />
-          <Led X={610} Y={470} Status={DsPurification.HasSteam} Label="has steam" />
-
           <Pipe
             x1={420}
             y1={450}
-            x2={600}
+            x2={615}
             y2={450}
             Size={2}
             ContentColor={CstResourceColor.Electricity}
@@ -121,8 +117,17 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             HasContent={DsPurification.SteamIntakeValve.Content !== 0}
           />
           <Arrow X={720} Y={590} Down />
+          <Navigate
+            X={720}
+            Y={540}
+            Width={90}
+            NavText="Steam boiler"
+            navigation={navigation}
+            NavStack={NavStack.Steam}
+            NavScreen={NavScreen.Steam.BoilerScreen}
+          />
           <Pipe
-            x1={720}
+            x1={700}
             y1={500}
             x2={742}
             y2={500}
@@ -151,23 +156,23 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
           <Pipe
             x1={500}
             y1={400}
-            x2={520}
+            x2={530}
             y2={400}
             Size={6}
             ContentColor={CstResourceColor.Diesel}
             HasContent={DsStorage.OutletValve.Content !== 0}
           />
           <Valve
-            X={520}
+            X={530}
             Y={365}
             ContentColor={CstResourceColor.Diesel}
             ValveObj={DsPurification.IntakeValve}
           />
-          <Arrow X={505} Y={410} />
+          <Arrow X={510} Y={410} />
           <Pipe
-            x1={570}
+            x1={580}
             y1={400}
-            x2={600}
+            x2={620}
             y2={400}
             Size={6}
             ContentColor={CstResourceColor.Diesel}
@@ -181,6 +186,9 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             strokeWidth="2"
             stroke={DsStorage.OutletValve.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
+          <Machine X={585} Y={370} isRunning={DsPurification.isRunning} cb={() => { DsPurification.Toggle() }} />
+          <Text x={630} y={360} fill="black">Purification</Text>
+
           <Rect x={550} y={175} width={50} height={50} stroke="black" />
           <Text x={550} y={250} fill="black">handpump (ToDo)</Text>
           <Pipe
