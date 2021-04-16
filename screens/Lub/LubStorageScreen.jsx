@@ -7,6 +7,7 @@ import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
 import Valve from '../../components/svg/Valve'
+import Arrow from '../../components/svg/Arrow'
 import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../constants/CstColors'
 
@@ -26,7 +27,8 @@ const LubStorageScreen = observer(() => {
             ContentColor={CstResourceColor.Lubrication}
             ValveObj={ShoreValve}
           />
-          <Text x={20} y={90} fill="black" fontSize={12}>{ShoreValve.Name}</Text>
+          <Arrow X={20} Y={70} />
+          <Text x={20} y={110} fill="black" fontSize={12}>{ShoreValve.Name}</Text>
           <Pipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Lubrication} HasContent={ShoreValve.isOpen} />
 
           <TankValves

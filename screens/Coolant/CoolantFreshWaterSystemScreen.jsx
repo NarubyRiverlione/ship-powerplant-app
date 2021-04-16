@@ -12,7 +12,7 @@ import Valve from '../../components/svg/Valve'
 import SimulatorScreen from '../SimulatorScreen'
 import SimContext from '../../SimulatorContext'
 import CstResourceColor from '../../constants/CstColors'
-import Navigate from '../../components/svg/Navigate'
+import Arrow from '../../components/svg/Arrow'
 import { NavScreen, NavStack } from '../../constants/CstNav'
 import FreshWaterCoolers from '../../components/FreshWaterCoolers'
 
@@ -66,6 +66,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.FreshWater}
             HasContent={FwIntakeValve.isOpen}
           />
+
           <Pipe
             x1={1020}
             y1={270}
@@ -80,6 +81,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.FreshWater}
             ValveObj={FwIntakeValve}
           />
+          <Arrow X={1050} Y={290} Left />
 
           <Pipe
             x1={920}
@@ -107,6 +109,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
             ValveObj={FwDrainValve}
             Vertical
           />
+          <Arrow X={910} Y={430} Down />
 
           <Pipe x1={800} y1={94} x2={800} y2={386} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
           <Pipe x1={640} y1={90} x2={804} y2={90} ContentColor={CstResourceColor.FreshWater} HasContent={FwExpandTank.Content !== 0} />
@@ -117,6 +120,7 @@ const CoolantFreshWaterSystemScreen = observer(({ navigation }) => {
           <Line x1={804} y1={297} x2={804} y2={303} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
           <Line x1={640} y1={86} x2={640} y2={92} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
           <Line x1={640} y1={386} x2={640} y2={392} strokeWidth={2} stroke={FwExpandTank.Content !== 0 ? CstResourceColor.FreshWater : CstResourceColor.Empty} />
+          <Arrow X={830} Y={320} Left />
 
           <SmallTank
             X={800}

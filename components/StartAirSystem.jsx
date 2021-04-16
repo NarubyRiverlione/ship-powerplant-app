@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import PropTypes from 'prop-types'
 import TankValves from './svg/TankValves'
 import Cooler from './svg/Cooler'
+import Arrow from './svg/Arrow'
 import Valve from './svg/Valve'
 import Pipe from './svg/Pipe'
 import Compressor from './svg/Compressor'
@@ -31,6 +32,8 @@ const StartAirSystem = observer(({
       ContentColor={CstResourceColor.CompressedAir}
       ValveObj={StartCompressor.OutletValve}
     />
+    <Arrow X={X + 310} Y={Y + 190} />
+
     <Pipe
       x1={X + 302}
       y1={Y + 180}

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import SmallTankValves from './svg/SmallTankValves'
 import Valve from './svg/Valve'
 import Pipe from './svg/Pipe'
+import Arrow from './svg/Arrow'
 import Compressor from './svg/Compressor'
 import CstResourceColor from '../constants/CstColors'
 /*
@@ -40,6 +41,7 @@ const StartAirEmergencySystem = observer(({
       ContentColor={CstResourceColor.CompressedAir}
       ValveObj={StartCompressor.OutletValve}
     />
+    <Arrow X={X + 310} Y={Y + 130} />
     <Pipe
       x1={X + 302}
       y1={Y + 120}

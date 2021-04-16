@@ -11,6 +11,7 @@ import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
 import Pump from '../../components/svg/Pump'
 import Cooler from '../../components/svg/Cooler'
+import Arrow from '../../components/svg/Arrow'
 import SimulatorScreen from '../SimulatorScreen'
 import SimContext from '../../SimulatorContext'
 import CstResourceColor from '../../constants/CstColors'
@@ -61,6 +62,7 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.SeaWater}
             ValveObj={SeaChestLowSuctionIntakeValve}
           />
+          <Arrow X={80} Y={310} />
           <Pipe x1={70} y1={535} x2={120} y2={535} ContentColor={CstResourceColor.SeaWater} HasContent />
           <Text fill="black">
             <TSpan x={40} y={450}>{SeaChestLowSuctionIntakeValve.Name.replace('intake valve', '')}</TSpan>
@@ -72,7 +74,7 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.SeaWater}
             ValveObj={SeaChestHighSuctionIntakeValve}
           />
-
+          <Arrow X={110} Y={510} />
           <Pipe x1={150} y1={335} x2={184} y2={335} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
           <Pipe x1={186} y1={331} x2={194} y2={506} ContentColor={CstResourceColor.SeaWater} HasContent={SeaChestLowSuctionIntakeValve.isOpen} />
           <Line x1={182} y1={332} x2={182} y2={338} strokeWidth={2} stroke={SeaChestLowSuctionIntakeValve.isOpen ? CstResourceColor.SeaWater : CstResourceColor.Empty} />
@@ -130,6 +132,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             CoolerObj={FwCoolerDsGen}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
+          <Arrow X={870} Y={270} Up />
+          <Arrow X={830} Y={140} Up />
 
           <Text fill="black">
             <TSpan x={390} y={160}>Fresh water cooler</TSpan>
@@ -141,7 +145,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             CoolerObj={FwCoolerStartAir}
             cb={() => navigation.navigate(NavScreen.Coolant.FreshWaterSystemScreen)}
           />
-
+          <Arrow X={570} Y={270} Up />
+          <Arrow X={540} Y={140} Up />
           <Text x={170} y={160} fill="black">{SteamCondensor.Name}</Text>
           <Cooler
             X={270}
@@ -149,6 +154,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             CoolerObj={SteamCondensor}
             cb={() => navigation.navigate(NavStack.Steam, { screen: NavScreen.Steam.BoilerScreen })}
           />
+          <Arrow X={340} Y={270} Up />
+          <Arrow X={310} Y={140} Up />
 
           <Pipe x1={295} y1={54} x2={295} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
           <Pipe x1={525} y1={54} x2={525} y2={152} ContentColor={CstResourceColor.SeaWater} HasContent={SuctionPump1.isRunning || SuctionPump2.isRunning} />
@@ -167,6 +174,8 @@ const CoolantSeaWaterSystemScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.SeaWater}
             ValveObj={OverboardDumpValve}
           />
+          <Arrow X={280} Y={40} Left />
+          <Arrow X={50} Y={40} Left />
 
           <Pipe x1={0} y1={50} x2={200} y2={50} ContentColor={CstResourceColor.SeaWater} HasContent={OverboardDumpValve.isOpen && (SuctionPump2.isRunning || SuctionPump1.isRunning || AuxPump.isRunning)} />
 

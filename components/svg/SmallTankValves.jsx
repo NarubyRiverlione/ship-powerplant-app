@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite'
 import SmallTankSvg from './SmallTank'
 import Valve from './Valve'
 import Pipe from './Pipe'
+import Arrow from './Arrow'
 import CstResourceColor from '../../constants/CstColors'
 
 const SmallTankValves = observer(({
@@ -31,10 +32,12 @@ const SmallTankValves = observer(({
         strokeWidth="2"
         stroke={IntakeValve.Content !== 0 ? ContentColor : CstResourceColor.Empty}
       />
+      <Arrow X={X} Y={Y + 60} />
       {/* Outlet */}
       <Pipe Size={6} x1={X + 200} y1={Y + 160} x2={X + 230} y2={Y + 160} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
       <Pipe Size={6} x1={X + 280} y1={Y + 160} x2={X + 300} y2={Y + 160} ContentColor={ContentColor} HasContent={OutletValve.Content !== 0} />
       <Valve X={X + 230} Y={Y + 125} ContentColor={ContentColor} ValveObj={OutletValve} />
+      <Arrow X={X + 210} Y={Y + 170} />
       {/* Drain */}
       <Pipe Size={6} x1={X + 130} y1={Y + 215} x2={X + 170} y2={Y + 215} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
       <Pipe Size={6} x1={X + 167} y1={Y + 100} x2={X + 167} y2={Y + 212} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
@@ -42,7 +45,7 @@ const SmallTankValves = observer(({
       <Text x={X + 50} y={Y + 200} fill="black">Drain</Text>
       <Pipe Size={6} x1={X + 40} y1={Y + 215} x2={X + 80} y2={Y + 215} ContentColor={ContentColor} HasContent={DrainValve.Content !== 0} />
       <Valve X={X + 80} Y={Y + 180} ContentColor={ContentColor} ValveObj={DrainValve} />
-
+      <Arrow X={X + 155} Y={Y + 205} Left />
       <SmallTankSvg Size={100} X={X + 50} Y={Y + 75} Tank={Tank} ContentColor={ContentColor} TankColor={TankColor} />
     </G>
   )

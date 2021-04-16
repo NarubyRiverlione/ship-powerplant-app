@@ -12,6 +12,7 @@ import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
 import CstResourceColor from '../../constants/CstColors'
 import Navigate from '../../components/svg/Navigate'
+import Arrow from '../../components/svg/Arrow'
 import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const FuelDsStorageScreen = observer(({ navigation }) => {
@@ -33,13 +34,15 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.Diesel}
             HasContent
           />
+          <Arrow X={20} Y={70} />
+
           <Valve
             X={40}
             Y={25}
             ContentColor={CstResourceColor.Diesel}
             ValveObj={DsShoreValve}
           />
-          <Text x={20} y={90} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
+          <Text x={10} y={100} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
           <Pipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />
 
           <TankValves
@@ -108,6 +111,7 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             ValveObj={DsPurification.SteamIntakeValve}
             Vertical
           />
+          <Arrow X={600} Y={600} Up />
           <Pipe
             x1={700}
             y1={520}
@@ -116,7 +120,7 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.Steam}
             HasContent={DsPurification.SteamIntakeValve.Content !== 0}
           />
-
+          <Arrow X={720} Y={590} Down />
           <Pipe
             x1={720}
             y1={500}
@@ -159,6 +163,7 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             ContentColor={CstResourceColor.Diesel}
             ValveObj={DsPurification.IntakeValve}
           />
+          <Arrow X={505} Y={410} />
           <Pipe
             x1={570}
             y1={400}
@@ -189,6 +194,7 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
           />
 
           <Valve X={650} Y={165} ValveObj={DsBypassValve} ContentColor={CstResourceColor.Diesel} />
+          <Arrow X={710} Y={210} />
           <Pipe
             x1={700}
             y1={200}

@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite'
 import TankSvg from './Tank'
 import Valve from './Valve'
 import Pipe from './Pipe'
+import Arrow from './Arrow'
 
 const TankValves = observer(({
   Name, TankSys, X, Y, ContentColor, TankColor,
@@ -23,12 +24,14 @@ const TankValves = observer(({
       <Pipe x1={X + 125} y1={Y + 46} x2={X + 125} y2={Y + 77} ContentColor={ContentColor} HasContent={IntakeValve.Content !== 0} />
       <Valve X={X + 20} Y={Y + 15} ContentColor={ContentColor} ValveObj={IntakeValve} />
       <Line x1={X + 121} y1={Y + 47} x2={X + 121} y2={Y + 53} strokeWidth="2" stroke={IntakeValve.Content !== 0 ? ContentColor : 'white'} />
+      <Arrow X={X + 5} Y={Y + 60} />
       {/* Outlet */}
       <Pipe x1={X + 200} y1={Y + 155} x2={X + 200} y2={Y + 204} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
       <Pipe x1={X + 196} y1={Y + 200} x2={X + 230} y2={Y + 200} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
       <Line x1={X + 197} y1={Y + 196} x2={X + 203} y2={Y + 196} strokeWidth="2" stroke={Tank.Content !== 0 ? ContentColor : 'white'} />
       <Pipe x1={X + 280} y1={Y + 200} x2={X + 350} y2={Y + 200} ContentColor={ContentColor} HasContent={OutletValve.Content !== 0} />
       <Valve X={X + 230} Y={Y + 165} ContentColor={ContentColor} ValveObj={OutletValve} />
+      <Arrow X={X + 210} Y={Y + 210} />
       {/* Drain */}
       <Pipe x1={X + 100} y1={Y + 155} x2={X + 100} y2={Y + 190} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
       <Pipe x1={X + 60} y1={Y + 186} x2={X + 104} y2={Y + 186} ContentColor={ContentColor} HasContent={Tank.Content !== 0} />
@@ -37,6 +40,7 @@ const TankValves = observer(({
       <Valve X={X + 30} Y={Y + 152} ContentColor={ContentColor} ValveObj={DrainValve} />
       <Text x={X + 40} y={Y + 210} fill="black">Drain</Text>
       <TankSvg Size={250} X={X + 50} Y={Y + 75} Tank={Tank} ContentColor={ContentColor} TankColor={TankColor} />
+      <Arrow X={X + 100} Y={Y + 210} Left />
     </G>
   )
 })
