@@ -10,8 +10,13 @@ import SimulatorScreen from '../SimulatorScreen'
 
 const FuelOverviewScreen = observer(({ navigation }) => {
   const Sim = SimContext()
-  const { FuelSys } = Sim
-  const { DsStorage, DsService } = FuelSys
+
+  const {
+    DsFuelSys: { DsStorage, DsService },
+    HfFuelSys: {
+      HfForeBunker, HfAftBunker, HfPortBunker, HfStarboardBunker,
+    },
+  } = Sim
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-around' }}>
@@ -41,10 +46,10 @@ const FuelOverviewScreen = observer(({ navigation }) => {
             flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center',
           }}
           >
-            <Text style={styles.text}>{`Aft bulk tank ${0} % `}</Text>
-            <Text style={styles.text}>{`Port bunker tank ${0} % `}</Text>
-            <Text style={styles.text}>{`Starboard bunker tank ${0} % `}</Text>
-            <Text style={styles.text}>{`Fore bunker tank ${0} % `}</Text>
+            <Text style={styles.text}>{`Fore bunker tank ${HfForeBunker.Content / HfForeBunker.Tank.Volume * 100} % `}</Text>
+            <Text style={styles.text}>{`Port bunker tank ${HfPortBunker.Content / HfPortBunker.Tank.Volume * 100} % `}</Text>
+            <Text style={styles.text}>{`Starboard bunker tank ${HfStarboardBunker.Content / HfStarboardBunker.Tank.Volume * 100} % `}</Text>
+            <Text style={styles.text}>{`Aft bulk tank ${HfAftBunker.Content / HfAftBunker.Tank.Volume * 100} % `}</Text>
           </View>
           <View style={{ flex: 1, justifyContent: 'flex-start' }}>
             <Button title="Go to heavy fuel storage" onPress={() => navigation.navigate(NavScreen.Fuel.HfStorageScreen)} />

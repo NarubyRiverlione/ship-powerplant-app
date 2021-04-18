@@ -2,7 +2,7 @@ import React from 'react'
 import { G, Line } from 'react-native-svg'
 import { observer } from 'mobx-react-lite'
 import PropTypes from 'prop-types'
-import SmallTankValves from './svg/SmallTankValves'
+import SmallTankValvesDrain from './svg/SmallTankValvesDrain'
 import Valve from './svg/Valve'
 import Pipe from './svg/Pipe'
 import Arrow from './svg/Arrow'
@@ -52,7 +52,7 @@ const StartAirEmergencySystem = observer(({
       Size={6}
     />
 
-    <SmallTankValves
+    <SmallTankValvesDrain
       X={X + 600}
       Y={Y + 70}
       Name={Receiver.Tank.Name}

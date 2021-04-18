@@ -23,7 +23,7 @@ const PowerGeneratorScreen = observer(({ navigation }) => {
   const Sim = SimContext()
   const {
     PowerSys: { DsGen },
-    FuelSys: { DsService },
+    DsFuelSys: { DsService },
     LubSys,
     AirSys: { EmergencyReceiver },
     CoolingFreshWaterSys: { DsGenLubCooler },

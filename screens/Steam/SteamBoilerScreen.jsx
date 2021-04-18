@@ -14,7 +14,7 @@ import BoilerSvg from '../../components/svg/Boiler'
 import Cooler from '../../components/svg/Cooler'
 import Navigate from '../../components/svg/Navigate'
 import Valve from '../../components/svg/Valve'
-import SmallTankValves from '../../components/svg/SmallTankValves'
+import SmallTankValvesDrain from '../../components/svg/SmallTankValvesDrain'
 import Pump from '../../components/svg/Pump'
 import Arrow from '../../components/svg/Arrow'
 import CstResourceColor from '../../constants/CstColors'
@@ -51,7 +51,7 @@ const SteamBoilerScreen = observer(({ navigation }) => {
           <BoilerSvg X={600} Y={100} BoilerObj={Boiler} cb={() => Boiler.Toggle()} />
 
           <Pipe x1={5} y1={260} x2={60} y2={260} ContentColor={CstResourceColor.FreshWater} HasContent />
-          <SmallTankValves X={50} Y={210} Name={FeedWaterSupply.Name} ContentColor={CstResourceColor.FreshWater} TankSys={FeedWaterSupply} />
+          <SmallTankValvesDrain X={50} Y={210} Name={FeedWaterSupply.Name} ContentColor={CstResourceColor.FreshWater} TankSys={FeedWaterSupply} />
 
           <Pipe x1={350} y1={370} x2={420} y2={370} ContentColor={CstResourceColor.FreshWater} HasContent={FeedWaterSupply.OutletValve.Content !== 0} />
           <Pipe x1={460} y1={380} x2={460} y2={440} Size={4} ContentColor={CstResourceColor.Electricity} HasContent={FuelPump.Bus.Voltage > 0} />

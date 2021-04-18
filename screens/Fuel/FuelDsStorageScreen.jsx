@@ -6,23 +6,24 @@ import Svg, { Text, Line, Rect } from 'react-native-svg'
 import SimContext from '../../SimulatorContext'
 import SimulatorScreen from '../SimulatorScreen'
 import TankValves from '../../components/svg/TankValves'
-import Led from '../../components/svg/Led'
-import SmallTankValves from '../../components/svg/SmallTankValves'
+import SmallTankValvesDrain from '../../components/svg/SmallTankValvesDrain'
 import Valve from '../../components/svg/Valve'
 import Pipe from '../../components/svg/Pipe'
-import CstResourceColor from '../../constants/CstColors'
 import Navigate from '../../components/svg/Navigate'
 import Arrow from '../../components/svg/Arrow'
 import Machine from '../../components/svg/Machine'
 
+import CstResourceColor from '../../constants/CstColors'
 import { NavScreen, NavStack } from '../../constants/CstNav'
 
 const FuelDsStorageScreen = observer(({ navigation }) => {
   const Sim = SimContext()
-  const { FuelSys } = Sim
   const {
-    DsShoreValve, DsStorage, DsService, DsBypassValve, DsPurification, DsServiceMulti,
-  } = FuelSys
+    DsFuelSys: {
+      ShoreValve, DsStorage, DsService, DsBypassValve, DsPurification, DsServiceMulti,
+    },
+  } = Sim
+
   return (
     <SimulatorScreen>
       <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -42,10 +43,10 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             X={40}
             Y={25}
             ContentColor={CstResourceColor.Diesel}
-            ValveObj={DsShoreValve}
+            ValveObj={ShoreValve}
           />
-          <Text x={10} y={100} fill="black" fontSize={12}>{DsShoreValve.Name}</Text>
-          <Pipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={DsShoreValve.isOpen} />
+          <Text x={10} y={100} fill="black" fontSize={12}>{ShoreValve.Name}</Text>
+          <Pipe x1={90} y1={60} x2={210} y2={60} ContentColor={CstResourceColor.Diesel} HasContent={ShoreValve.isOpen} />
 
           <TankValves
             X={200}
@@ -62,7 +63,7 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             x2={205}
             y2={63}
             strokeWidth="2"
-            stroke={DsShoreValve.isOpen ? CstResourceColor.Diesel : CstResourceColor.Empty}
+            stroke={ShoreValve.isOpen ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
 
           <Pipe
@@ -272,7 +273,7 @@ const FuelDsStorageScreen = observer(({ navigation }) => {
             strokeWidth="2"
             stroke={DsPurification.Content !== 0 ? CstResourceColor.Diesel : CstResourceColor.Empty}
           />
-          <SmallTankValves
+          <SmallTankValvesDrain
             X={800}
             Y={250}
             Name={DsService.Tank.Name}
