@@ -23,7 +23,7 @@ const FuelHfStorageScreen = observer(({ navigation }) => {
       HfShoreValve,
       HfForeBunker, HfAftBunker, HfPortBunker, HfStarboardBunker,
       HfPump, HfPumpOutletValve,
-      HfSettelingTank, HasOutlet,
+      HfSettelingTank, HasBunkOutput,
     },
   } = Sim
   return (
@@ -99,13 +99,13 @@ const FuelHfStorageScreen = observer(({ navigation }) => {
           <Arrow X={1080} Y={530} Up />
           <Arrow X={1080} Y={440} Up />
 
-          <Pipe x1={342} y1={550} x2={1104} y2={550} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasOutlet} />
-          <Pipe x1={346} y1={464} x2={346} y2={546} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasOutlet} />
-          <Pipe x1={700} y1={464} x2={700} y2={546} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasOutlet} />
-          <Pipe x1={1100} y1={214} x2={1100} y2={546} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasOutlet} />
-          <Pipe x1={650} y1={210} x2={1104} y2={210} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasOutlet} />
+          <Pipe x1={342} y1={550} x2={1104} y2={550} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasBunkOutput} />
+          <Pipe x1={346} y1={464} x2={346} y2={546} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasBunkOutput} />
+          <Pipe x1={700} y1={464} x2={700} y2={546} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasBunkOutput} />
+          <Pipe x1={1100} y1={214} x2={1100} y2={546} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasBunkOutput} />
+          <Pipe x1={650} y1={210} x2={1104} y2={210} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasBunkOutput} />
 
-          <Pipe x1={740} y1={170} x2={740} y2={210} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasOutlet} />
+          <Pipe x1={740} y1={170} x2={740} y2={210} ContentColor={CstResourceColor.HeavyFuel} HasContent={HasBunkOutput} />
           <Pipe x1={740} y1={46} x2={740} y2={70} ContentColor={CstResourceColor.HeavyFuel} HasContent={HfPump.Content !== 0} />
           <Pipe x1={744} y1={50} x2={760} y2={50} ContentColor={CstResourceColor.HeavyFuel} HasContent={HfPump.Content !== 0} />
           <Pipe x1={810} y1={50} x2={855} y2={50} ContentColor={CstResourceColor.HeavyFuel} HasContent={HfPumpOutletValve.Content !== 0} />
