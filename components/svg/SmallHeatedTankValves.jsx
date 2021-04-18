@@ -35,7 +35,6 @@ const SmallHeatedTankValves = observer(({
       <Line x1={X + 140} y1={Y + 155} x2={X + 100} y2={Y + 155} strokeWidth={4} stroke={SteamIntakeValve.Content !== 0 ? CstResourceColor.Steam : CstResourceColor.Empty} />
 
       <Text x={X + 140} y={Y + 190} fill="black">{`${Temperature}°C`}</Text>
-      <Text x={X + 140} y={Y + 210} fill="black">{`${HasSteam} steam`}</Text>
     </G>
   )
 })
