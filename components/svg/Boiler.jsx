@@ -7,11 +7,9 @@ import {
 } from 'react-native-svg'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react-lite'
-import LookingGlass from './LookingGlass'
-import CstResourceColor from '../../constants/CstColors'
+
 import Led from './Led'
 import SafetyValve from './SafetyValve'
-import Pipe from './Pipe'
 
 const Flame = ({ X, Y, Scale }) => (
   <G data-name="Flame" transform={`translate(${X},${Y}) scale(${0.2 * Scale})`}>
@@ -40,6 +38,7 @@ const Boiler = observer(({
   X, Y, Scale, BoilerObj, cb,
 }) => (
   <G>
+
     <AnimatedG onPress={cb} data-name="Boiler" transform={`translate(${X},${Y}) scale(${0.8 * Scale})`}>
       <Path
         d="M228.871 504.5v-50.088l-29.153-6.478V504.5zM312.01 504.5v-56.566l-29.153 6.478V504.5z"
@@ -115,8 +114,7 @@ const Boiler = observer(({
     <Led X={X + 350} Y={Y + 290} Status={BoilerObj.HasFuel} Label="Has fuel" />
     {/* <Led X={X + 350} Y={Y + 320} Status={BoilerObj.TempInsideAutoZone} Label="Auto available" /> */}
 
-    <Pipe x1={X + 147} y1={Y - 65} x2={X + 147} y2={Y + 15} Size={25} HasContent={BoilerObj.Pressure > 1} ContentColor={CstResourceColor.Steam} />
-    <SafetyValve X={X + 160} Y={Y - 97} isOpen={BoilerObj.SafetyRelease.isOpen} Scale={1.7} />
+    <SafetyValve X={X + 190} Y={Y - 70} isOpen={BoilerObj.SafetyRelease.isOpen} Scale={1.7} Vertical />
 
     {BoilerObj.HasFlame && <Flame X={X + 160} Y={Y + 150} />}
   </G>
