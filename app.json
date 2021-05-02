@@ -4,7 +4,6 @@
     "slug": "ship-system-simulator",
     "version": "0.0.1",
     "description": "Ship systems simulator",
-    "sdkVersion": "40.0.0",
     "orientation": "landscape",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -32,6 +31,7 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "sdkVersion": "41.0.0"
   }
 }
