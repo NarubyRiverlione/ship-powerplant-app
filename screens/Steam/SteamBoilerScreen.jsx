@@ -53,6 +53,8 @@ const SteamBoilerScreen = observer(({ navigation }) => {
           <Pipe x1={5} y1={310} x2={60} y2={310} ContentColor={CstResourceColor.FreshWater} HasContent />
           <SmallTankValvesDrain X={50} Y={260} Name={FeedWaterSupply.Name} ContentColor={CstResourceColor.FreshWater} TankSys={FeedWaterSupply} />
           <Text x={10} y={340} fill="black">Fresh water makeup</Text>
+          <Text x={260} y={350} fill="black">{`level ${FeedWaterSupply.Tank.Inside.toFixed(0)}`}</Text>
+
           <Pipe x1={350} y1={420} x2={420} y2={420} ContentColor={CstResourceColor.FreshWater} HasContent={FeedWaterSupply.OutletValve.Content !== 0} />
           <Pipe x1={460} y1={430} x2={460} y2={500} Size={4} ContentColor={CstResourceColor.Electricity} HasContent={FuelPump.Bus.Voltage > 0} />
           <Navigate X={470} Y={450} Width={105} Height={35} NavText={FuelPump.Bus.Name} navigation={navigation} NavStack={NavStack.Power} NavScreen={NavScreen.Power.SwitchboardScreen} />

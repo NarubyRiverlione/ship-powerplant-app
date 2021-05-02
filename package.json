@@ -37,7 +37,7 @@
     "react-native-screens": "~3.0.0",
     "react-native-svg": "^12.1.0",
     "react-native-web": "~0.13.12",
-    "ship-powerplant-simulator": "file:../Simulator/ship-powerplant-simulator-7.0.10.tgz"
+    "ship-powerplant-simulator": "file:../Simulator/ship-powerplant-simulator-7.1.0.tgz"
   },
   "devDependencies": {
     "@types/react": "~16.9.35",

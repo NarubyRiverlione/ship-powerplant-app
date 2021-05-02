@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Simulator from 'ship-powerplant-simulator'
 
 const SimulatorContext = React.createContext()
-const simulator = new Simulator()
+const simulator = new Simulator(true)
 
 export const SimulatorProvider = ({ children }) => (
   <SimulatorContext.Provider value={simulator}>
